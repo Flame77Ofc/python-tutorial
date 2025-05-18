@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Adicionado para responsividade -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="imagens/logopython.png" type="image/x-icon">
+    <title>Curso de Python</title>
+    <style>
+        :root {
+            --fonte-principal: 'Bricolage Grotesque', sans-serif;
+            --fonte-code: "Cascadia Code", monospace;
+
+            /* Tema Claro */
+            --clr-body-light: #fdfdfd;
+            --clr-header-light: #6C63FF;
+            --clr-main-light: #ffffff;
+            --clr-aside-light: #eeeeee;
+            --clr-text-light: #111111;
+            --clr-link-light: #b9b9ff;
+            --clr-hover-light: #ffb400;
+            --clr-button-light: #087cbb;
+            --clr-border-light: rgba(0, 0, 0, 0.15);
+
+            /* Tema Escuro */
+            --clr-body-dark: #1e1e2f;
+            --clr-header-dark: #2c2c3c;
+            --clr-main-dark: #2a2a3c;
+            --clr-aside-dark: #37374a;
+            --clr-text-dark: #dcdcdc;
+            --clr-link-dark: #ccccff;
+            --clr-hover-dark: #ffc107;
+            --clr-button-dark: #0a96d1;
+            --clr-border-dark: rgba(255, 255, 255, 0.1);
+
+            /* Tema ativo */
+            --bg-body: var(--clr-body-light);
+            --bg-header: var(--clr-header-light);
+            --bg-main: var(--clr-main-light);
+            --bg-aside: var(--clr-aside-light);
+            --text-color: var(--clr-text-light);
+            --link-color: var(--clr-link-light);
+            --hover-color: var(--clr-hover-light);
+            --button-color: var(--clr-button-light);
+            --border-color: var(--clr-border-light);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-color);
+            font-family: var(--fonte-principal);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: var(--bg-header);
+            color: var(--text-color);
+            padding: 10px 20px;
+            flex-shrink: 0;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+            padding: 10px;
+            flex-wrap: wrap; /* Permite que os elementos se reorganizem em telas menores */
+        }
+
+        aside {
+            background-color: var(--bg-aside);
+            border: 1px solid var(--border-color);
+            width: 250px;
+            padding: 15px;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        aside .table {
+            padding-left: 25px;
+        }
+
+        main {
+            background-color: var(--bg-main);
+            border: 0.5px solid var(--border-color);
+            padding: 10px;
+            line-height: 30px;
+            flex: 1;
+            min-width: 300px; /* Evita que o main fique muito estreito */
+        }
+
+        main .img {
+            float: left;
+            max-width: 100%; /* Garante que a imagem não exceda o contêiner */
+            height: auto;
+            margin-right: 10px;
+        }
+
+        main .img2 {
+            float: right;
+            height: 250px;
+            max-width: 100%;
+            margin-left: 10px;
+        }
+
+        main .p-text {
+            font-size: 1.17em;
+        }
+
+        main .list {
+            padding: 15px;
+        }
+
+        a {
+            font-style: italic;
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--hover-color);
+        }
+
+        #start {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #start-button {
+            background-color: var(--button-color);
+            border: 1px solid white;
+            color: white;
+            padding: 10px;
+            width: 250px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        #start-button:hover {
+            background-color: var(--hover-color);
+        }
+
+        #toggle-theme {
+            position: fixed;
+            top: 10px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: transform 0.2s;
+            z-index: 1000;
+        }
+
+        #toggle-theme:hover {
+            transform: scale(1.25);
+        }
+
+        /* Media Queries para responsividade */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            aside {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            main {
+                margin: 0;
+            }
+
+            main .img, main .img2 {
+                float: none;
+                display: block;
+                margin: 10px auto;
+                height: auto;
+                max-height: 200px;
+            }
+
+            header {
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            main .p-text {
+                font-size: 1em;
+            }
+
+            #start-button {
+                width: 100%;
+                max-width: 200px;
+            }
+
+            h1, h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1><a href="https://www.python.org/">Curso de Python</a></h1>
+        <menu></menu>
+    </header>
+    <div class="container">
+        <aside>
+            <h1>Tabela de Conteúdo</h1>
+            <ul class="table">
+                <li>Introdução ao Python</li>
+            </ul>
+        </aside>
+        <main>
+            <h1>Uma breve apresentação sobre Python</h1>
+            <h2>O que é o Python?</h2>
+            <img src="imagens/python.png" alt="Imagem Python" title="Python" class="img">
+            <p class="p-text">Python é uma linguagem de programação amada por diversos profissionais de tecnologia pela sua
+                sintaxe, que é
+                relativamente mais simples do que a de outras linguagens. Foi inventada por Guido van Rossum em 1991,
+                enquanto trabalhava em Holanda. Guido achava as linguagens da época mais complexas, e aí que veio a ideia
+                brilhante de criar sua própria linguagem que é uma das mais usadas nos dias de hoje.</p>
+
+            <img src="imagens/piton.png" alt="Cobra Píton" title="Píton" class="img2">
+            <p class="p-text">Python tem um significado, e muitos pensam que vem da cobra 'píton' (python em inglês), porém
+                Guido fez uma homenagem ao grupo britânico de comédia <strong>Monty Python</strong>, pois admirava.
+                Python apresenta as seguintes características:</p>
+            <ul class="list">
+                <li>Maior facilidade de aprendizado</li>
+                <li>Mais compreensível pelos humanos</li>
+                <li>Sintaxe fácil e simples</li>
+                <li>Abrange muitas funcionalidades</li>
+            </ul>
+
+            <p class="p-text">Python envolve as seguintes áreas:</p>
+            <ul class="list">
+                <li>Ciência de Dados</li>
+                <li>IA e Machine Learning</li>
+                <li>Automação de Tarefas</li>
+                <li>Desenvolvimento Web</li>
+                <li>Robótica e IoT</li>
+                <li>Jogos e Gráficos</li>
+            </ul>
+            <h2>Um exemplo de código em Python</h2>
+            <p class="p-text">Veja como o Python é simples, em apenas uma linha escrevemos o que linguagens de baixo nível
+                fazem em 4 a 6 linhas!</p>
+            <p style="font-size: 1.2em; font-family: var(--fonte-code);">print('Olá, Mundo!')</p> <br> <br>
+
+            <h2 style="text-align: center;">Então, que tal se aventurar e aprender essa linguagem??</h2>
+            <div id="start">
+                <button id="start-button" onclick="location.href='aula001.html'">Vamos nessa!</button>
+            </div>
+        </main>
+    </div>
+    <button id="toggle-theme">🌙</button>
+
+    <script>
+        const toggleButton = document.getElementById('toggle-theme');
+        let isDark = false;
+
+        function toggleTheme() {
+            const root = document.documentElement;
+            isDark = !isDark;
+
+            root.style.setProperty('--bg-body', isDark ? 'var(--clr-body-dark)' : 'var(--clr-body-light)');
+            root.style.setProperty('--bg-header', isDark ? 'var(--clr-header-dark)' : 'var(--clr-header-light)');
+            root.style.setProperty('--bg-main', isDark ? 'var(--clr-main-dark)' : 'var(--clr-main-light)');
+            root.style.setProperty('--bg-aside', isDark ? 'var(--clr-aside-dark)' : 'var(--clr-aside-light)');
+            root.style.setProperty('--text-color', isDark ? 'var(--clr-text-dark)' : 'var(--clr-text-light)');
+            root.style.setProperty('--link-color', isDark ? 'var(--clr-link-dark)' : 'var(--clr-link-light)');
+            root.style.setProperty('--hover-color', isDark ? 'var(--clr-hover-dark)' : 'var(--clr-hover-light)');
+            root.style.setProperty('--button-color', isDark ? 'var(--clr-button-dark)' : 'var(--clr-button-light)');
+            root.style.setProperty('--border-color', isDark ? 'var(--clr-border-dark)' : 'var(--clr-border-light)');
+
+            toggleButton.textContent = isDark ? '☀️' : '🌙';
+        }
+
+        toggleButton.addEventListener('click', toggleTheme);
+    </script>
+</body>
+
+</html>

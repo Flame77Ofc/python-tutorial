@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Versão escura</title>
+</head>
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 40px;
+    background-color: #37374a;
+  }
+
+  .code-container {
+    background-color: #1e1e2f;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    margin: 40px auto;
+    max-width: 800px;
+  }
+
+  .code-header {
+    background-color: #2c2c3c;
+    color: #ccc;
+    padding: 12px 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: monospace;
+  }
+
+  .code-header .dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .dot.red {
+    background-color: #ff5f56;
+  }
+
+  .dot.yellow {
+    background-color: #ffbd2e;
+  }
+
+  .dot.green {
+    background-color: #27c93f;
+  }
+
+  pre {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Fira Code', monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    background-color: #1e1e2f;
+    color: #dcdcdc;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .output-container {
+    background-color: #2c2c3c;
+    padding-left: 20px;
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+    color: #dcdcdc;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .output-header {
+    color: #ccc;
+    font-size: 14px;
+    font-family: monospace;
+  }
+</style>
+
+<body>
+
+  <div class="code-container">
+    <div class="code-header">
+      <div class="dots">
+        <div class="dot red"></div>
+        <div class="dot yellow"></div>
+        <div class="dot green"></div>
+      </div>
+      <span>exemplo.py</span>
+    </div>
+    <pre><code>def exemplo():
+    print("Olá, mundo!")</code></pre>
+    <div class="output-container">
+      <div class="output-header">Saída:</div>
+      <div class="output">Insira a saída aqui</div>
+    </div>
+  </div>
+
+</body>
+
+</html>

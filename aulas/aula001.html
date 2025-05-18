@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preparação</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../imagens/logopython.png" type="image/x-icon">
+    <style>
+        :root {
+            --fonte-principal: 'Bricolage Grotesque', sans-serif;
+            --fonte-code: "Cascadia Code", monospace;
+            --clr-body-light: #fdfdfd;
+            --clr-header-light: #6C63FF;
+            --clr-main-light: #ffffff;
+            --clr-aside-light: #eeeeee;
+            --clr-text-light: #111111;
+            --clr-link-light: #b9b9ff;
+            --clr-hover-light: #ffb400;
+            --clr-button-light: #087cbb;
+            --clr-border-light: rgba(0, 0, 0, 0.15);
+            --clr-body-dark: #1e1e2f;
+            --clr-header-dark: #2c2c3c;
+            --clr-main-dark: #2a2a3c;
+            --clr-aside-dark: #37374a;
+            --clr-text-dark: #dcdcdc;
+            --clr-link-dark: #ccccff;
+            --clr-hover-dark: #ffc107;
+            --clr-button-dark: #0a96d1;
+            --clr-border-dark: rgba(255, 255, 255, 0.1);
+            --bg-body: var(--clr-body-dark);
+            --bg-header: var(--clr-header-dark);
+            --bg-main: var(--clr-main-dark);
+            --bg-aside: var(--clr-aside-dark);
+            --text-color: var(--clr-text-dark);
+            --link-color: var(--clr-link-dark);
+            --hover-color: var(--clr-hover-dark);
+            --button-color: var(--clr-button-dark);
+            --border-color: var(--clr-border-dark);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-color);
+            font-family: var(--fonte-principal);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: var(--bg-header);
+            color: var(--text-color);
+            padding: 10px 20px;
+            flex-shrink: 0;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+            padding: 10px;
+            flex-wrap: wrap;
+            max-width: 960px;
+            margin: 40px auto;
+            background-color: var(--bg-main);
+            border-radius: 16px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        main {
+            background-color: var(--bg-main);
+            padding: 20px;
+            line-height: 1.6;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .video-container {
+            background-color: var(--bg-aside);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            margin-bottom: 30px;
+        }
+
+        .video-header {
+            background-color: var(--bg-header);
+            color: var(--text-color);
+            padding: 12px 20px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: monospace;
+        }
+
+        .dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .dot.red {
+            background-color: #ff5f56;
+        }
+
+        .dot.yellow {
+            background-color: #ffbd2e;
+        }
+
+        .dot.green {
+            background-color: #27c93f;
+        }
+
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+
+        #toggle-theme {
+            position: fixed;
+            top: 10px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: transform 0.2s;
+            z-index: 1000;
+        }
+
+        #toggle-theme:hover {
+            transform: scale(1.25);
+        }
+
+        #start {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 40px auto 20px;
+            padding: 15px 25px;
+            background-color: var(--button-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #start:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+                padding: 10px;
+            }
+
+            iframe {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+
+            #start {
+                max-width: 100%;
+                padding: 12px 20px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <main>
+            <h1>Boas vindas ao curso!</h1>
+            <p>Olá! Seja muito bem vindo(a) neste curso de python! Explicarei de uma forma simples e divertida com o
+                objetivo de te ensinar a programar em Python!</p>
+            <h1>Instalação</h1>
+            <p>Para começar a nossa jornada, vamos fazer a instalação do Python e do VSCode. Assista a esse vídeo:</p>
+
+            <div class="video-container">
+                <div class="video-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>Tutorial de Instalação do Python e do VSCode</span>
+                </div>
+                <iframe src="https://www.youtube.com/embed/tojGZkpP-q4"
+                    title="Como Configurar VSCode Para Python em 2025 [FÁCIL!]"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+            <h1>Etapas Iniciais</h1>
+            <p>Feito isso, crie uma pasta, crie um arquivo com qualquer nome e com a extensão de '.py' no final. Vamos
+                utilizar 'main.py'. Quando estiver preparado, vamos começar!</p>
+            <button id="start" onclick="location.href='aula002.html'">Próxima aula</button>
+        </main>
+    </div>
+    <button id="toggle-theme">🌙</button>
+
+    <script>
+        const toggleButton = document.getElementById('toggle-theme');
+        let isDark = true;
+
+        function toggleTheme() {
+            const root = document.documentElement;
+            isDark = !isDark;
+
+            root.style.setProperty('--bg-body', isDark ? 'var(--clr-body-dark)' : 'var(--clr-body-light)');
+            root.style.setProperty('--bg-header', isDark ? 'var(--clr-header-dark)' : 'var(--clr-header-light)');
+            root.style.setProperty('--bg-main', isDark ? 'var(--clr-main-dark)' : 'var(--clr-main-light)');
+            root.style.setProperty('--bg-aside', isDark ? 'var(--clr-aside-dark)' : 'var(--clr-aside-light)');
+            root.style.setProperty('--text-color', isDark ? 'var(--clr-text-dark)' : 'var(--clr-text-light)');
+            root.style.setProperty('--link-color', isDark ? 'var(--clr-link-dark)' : 'var(--clr-link-light)');
+            root.style.setProperty('--hover-color', isDark ? 'var(--clr-hover-dark)' : 'var(--clr-hover-light)');
+            root.style.setProperty('--button-color', isDark ? 'var(--clr-button-dark)' : 'var(--clr-button-light)');
+            root.style.setProperty('--border-color', isDark ? 'var(--clr-border-dark)' : 'var(--clr-border-light)');
+
+            toggleButton.textContent = isDark ? '☀️' : '🌙';
+        }
+
+        toggleButton.addEventListener('click', toggleTheme);
+    </script>
+</body>
+
+</html>
