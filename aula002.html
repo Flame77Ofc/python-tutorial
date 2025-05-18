@@ -12,13 +12,24 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/dracula.min.css">
-    <link rel="stylesheet" href="../css/aulas.css">
-    <link rel="shortcut icon" href="../imagens/logopython.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/aulas.css">
+    <link rel="shortcut icon" href="imagens/logopython.png" type="image/x-icon">
 </head>
 
 <body>
     <div class="container">
         <main>
+            <h1>Termos Inicias</h1>
+            <p>Olá! Está preparado(a) para ver alguns termos inicias da linguagem? Vamos conhecer alguns assuntos
+                essenciais antes de mergulhar a fundo no python. Que tal começarmos a falar de comentários?</p>
+            <h2>Comentários</h2>
+            <p>Os comentários em python são partes de códigos onde os comandos não são executados, ou seja, o
+                programa simplesmente ignora os comentários. Para fazer um comentário, utiliza-se o hashtag (#), e logo
+                após isso você pode escrever o que quiser que o programa não executará. Importante lembrar que os
+                comentários só funcionam em uma linha. Ou seja, se você quiser colocar mais comentários, a cada linha
+                terá que digitar o hashtag (#). Os comentários são
+                muito úteis explicações de comandos. Vamos ver alguns exemplos de comentário:
+            </p>
             <div class="example-code-container">
                 <div class="example-code-header">
                     <div class="dots">
@@ -28,41 +39,54 @@
                     </div>
                     <span>comentarios.py</span>
                 </div>
-                <pre class="example-pre"><code>Comandos aqui
+                <pre class="example-pre"><code># Isso é um comentário
+# Isso também é um comentário
+Mas se eu utilizar # o hashtag após o texto que que queria, dará um erro. Todos os caracteres devem estar APÓS a hashtag
 </code></pre>
                 <div class="example-output-container">
                     <div class="example-output-header">Saída:</div>
                     <div class="output">Erro! Explicação: "Mas se eu utilizar" não é um comando do python</div>
                 </div>
             </div>
-
-
-
-
-
-            <!-- EDITOR -->
-            <div class="editor-container">
-                <div class="code-header">
+            <p>Esse erro aconteceu porque utilizamos o simbolo da hashtag após o nosso comentário. O python não entende
+                isso e então apontará que isso é um erro! Vamos corrigir esse código: </p>
+            <div class="example-code-container">
+                <div class="example-code-header">
                     <div class="dots">
                         <div class="dot red"></div>
                         <div class="dot yellow"></div>
                         <div class="dot green"></div>
                     </div>
-                    <span>main.py</span>
+                    <span>comentarios.py</span>
                 </div>
-                <textarea id="python-editor"># Digite o seu código aqui
-print("Olá, Mundo!")</textarea>
+                <pre class="example-pre"><code># Isso é um comentário
+# Isso também é um comentário
+# Mas se eu utilizar o hashtag após o texto que que queria, dará um erro. Todos os caracteres devem estar APÓS a hashtag
+</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">Nenhuma saída (Python não executa comentários)</div>
+                </div>
             </div>
+            <p>O que fizemos foi colocar o hashtag antes do nosso texto, então assim o python sabe que isso é um
+                comentário</p>
+            <p>Entendeu sobre comentários? Então vamos ver o que são keywords!</p>
+            <h2>Keywords</h2>
+            <p>palavras-chave, palavras reservadas, palavras especiais ou simplesmente keywords, são palavras
+                específicas que o python adotou para a sua linguagem. Com essas palavras especiais python consegue
+                entender o que você está querendo dizer a ele. Vamos ver apenas alguns exemplos que aprenderemos em
+                breve:</p>
+            <ul>
+                <li>True</li>
+                <li>if</li>
+                <li>def</li>
+                <li>while</li>
+            </ul>
+            <p>Python possui cerca de 35 palavras reservadas. No entanto, isso não quer dizer que existam apenas 35
+                comandos que o Python possa entender. Além das palavras-chave, há também funções e métodos, que também
+                podem ser considerados comandos em Python. Aprenderemos isso nas aulas adiantes.</p>
+            <p>Agora você já está preparado para escrever seus primeiros programas. Vamos nessa!</p>
 
-            <div class="button-container">
-                <button id="run-btn" class="interpreter-btn" disabled>Executar (Ctrl+Enter)</button>
-                <button id="clear-btn" class="interpreter-btn" disabled>Limpar Saída</button>
-                <span id="spinner">⏳ Executando...</span>
-            </div>
-
-            <div class="output-container">
-                <pre id="saida">Carregando interpretador Python...</pre>
-            </div>
 
             <button id="start" onclick="location.href='aula003.html'">Próxima aula</button>
         </main>
