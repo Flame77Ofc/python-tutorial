@@ -466,3 +466,8 @@ body {
     border-bottom: 1px solid var(--border-color);
 
 }
+
+mean {
+    color: lightskyblue;
+    text-decoration: underline 0.5px wavy;
+}

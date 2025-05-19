@@ -94,23 +94,26 @@
                 font-size: 1em;
             }
 
-            }    </style>
+        }
+    </style>
 </head>
 
 <body>
-        <header>
-        <h1 style="margin: 0;"><a href="index.html" style="text-decoration: none; color: currentColor;">Curso de Python</a></h1>
+    <header>
+        <h1 style="margin: 0;"><a href="index.html" style="text-decoration: none; color: currentColor;">Curso de
+                Python</a></h1>
         <span style="font-size: 1.2em; font-weight: bold;">Aula 1 - Instalação</span>
     </header>
 
     <div class="container">
-        
+
         <main>
             <h1>Boas vindas ao curso!</h1>
             <p>Olá! Seja muito bem vindo(a) neste curso de python! Explicarei de uma forma simples e divertida com o
                 objetivo de te ensinar a programar em Python!</p>
             <h1>Instalação</h1>
-            <p>Para começar a nossa jornada, vamos fazer a instalação do Python e do VSCode. Assista a esse vídeo:</p> <br>
+            <p>Para começar a nossa jornada, vamos fazer a instalação do Python e do VSCode. Assista a esse vídeo:</p>
+            <br>
 
             <div class="video-container">
                 <div class="video-header">
@@ -132,35 +135,14 @@
             <div class="button-container">
                 <button id="left-button" class="nav-button" onclick="location.href='index.html'">Aula anterior</button>
                 <button id="center-button" class="nav-button" onclick="location.href='bot.html'">Área de Testes</button>
-                <button id="right-button" class="nav-button" onclick="location.href='aula002.html'">Próxima Aula</button>
+                <button id="right-button" class="nav-button" onclick="location.href='aula002.html'">Próxima
+                    Aula</button>
             </div>
         </main>
     </div>
     <button id="toggle-theme">🌙</button>
 
-    <script>
-        const toggleButton = document.getElementById('toggle-theme');
-        let isDark = true;
-
-        function toggleTheme() {
-            const root = document.documentElement;
-            isDark = !isDark;
-
-            root.style.setProperty('--bg-body', isDark ? 'var(--clr-body-dark)' : 'var(--clr-body-light)');
-            root.style.setProperty('--bg-header', isDark ? 'var(--clr-header-dark)' : 'var(--clr-header-light)');
-            root.style.setProperty('--bg-main', isDark ? 'var(--clr-main-dark)' : 'var(--clr-main-light)');
-            root.style.setProperty('--bg-aside', isDark ? 'var(--clr-aside-dark)' : 'var(--clr-aside-light)');
-            root.style.setProperty('--text-color', isDark ? 'var(--clr-text-dark)' : 'var(--clr-text-light)');
-            root.style.setProperty('--link-color', isDark ? 'var(--clr-link-dark)' : 'var(--clr-link-light)');
-            root.style.setProperty('--hover-color', isDark ? 'var(--clr-hover-dark)' : 'var(--clr-hover-light)');
-            root.style.setProperty('--button-color', isDark ? 'var(--clr-button-dark)' : 'var(--clr-button-light)');
-            root.style.setProperty('--border-color', isDark ? 'var(--clr-border-dark)' : 'var(--clr-border-light)');
-
-            toggleButton.textContent = isDark ? '☀️' : '🌙';
-        }
-
-        toggleButton.addEventListener('click', toggleTheme);
-    </script>
+    <script src="scripts/script.js"></script>
 </body>
 
 </html>

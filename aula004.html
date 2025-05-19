@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conceitos Iniciais</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/aulas.css">
+    <link rel="shortcut icon" href="imagens/logopython.png" type="image/x-icon">
+</head>
+
+<body>
+    <header class="class-header">
+        <h1 style="margin: 0;"><a href="index.html" style="text-decoration: none; color: currentColor;">Curso de
+                Python</a></h1>
+        <span style="font-size: 1.2em; font-weight: bold;">Aula 4 - Variáveis e Tipos de dados</span>
+    </header>
+    <div class="container">
+        <main>
+            <h1>Uma introdução as variáveis</h1>
+            <p>Agora vamos avançar um pouco e aprender sobre variáveis. As variáveis são usadas para armazenar dados na
+                memória do computador. São muito úteis para utilizar em um caso posterior. Vamos ver alguns exemplos:
+            </p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>comentarios.py</span>
+                </div>
+                <pre
+                    class="example-pre"><code>nome = 'Maria' # A variável nome é uma string<br>idade = 17 # A variável idade é um número do tipo inteiro</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">Nenhuma</div>
+                </div>
+            </div>
+
+            <p>Mas espera... O que são strings?? O que é tipo inteiro?</p>
+            <p>Para entender melhor isso, antes de entender as variáveis, precisamos entender o que são tipos de dados, pois sem isso você dificilmente compreenderá o que são as próprias variáveis. Vamos avançar em direção aos TIPOS DE DADOS para entender como criar variáveis claramente</p>
+
+        <h1>Tipos de dados</h1>
+        <p>Os tipos de dados representam qual o tipo de valor de uma variável. A <mean title="Sintaxe: significa a forma de como é escrito um comando">sintaxe</mean> básica de uma variável é a seguinte:
+            # nome_da_variavel = 'tipo de dado'
+            # Vamos conhecer os tipos de dados para compreender melhor.</p>
+
+            # string ou caractere (str): A string é todo texto delimitado por aspas, sejam elas simples ('') ou
+            duplas (""). Seja lá o que for, desde que esteja entre aspas então é uma string. Vamos ver alguns
+            exemplos:
+            nome = 'Lucas'
+            estado = "São Paulo"
+            continente = 'América'
+
+            # int ou inteiros (int): O int é responsável por números inteiros e sem casa decimal (números após a
+            vírgula), sejam eles positivos ou negativos. Exemplos:
+            idade = 14
+            pontos = 560
+            alunos = 35
+
+            # float ou flutuantes/decimais (float): Os decimais são todos os números positivos ou negativos que
+            possuem casas decimais (números após a vírgula). Vamos ver:
+            nota = 8.90
+            altura = 1.75
+            peso = 90.65
+
+            # booleans ou booleanos (bool): Os booleanos representam o estado de verdadeira ou falso, ligado ou
+            desligado, sim ou não. Existem apenas dois valores booleanos, eles são o True (Que representa o
+            verdadeiro, o ligado, o sim) e o False (Que representa o falso, o desligado, o não) Vamos ver:
+            lampada = True # Lâmpada está ligada
+            disjuntor = False # Disjuntor está desligado
+            filhos = False # Não tem filhos
+
+            # "Mas e se eu esquecer?" Ainda é possível verificar o tipo de dado utilizando o comando type(). Vamos
+            ver como isso funciona:
+            # Vamos supor que você tenha a variável altura e quer saber que tipo de dado ela é:
+            altura = 1.75
+            print(type(altura)) # saída: <class 'float'> Isso significa que a variável é do tipo float (flutuante)
+
+                copos = 7
+                print(type(copos)) # saída: <class 'int'>
+
+
+                    # RESTRIÇÕES DE CRIAÇÃO DE VARIÁVEIS
+                    # Os nomes das variáveis precisam seguir algumas regras:
+                    # 1. Números, espaços e caracteres especiais
+                    # O nome das variáveis não podem começar com um número, nem espaços e nem caracteres especiais,
+                    como (-, @, !, #). O traço (_) é o único caractere especial permitido. Vamos ver alguns exemplos
+                    incorretos e corretos
+                    # Exemplos incorretos:
+                    # a. 2gatos # Inicia com número
+                    # b. nome completo # Contém espaço
+                    # c. numero-de-telefone # Contém o símbolo '-'
+                    # d. @nomedeusuario # Contém @ e é difícil de ler
+                    # Exemplos corretos:
+                    # a. nome_completo
+                    # b. cidade
+                    # c. nome_de_usuario
+                    # d. numero_de_telefone
+
+                    # 2. Não é permitido o uso de palavras reservadas
+                    # As palavras reservadas, também conhecidas como keywords são palavras que o próprio python
+                    adotou em sua linguagem, então não é possível utiliza-lás como nome de variáveis. Por sorte elas
+                    são todas em inglês o que dificulta que você utilize sem querer e não saiba. Veja a seguinte
+                    tabela incluindo todas as palavras reservadas:
+                    # False await else import pass
+                    # None break except in raise
+                    # True class finally is return
+                    # and continue for lambda try
+                    # as def from nonlocal while
+                    # assert del global not with
+                    # async elif if or yield
+                    # # Se assustou? Calma! Você aprenderá todas logo logo, assim evitando o uso delas em nomes de
+                    variáveis
+
+                    # # Cuidado! O python é case sensitive. Isso significa que letras maiúsculas e minúsculas fazem
+                    diferença! Exemplos:
+                    # a. a variável 'nome' é diferente da variável 'Nome'
+                    # b. a variável 'Cidade' é diferente da variável 'CIDADE'
+
+
+                    # # Dicas e boas práticas
+                    # Uma boa prática na programação signfica que é recomendado fazer tal coisa (porém não é
+                    obrigatório). A seguir vou te apresentar algumas boas práticas que você pode seguir:
+                    # 1. Nomes claros: Sempre utilize nomes claros para a criação de variáveis. Veja exemplos:
+                    # a. Se você quer criar uma variável que quer guardar um nome, não use letras aleatórias (como
+                    x, y, a, r, t). Utilize simplesmente nome
+                    # b. Não utilize abreviações nem acrônimos para variáveis. Exemplo: numero de telefone ->
+                    numdetel
+
+                    # 2. Não utilize acentuações (~, ^, `): Mesmo que pareça estranho, não crie variáveis con
+                    acentuações! Exemplos:
+                    # a. aniversário -> aniversario
+                    # b. média -> media
+                    # c. salário -> salario
+
+                    # 3. Utilize snake_case: A comunidade python adotou uma forma de substituir os espaços pelo
+                    traço "_". O nome desse estilo é snake_case, onde as palavras que precisavam de espaços foram
+                    substituidas pelo traço.
+                    # Exemplo de snake_case:
+                    # a. nome completo -> nome_completo
+                    # b. número de telefone -> num_telefone
+
+
+
+                    # Agora que você já sabe os tipos de dados, podemos prosseguir para mais alguns exemplos de
+                    variáveis:
+                    nome = 'Maria' # Esse é o tipo de dado string, pois há aspas, lembra?
+                    idade = 14 # Isso é um int (inteiro)
+
+                    # Ok, criamos variáveis, e aí? É possível imprimir o valor de uma variável pelo seu nome! Vamos
+                    ver uns exemplos:
+                    nome = 'Felipe' # Declaramos a variável nome e atribuímos a ela o valor Felipe
+                    print(nome) # Imprimimos o nome, que era Felipe. Então a saída será Felipe
+
+
+                    # Atribuindo múltiplos valores às variáveis
+
+                    # Como você já sabe, é possível atribuir valores às variáveis individualmente, uma por uma. Mas
+                    também existe uma forma de atribuir valores à variáveis em uma só linha. Vamos ver como isso
+                    funciona:
+                    # atribuição normal:
+                    nome = "Lucas"
+                    idade = 14
+                    estado = "MG"
+                    print(nome)
+                    print(idade)
+                    print(estado)
+
+                    # essa atribuição consome muitas linhas do seu código (por mais que seja mais recomendável), mas
+                    você pode utilizar da forma que você quiser. Veremos a seguir a atribuição múltipla:
+                    # múltiplas atribuições
+                    nome, idade, estado = "Lucas", 14, "MG"
+                    print(nome)
+                    print(idade)
+                    print(estado)
+                    # Ambos os códigos fazem a mesma coisa.
+
+                    # Podemos atribuir também um valor para múltiplas variáveis. Exemplo:
+                    x = y = z = 10
+                    # x, y, z recebem o valor de 10
+
+
+                    # Constantes
+                    # Constantes são variáveis que possuem um valor fixo, ou seja, seu valor não será alterado uma
+                    vez que foi definido. Para criar um constante, nome da variável precisa estar toda em maiúscula,
+                    veja algums exemplos:
+                    PI = 3.14
+                    GRAVIDADE = 9.81
+                    print(PI)
+                    print(GRAVIDADE)
+                    # Apesar de serem muito boas, poucas ou nenhuma vez utilizamos contantes. Isso porque letras
+                    minúsculas são uma particularidade do python, mantendo sua sintaxe simples e elegante.
+
+
+                    # Atribuindo valores e mais valores
+                    # Vamos supor que você tenha um programa de 800 linhas, e depois de um tempo você quer alterar o
+                    valor de sua variável. Isso é possível, por mais que em algumas outras linguagens de programação
+                    isso seria um erro, no python podemos reatribuir o valor de uma variável novamente após um
+                    tempo. Vamos a um exemplo:
+                    variavel = 'valor1'
+                    print(variavel) # valor1
+                    variavel = 'valor2'
+                    print(variavel) # valor2
+                    # O que fizemos aqui foi reatribuir o valor da variável. Primeiro criamos uma variável com o
+                    nome de variavel, em seguida atribuímos o seu valor para 'valor1', e em seguida imprimimos, e a
+                    saída foi 'valor1'. Porém, logo após isso, reatribuímos o valor da variavel, e imprimimos
+                    novamente, e a saída que obtivemos foi 'valor2'. É bem simples de entender porém isso é
+                    essencial que você saiba. Vamos ver outro exemplo:
+                    animal = 'Cachorro'
+                    animal = 'Crocodilo'
+                    animal = 'Gato'
+                    print(animal)
+
+                    # Que valor você acha que a variável 'animal' tem? Vamos analisar: Criamos a variável animal e
+                    atribuímos o seu valor para Cachorro, Crocodilo e depois Gato, então, qual você acha que será o
+                    valor da variável animal? É o Gato, não é mesmo? Pois não importa a ordem, o valor sempre será
+                    aquela variável com o último valor declarado. Vamos a mais um exemplo:
+                    fruta = 'Abacaxi'
+                    fruta = 'Maçã'
+                    print(fruta)
+                    # Se você entendeu a reatribuição de variáveis, então claramente pode responder que o valor da
+                    variável fruta é 'Maçã'
+                    # E que tal se criarmos uma variável, imprimir o seu valor e reatribuir o valor a variável
+                    novamente? Veja:
+                    cor = 'Azul'
+                    print(cor)
+                    cor = 'Amarelo'
+                    # Que cor você acha que será impresso? Primeiro criamos a variável e imprimimos na tela, em
+                    seguida reatribuímos seu valor, porém o que foi impresso é 'Azul', por que a reatribuição veio
+                    depois de imprimir, então o programa imprimiu o 'Azul', que veio antes do comando print().
+
+                    # Mas e agora, se você primeiro imprimir a variável e depois declarar ela? Veja o código a
+                    seguir:
+                    """print(carro)
+                    carro = 'Ferrari'"""
+                    # Isso causará um erro! É a mesma coisa de você tentar comer um bolo primeiro sem nem antes ter
+                    o próprio bolo! Primeiro imprimimos a variável carro, e só depois criamos a variável, então o
+                    programa analisa isso e diz "Como vou imprimir algo que não existe ainda?" Então o código
+                    correto seria assim:
+                    carro = 'Ferrari'
+                    print(carro)
+                    <div class="example-code-container">
+                        <div class="example-code-header">
+                            <div class="dots">
+                                <div class="dot red"></div>
+                                <div class="dot yellow"></div>
+                                <div class="dot green"></div>
+                            </div>
+                            <span>comentarios.py</span>
+                        </div>
+                        <pre class="example-pre"><code>print("Olá, Mundo!")</code></pre>
+                        <div class="example-output-container">
+                            <div class="example-output-header">Saída:</div>
+                            <div class="output">Olá, Mundo!</div>
+                        </div>
+                    </div>
+
+        </main>
+    </div>
+
+
+    <button id="toggle-theme">🌙</button>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>
