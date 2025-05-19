@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interpretador</title>
+    <title>Interpretador Python Online</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -12,16 +12,366 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/dracula.min.css">
-    <link rel="stylesheet" href="css/aulas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/hint/show-hint.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/display/fullscreen.min.css">
     <link rel="shortcut icon" href="imagens/logopython.png" type="image/x-icon">
+    <style>
+        :root {
+            --bg-body: #282a36;
+            --bg-main: #343746;
+            --text-color: #f8f8f2;
+            --hover-color: #6272a4;
+            --button-color: #44475a;
+            --border-color: #6272a4;
+            --bg-editor: #282a36;
+            --bg-editor-header: #21222c;
+            --bg-dots: #21222c;
+            --bg-example: #343746;
+            --bg-example-header: #21222c;
+            --text-example: #f8f8f2;
+            
+            --clr-success: #50fa7b;
+            --clr-error: #ff5555;
+            --clr-warning: #ffb86c;
+            --clr-info: #8be9fd;
+            
+            --light-bg-body: #f8f8f2;
+            --light-bg-main: #ffffff;
+            --light-text-color: #282a36;
+            --light-hover-color: #6272a4;
+            --light-button-color: #44475a;
+            --light-border-color: #6272a4;
+            --light-bg-editor: #f8f8f2;
+            --light-bg-editor-header: #e0e0e0;
+            --light-bg-dots: #e0e0e0;
+            --light-bg-example: #ffffff;
+            --light-bg-example-header: #e0e0e0;
+            --light-text-example: #282a36;
+        }
+
+        body {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: var(--clr-info);
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        #toggle-theme {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--button-color);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #toggle-theme:hover {
+            transform: scale(1.1);
+            background-color: var(--hover-color);
+        }
+
+        .CodeMirror {
+            height: 350px !important;
+            font-family: 'Cascadia Code', monospace;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .output-container {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: var(--bg-editor);
+            transition: all 0.3s;
+        }
+
+        #saida {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 0;
+            font-family: 'Cascadia Code', monospace;
+            min-height: 20px;
+        }
+
+        .success {
+            color: var(--clr-success);
+        }
+
+        .error {
+            color: var(--clr-error);
+        }
+
+        .warning {
+            color: var(--clr-warning);
+        }
+
+        .info {
+            color: var(--clr-info);
+        }
+
+        .erro-linha {
+            background-color: rgba(255, 85, 85, 0.2) !important;
+        }
+
+        #spinner {
+            display: none;
+            margin-left: 10px;
+            color: var(--text-color);
+        }
+
+        .button-container {
+            margin: 15px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .interpreter-btn {
+            padding: 8px 15px;
+            cursor: pointer;
+            background-color: var(--button-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s, transform 0.2s;
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 500;
+        }
+
+        .interpreter-btn:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-2px);
+        }
+
+        .interpreter-btn:active {
+            transform: translateY(0);
+        }
+
+        .interpreter-btn:disabled {
+            background-color: #555555;
+            cursor: not-allowed;
+            transform: none;
+            opacity: 0.7;
+        }
+
+        .code-header {
+            display: flex;
+            align-items: center;
+            padding: 8px 15px;
+            background-color: var(--bg-editor-header);
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .dots {
+            display: flex;
+            margin-right: 10px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 6px;
+            transition: all 0.3s;
+        }
+
+        .red {
+            background-color: #FF5F56;
+        }
+
+        .yellow {
+            background-color: #FFBD2E;
+        }
+
+        .green {
+            background-color: #27C93F;
+        }
+
+        .editor-container {
+            margin-bottom: 15px;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 10px;
+            background-color: var(--bg-editor-header);
+            border-top: 1px solid var(--border-color);
+            font-size: 12px;
+            font-family: 'Cascadia Code', monospace;
+        }
+
+        .cursor-position {
+            color: var(--text-color);
+        }
+
+        .fullscreen-btn {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            font-size: 14px;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        .fullscreen-btn:hover {
+            background-color: var(--hover-color);
+        }
+
+        .examples-dropdown {
+            margin-bottom: 15px;
+        }
+
+        #examples-select {
+            padding: 8px 15px;
+            border-radius: 4px;
+            background-color: var(--button-color);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            font-family: 'Bricolage Grotesque', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        #examples-select:hover {
+            background-color: var(--hover-color);
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: var(--button-color);
+            color: var(--text-color);
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .button-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .interpreter-btn {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+            
+            #toggle-theme {
+                top: 10px;
+                right: 10px;
+                width: 35px;
+                height: 35px;
+                font-size: 1em;
+            }
+        }
+
+        /* Fullscreen styles */
+        .CodeMirror-fullscreen {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: auto !important;
+            z-index: 9999;
+        }
+
+        .fullscreen .editor-container {
+            border-radius: 0;
+            margin-bottom: 0;
+        }
+
+        .fullscreen .code-header {
+            border-radius: 0;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
         <main>
-            <h1>Área de Testes</h1>
-            <p>Aqui você pode testar os seus códigos python utilizando o interpretador do python!</p>
-            <!-- EDITOR -->
+            <h1>Interpretador Python Online</h1>
+            <p>Execute código Python diretamente no navegador com Pyodide. Experimente os exemplos abaixo ou escreva seu próprio código.</p>
+            
+            <div class="examples-dropdown">
+                <select id="examples-select" onchange="loadExample()">
+                    <option value="">Selecione um exemplo...</option>
+                    <option value="hello">Olá, Mundo!</option>
+                    <option value="factorial">Fatorial</option>
+                    <option value="fibonacci">Sequência Fibonacci</option>
+                    <option value="prime">Números primos</option>
+                    <option value="sort">Ordenação de lista</option>
+                    <option value="graph">Gráfico simples</option>
+                    <option value="oop">Programação Orientada a Objetos</option>
+                </select>
+            </div>
+
             <div class="editor-container">
                 <div class="code-header">
                     <div class="dots">
@@ -31,21 +381,58 @@
                     </div>
                     <span>interpretador.py</span>
                 </div>
-                <textarea id="python-editor"># Digite o seu código aqui
-print("Olá, Mundo!")</textarea>
+                <textarea id="python-editor">print("Olá, Mundo!")
+
+def fatorial(n):
+    return 1 if n <= 1 else n * fatorial(n-1)
+
+print(f"Fatorial de 5: {fatorial(5)}")</textarea>
+                <div class="status-bar">
+                    <span class="cursor-position">Linha 1, Coluna 1</span>
+                    <button class="fullscreen-btn" id="fullscreen-btn">Tela Cheia</button>
+                </div>
             </div>
 
             <div class="button-container">
-                <button id="run-btn" class="interpreter-btn" disabled>Executar (Ctrl+Enter)</button>
-                <button id="clear-btn" class="interpreter-btn" disabled>Limpar Saída</button>
+                <button id="run-btn" class="interpreter-btn tooltip" disabled>
+                    Executar
+                    <span class="tooltiptext">Ctrl+Enter</span>
+                </button>
+                <button id="clear-btn" class="interpreter-btn tooltip" disabled>
+                    Limpar
+                    <span class="tooltiptext">Ctrl+L</span>
+                </button>
+                <button id="save-btn" class="interpreter-btn tooltip" disabled>
+                    Salvar
+                    <span class="tooltiptext">Ctrl+S</span>
+                </button>
+                <button id="load-btn" class="interpreter-btn tooltip" disabled>
+                    Carregar
+                    <span class="tooltiptext">Ctrl+O</span>
+                </button>
+                <button id="reset-btn" class="interpreter-btn tooltip" disabled>
+                    Reiniciar
+                    <span class="tooltiptext">Resetar interpretador</span>
+                </button>
                 <span id="spinner">⏳ Executando...</span>
+                <span id="execution-time" style="margin-left: auto; color: var(--text-color);"></span>
             </div>
 
             <div class="output-container">
-                <pre id="saida">Carregando interpretador Python...</pre>
+                <pre id="saida">Inicializando interpretador Python...</pre>
             </div>
 
-            <button id="start" onclick="location.href='index.html'">Voltar</button>
+            <div class="button-container">
+                <button id="start" class="interpreter-btn" onclick="location.href='index.html'">Voltar</button>
+                <button id="copy-btn" class="interpreter-btn tooltip" disabled>
+                    Copiar Código
+                    <span class="tooltiptext">Ctrl+Shift+C</span>
+                </button>
+                <button id="download-btn" class="interpreter-btn tooltip" disabled>
+                    Download
+                    <span class="tooltiptext">Baixar código</span>
+                </button>
+            </div>
         </main>
     </div>
     <button id="toggle-theme">🌙</button>
@@ -54,44 +441,159 @@ print("Olá, Mundo!")</textarea>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/python/python.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/edit/matchbrackets.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/edit/closebrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/hint/show-hint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/hint/python-hint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/display/fullscreen.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/display/placeholder.min.js"></script>
     <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
 
     <script>
         let pyodide, editor;
-
-        const runBtn = document.getElementById("run-btn");
-        const clearBtn = document.getElementById("clear-btn");
-        const outputEl = document.getElementById("saida");
-        const spinner = document.getElementById("spinner");
-        const toggleButton = document.getElementById('toggle-theme');
+        let executionStartTime;
         let isDark = true;
 
+        // Elementos da interface
+        const runBtn = document.getElementById("run-btn");
+        const clearBtn = document.getElementById("clear-btn");
+        const saveBtn = document.getElementById("save-btn");
+        const loadBtn = document.getElementById("load-btn");
+        const resetBtn = document.getElementById("reset-btn");
+        const copyBtn = document.getElementById("copy-btn");
+        const downloadBtn = document.getElementById("download-btn");
+        const outputEl = document.getElementById("saida");
+        const spinner = document.getElementById("spinner");
+        const executionTimeEl = document.getElementById("execution-time");
+        const toggleButton = document.getElementById('toggle-theme');
+        const fullscreenBtn = document.getElementById('fullscreen-btn');
+        const cursorPositionEl = document.querySelector('.cursor-position');
+        const examplesSelect = document.getElementById('examples-select');
+
+        // Exemplos de código
+        const codeExamples = {
+            hello: `print("Olá, Mundo!")`,
+            factorial: `def fatorial(n):
+    return 1 if n <= 1 else n * fatorial(n-1)
+
+num = 5
+print(f"Fatorial de {num}: {fatorial(num)}")`,
+            fibonacci: `def fibonacci(n):
+    a, b = 0, 1
+    for _ in range(n):
+        print(a, end=' ')
+        a, b = b, a + b
+
+fibonacci(10)`,
+            prime: `def is_prime(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+print("Números primos até 50:")
+print([n for n in range(2, 51) if is_prime(n)])`,
+            sort: `# Ordenação personalizada
+pessoas = [
+    {'nome': 'Ana', 'idade': 25},
+    {'nome': 'Carlos', 'idade': 30},
+    {'nome': 'Beatriz', 'idade': 22}
+]
+
+# Ordenar por idade
+print("Ordenado por idade:")
+print(sorted(pessoas, key=lambda x: x['idade']))
+
+# Ordenar por nome
+print("\\nOrdenado por nome:")
+print(sorted(pessoas, key=lambda x: x['nome']))`,
+            graph: `# Requer matplotlib instalado
+import matplotlib.pyplot as plt
+
+def plot_example():
+    x = [1, 2, 3, 4, 5]
+    y = [i**2 for i in x]
+    
+    plt.plot(x, y)
+    plt.title("Gráfico de exemplo")
+    plt.xlabel("Eixo X")
+    plt.ylabel("Eixo Y")
+    plt.show()
+
+try:
+    plot_example()
+except Exception as e:
+    print("Para ver o gráfico, instale matplotlib com:")
+    print("micropip.install('matplotlib')")`,
+            oop: `class Animal:
+    def __init__(self, nome):
+        self.nome = nome
+    
+    def falar(self):
+        raise NotImplementedError("Subclasse deve implementar este método")
+
+class Cachorro(Animal):
+    def falar(self):
+        return f"{self.nome} diz: Au Au!"
+
+class Gato(Animal):
+    def falar(self):
+        return f"{self.nome} diz: Miau!"
+
+# Criando instâncias
+rex = Cachorro("Rex")
+whiskers = Gato("Whiskers")
+
+print(rex.falar())
+print(whiskers.falar())`
+        };
+
+        // Tema claro/escuro
         function toggleTheme() {
-            const root = document.documentElement;
             isDark = !isDark;
 
-            root.style.setProperty('--bg-body', isDark ? 'var(--clr-editor-dark)' : 'var(--clr-editor-light)');
-            root.style.setProperty('--bg-main', isDark ? 'var(--clr-example-bg-dark)' : 'var(--clr-example-bg-light)');
-            root.style.setProperty('--text-color', isDark ? 'var(--clr-text-dark)' : 'var(--clr-text-light)');
-            root.style.setProperty('--hover-color', isDark ? 'var(--clr-hover-dark)' : 'var(--clr-hover-light)');
-            root.style.setProperty('--button-color', isDark ? 'var(--clr-button-dark)' : 'var(--clr-button-light)');
-            root.style.setProperty('--border-color', isDark ? 'var(--clr-border-dark)' : 'var(--clr-border-light)');
-            root.style.setProperty('--bg-editor', isDark ? 'var(--clr-editor-dark)' : 'var(--clr-editor-light)');
-            root.style.setProperty('--bg-editor-header', isDark ? 'var(--clr-editor-header-dark)' : 'var(--clr-editor-header-light)');
-            root.style.setProperty('--bg-dots', isDark ? 'var(--clr-dots-dark)' : 'var(--clr-dots-light)');
-            root.style.setProperty('--bg-example', isDark ? 'var(--clr-example-bg-dark)' : 'var(--clr-example-bg-light)');
-            root.style.setProperty('--bg-example-header', isDark ? 'var(--clr-example-header-dark)' : 'var(--clr-example-header-light)');
-            root.style.setProperty('--text-example', isDark ? 'var(--clr-example-text-dark)' : 'var(--clr-example-text-light)');
+            document.documentElement.style.setProperty('--bg-body', isDark ? 'var(--bg-body)' : 'var(--light-bg-body)');
+            document.documentElement.style.setProperty('--bg-main', isDark ? 'var(--bg-main)' : 'var(--light-bg-main)');
+            document.documentElement.style.setProperty('--text-color', isDark ? 'var(--text-color)' : 'var(--light-text-color)');
+            document.documentElement.style.setProperty('--hover-color', isDark ? 'var(--hover-color)' : 'var(--light-hover-color)');
+            document.documentElement.style.setProperty('--button-color', isDark ? 'var(--button-color)' : 'var(--light-button-color)');
+            document.documentElement.style.setProperty('--border-color', isDark ? 'var(--border-color)' : 'var(--light-border-color)');
+            document.documentElement.style.setProperty('--bg-editor', isDark ? 'var(--bg-editor)' : 'var(--light-bg-editor)');
+            document.documentElement.style.setProperty('--bg-editor-header', isDark ? 'var(--bg-editor-header)' : 'var(--light-bg-editor-header)');
+            document.documentElement.style.setProperty('--bg-dots', isDark ? 'var(--bg-dots)' : 'var(--light-bg-dots)');
+            document.documentElement.style.setProperty('--bg-example', isDark ? 'var(--bg-example)' : 'var(--light-bg-example)');
+            document.documentElement.style.setProperty('--bg-example-header', isDark ? 'var(--bg-example-header)' : 'var(--light-bg-example-header)');
+            document.documentElement.style.setProperty('--text-example', isDark ? 'var(--text-example)' : 'var(--light-text-example)');
 
-            toggleButton.textContent = isDark ? '☀️' : '🌙';
+            toggleButton.textContent = isDark ? '🌙' : '☀️';
+            toggleButton.style.backgroundColor = isDark ? 'var(--button-color)' : 'var(--light-button-color)';
 
             if (editor) {
                 editor.setOption("theme", isDark ? "dracula" : "default");
             }
         }
 
+        // Carregar exemplo selecionado
+        function loadExample() {
+            const selectedExample = examplesSelect.value;
+            if (selectedExample && codeExamples[selectedExample]) {
+                editor.setValue(codeExamples[selectedExample]);
+                outputEl.textContent = "✅ Exemplo carregado com sucesso!";
+                outputEl.className = "success";
+                setTimeout(() => {
+                    if (outputEl.textContent.includes("carregado")) {
+                        outputEl.textContent = "";
+                        outputEl.className = "";
+                    }
+                }, 2000);
+            }
+        }
+
+        // Inicializar Pyodide e CodeMirror
         async function iniciar() {
-            outputEl.textContent = "Carregando o interpretador Python...";
+            outputEl.textContent = "🚀 Carregando interpretador Python (Pyodide)...";
+            outputEl.className = "info";
+            
             try {
                 pyodide = await loadPyodide({
                     indexURL: "https://cdn.jsdelivr.net/pyodide/v0.23.4/full/",
@@ -105,6 +607,8 @@ print("Olá, Mundo!")</textarea>
                     }
                 });
 
+                await pyodide.loadPackage(['numpy', 'micropip']);
+                
                 editor = CodeMirror.fromTextArea(document.getElementById("python-editor"), {
                     mode: "python",
                     lineNumbers: true,
@@ -115,57 +619,128 @@ print("Olá, Mundo!")</textarea>
                     matchBrackets: true,
                     autoCloseBrackets: true,
                     extraKeys: {
-                        "Ctrl-Enter": () => executarCodigo()
+                        "Ctrl-Enter": () => executarCodigo(),
+                        "Ctrl-Space": "autocomplete",
+                        "Ctrl-S": () => salvarCodigo(),
+                        "Ctrl-O": () => carregarCodigo(),
+                        "Ctrl-L": () => limparSaida(),
+                        "Ctrl-Alt-R": () => resetInterpreter(),
+                        "Ctrl-Shift-C": () => copyCode(),
+                        "F11": () => toggleFullscreen(),
+                        "Esc": () => {
+                            if (document.querySelector('.CodeMirror-fullscreen')) {
+                                toggleFullscreen();
+                            }
+                        }
                     }
                 });
 
-                outputEl.textContent = "Pronto! Digite seu código e clique em Executar ou pressione Ctrl+Enter";
+                // Atualizar posição do cursor
+                editor.on("cursorActivity", updateCursorPosition);
+                
+                // Habilitar tela cheia
+                fullscreenBtn.addEventListener("click", toggleFullscreen);
+
+                outputEl.textContent = "✅ Interpretador Python pronto!\n";
+                outputEl.textContent += "🐍 Versão Python: " + await pyodide.runPythonAsync("import sys; sys.version") + "\n";
+                outputEl.textContent += "📝 Digite seu código e clique em Executar ou pressione Ctrl+Enter\n";
                 outputEl.className = "success";
-                runBtn.disabled = false;
-                clearBtn.disabled = false;
+                
+                // Habilitar botões
+                enableButtons();
+                
+                // Carregar código salvo se existir
+                const savedCode = localStorage.getItem('pythonCode');
+                if (savedCode) {
+                    editor.setValue(savedCode);
+                }
             } catch (err) {
-                outputEl.textContent = `Falha ao carregar o interpretador: ${err.message}`;
+                outputEl.textContent = `❌ Erro ao carregar o interpretador: ${err.message}`;
                 outputEl.className = "error";
+                console.error(err);
             }
         }
 
+        // Atualizar posição do cursor
+        function updateCursorPosition() {
+            const cursor = editor.getCursor();
+            cursorPositionEl.textContent = `Linha ${cursor.line + 1}, Coluna ${cursor.ch + 1}`;
+        }
+
+        // Tela cheia
+        function toggleFullscreen() {
+            editor.setOption("fullScreen", !editor.getOption("fullScreen"));
+            document.body.classList.toggle("fullscreen", editor.getOption("fullScreen"));
+            fullscreenBtn.textContent = editor.getOption("fullScreen") ? "Sair da Tela Cheia" : "Tela Cheia";
+        }
+
+        // Habilitar botões
+        function enableButtons() {
+            runBtn.disabled = false;
+            clearBtn.disabled = false;
+            saveBtn.disabled = false;
+            loadBtn.disabled = false;
+            resetBtn.disabled = false;
+            copyBtn.disabled = false;
+            downloadBtn.disabled = false;
+        }
+
+        // Limpar highlights de erro
         function limparErros() {
             if (editor) {
                 editor.eachLine(line => editor.removeLineClass(line, "background", "erro-linha"));
             }
         }
 
+        // Formatar tempo de execução
+        function formatExecutionTime(ms) {
+            if (ms < 1000) return `${ms.toFixed(2)}ms`;
+            return `${(ms / 1000).toFixed(2)}s`;
+        }
+
+        // Executar código Python
         async function executarCodigo() {
             limparErros();
             outputEl.textContent = "";
             outputEl.className = "";
             runBtn.disabled = true;
-            clearBtn.disabled = true;
             spinner.style.display = "inline";
+            executionTimeEl.textContent = "";
+            
+            executionStartTime = performance.now();
 
             try {
-                await pyodide.runPythonAsync(
-                    `import sys, io
+                await pyodide.runPythonAsync(`
+import sys, io
 sys.stdout = io.StringIO()
-sys.stderr = sys.stdout`
-                );
+sys.stderr = sys.stdout
+`);
 
-                const execPromise = pyodide.runPythonAsync(editor.getValue());
+                const code = editor.getValue();
+                
+                const execPromise = pyodide.runPythonAsync(code);
                 const timeout = new Promise((_, reject) => setTimeout(() => {
-                    reject(new Error('Tempo de execução excedido (5 segundos)'));
-                }, 5000));
+                    reject(new Error('Tempo de execução excedido (10 segundos)'));
+                }, 10000));
 
                 await Promise.race([execPromise, timeout]);
 
                 const out = await pyodide.runPythonAsync('sys.stdout.getvalue()');
-                if (out) {
+                const executionTime = performance.now() - executionStartTime;
+                
+                if (out && out.trim()) {
                     outputEl.textContent = out;
                 } else {
-                    outputEl.textContent = "Executado com sucesso (sem saída)";
+                    outputEl.textContent = "✅ Código executado com sucesso (sem saída)";
                     outputEl.className = "success";
                 }
+                
+                executionTimeEl.textContent = `⏱️ ${formatExecutionTime(executionTime)}`;
             } catch (err) {
-                outputEl.textContent = `Erro: ${err.message}`;
+                const executionTime = performance.now() - executionStartTime;
+                executionTimeEl.textContent = `⏱️ ${formatExecutionTime(executionTime)}`;
+                
+                outputEl.textContent = `❌ Erro: ${err.message}`;
                 outputEl.className = "error";
 
                 const lineMatch = err.message.match(/line (\d+)/);
@@ -177,23 +752,167 @@ sys.stderr = sys.stdout`
                     editor.addLineClass(errorLine - 1, "background", "erro-linha");
                     editor.scrollIntoView({ line: errorLine - 1, ch: 0 }, 100);
                 }
+                
+                console.error(err);
             } finally {
                 runBtn.disabled = false;
-                clearBtn.disabled = false;
                 spinner.style.display = "none";
             }
         }
 
+        // Limpar saída
         function limparSaida() {
             outputEl.textContent = "";
             outputEl.className = "";
+            executionTimeEl.textContent = "";
             limparErros();
         }
 
+        // Salvar código
+        function salvarCodigo() {
+            try {
+                const code = editor.getValue();
+                localStorage.setItem('pythonCode', code);
+                outputEl.textContent = "✅ Código salvo com sucesso!";
+                outputEl.className = "success";
+                setTimeout(() => {
+                    if (outputEl.textContent.includes("salvo")) {
+                        outputEl.textContent = "";
+                        outputEl.className = "";
+                    }
+                }, 2000);
+            } catch (err) {
+                outputEl.textContent = `❌ Erro ao salvar código: ${err.message}`;
+                outputEl.className = "error";
+            }
+        }
+
+        // Carregar código
+        function carregarCodigo() {
+            try {
+                const savedCode = localStorage.getItem('pythonCode');
+                if (savedCode) {
+                    editor.setValue(savedCode);
+                    outputEl.textContent = "✅ Código carregado com sucesso!";
+                    outputEl.className = "success";
+                    setTimeout(() => {
+                        if (outputEl.textContent.includes("carregado")) {
+                            outputEl.textContent = "";
+                            outputEl.className = "";
+                        }
+                    }, 2000);
+                } else {
+                    outputEl.textContent = "⚠️ Nenhum código salvo encontrado.";
+                    outputEl.className = "warning";
+                }
+            } catch (err) {
+                outputEl.textContent = `❌ Erro ao carregar código: ${err.message}`;
+                outputEl.className = "error";
+            }
+        }
+
+        // Reiniciar interpretador
+        async function resetInterpreter() {
+            if (!confirm("Tem certeza que deseja reiniciar o interpretador? Todo o estado será perdido.")) {
+                return;
+            }
+            
+            resetBtn.disabled = true;
+            outputEl.textContent = "🔄 Reiniciando interpretador Python...";
+            outputEl.className = "info";
+            
+            try {
+                // Recarregar a página é a maneira mais simples de reiniciar o Pyodide
+                location.reload();
+            } catch (err) {
+                outputEl.textContent = `❌ Erro ao reiniciar: ${err.message}`;
+                outputEl.className = "error";
+                resetBtn.disabled = false;
+            }
+        }
+
+        // Copiar código
+        function copyCode() {
+            try {
+                const code = editor.getValue();
+                navigator.clipboard.writeText(code).then(() => {
+                    outputEl.textContent = "✅ Código copiado para a área de transferência!";
+                    outputEl.className = "success";
+                    setTimeout(() => {
+                        if (outputEl.textContent.includes("copiado")) {
+                            outputEl.textContent = "";
+                            outputEl.className = "";
+                        }
+                    }, 2000);
+                });
+            } catch (err) {
+                outputEl.textContent = `❌ Erro ao copiar código: ${err.message}`;
+                outputEl.className = "error";
+            }
+        }
+
+        // Download do código
+        function downloadCode() {
+            try {
+                const code = editor.getValue();
+                const blob = new Blob([code], { type: 'text/x-python' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'codigo.py';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                outputEl.textContent = "✅ Download iniciado!";
+                outputEl.className = "success";
+                setTimeout(() => {
+                    if (outputEl.textContent.includes("Download")) {
+                        outputEl.textContent = "";
+                        outputEl.className = "";
+                    }
+                }, 2000);
+            } catch (err) {
+                outputEl.textContent = `❌ Erro ao fazer download: ${err.message}`;
+                outputEl.className = "error";
+            }
+        }
+
+        // Event listeners
         runBtn.addEventListener("click", executarCodigo);
         clearBtn.addEventListener("click", limparSaida);
+        saveBtn.addEventListener("click", salvarCodigo);
+        loadBtn.addEventListener("click", carregarCodigo);
+        resetBtn.addEventListener("click", resetInterpreter);
+        copyBtn.addEventListener("click", copyCode);
+        downloadBtn.addEventListener("click", downloadCode);
         toggleButton.addEventListener('click', toggleTheme);
 
+        // Atalhos de teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'Enter') {
+                e.preventDefault();
+                executarCodigo();
+            } else if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                salvarCodigo();
+            } else if (e.ctrlKey && e.key === 'o') {
+                e.preventDefault();
+                carregarCodigo();
+            } else if (e.ctrlKey && e.key === 'l') {
+                e.preventDefault();
+                limparSaida();
+            } else if (e.ctrlKey && e.altKey && e.key === 'r') {
+                e.preventDefault();
+                resetInterpreter();
+            } else if (e.ctrlKey && e.shiftKey && e.key === 'c') {
+                e.preventDefault();
+                copyCode();
+            }
+        });
+
+        // Iniciar o interpretador
         iniciar();
     </script>
 </body>
