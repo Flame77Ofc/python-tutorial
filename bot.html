@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interpretador</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/dracula.min.css">
+    <link rel="stylesheet" href="css/aulas.css">
+    <link rel="shortcut icon" href="imagens/logopython.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="container">
+        <main>
+            <h1>Área de Testes</h1>
+            <p>Aqui você pode testar os seus códigos python utilizando o interpretador do python!</p>
+            <!-- EDITOR -->
+            <div class="editor-container">
+                <div class="code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>interpretador.py</span>
+                </div>
+                <textarea id="python-editor"># Digite o seu código aqui
+print("Olá, Mundo!")</textarea>
+            </div>
+
+            <div class="button-container">
+                <button id="run-btn" class="interpreter-btn" disabled>Executar (Ctrl+Enter)</button>
+                <button id="clear-btn" class="interpreter-btn" disabled>Limpar Saída</button>
+                <span id="spinner">⏳ Executando...</span>
+            </div>
+
+            <div class="output-container">
+                <pre id="saida">Carregando interpretador Python...</pre>
+            </div>
+
+            <button id="start" onclick="location.href='index.html'">Voltar</button>
+        </main>
+    </div>
+    <button id="toggle-theme">🌙</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/edit/matchbrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/edit/closebrackets.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+
+    <script>
+        let pyodide, editor;
+
+        const runBtn = document.getElementById("run-btn");
+        const clearBtn = document.getElementById("clear-btn");
+        const outputEl = document.getElementById("saida");
+        const spinner = document.getElementById("spinner");
+        const toggleButton = document.getElementById('toggle-theme');
+        let isDark = true;
+
+        function toggleTheme() {
+            const root = document.documentElement;
+            isDark = !isDark;
+
+            root.style.setProperty('--bg-body', isDark ? 'var(--clr-editor-dark)' : 'var(--clr-editor-light)');
+            root.style.setProperty('--bg-main', isDark ? 'var(--clr-example-bg-dark)' : 'var(--clr-example-bg-light)');
+            root.style.setProperty('--text-color', isDark ? 'var(--clr-text-dark)' : 'var(--clr-text-light)');
+            root.style.setProperty('--hover-color', isDark ? 'var(--clr-hover-dark)' : 'var(--clr-hover-light)');
+            root.style.setProperty('--button-color', isDark ? 'var(--clr-button-dark)' : 'var(--clr-button-light)');
+            root.style.setProperty('--border-color', isDark ? 'var(--clr-border-dark)' : 'var(--clr-border-light)');
+            root.style.setProperty('--bg-editor', isDark ? 'var(--clr-editor-dark)' : 'var(--clr-editor-light)');
+            root.style.setProperty('--bg-editor-header', isDark ? 'var(--clr-editor-header-dark)' : 'var(--clr-editor-header-light)');
+            root.style.setProperty('--bg-dots', isDark ? 'var(--clr-dots-dark)' : 'var(--clr-dots-light)');
+            root.style.setProperty('--bg-example', isDark ? 'var(--clr-example-bg-dark)' : 'var(--clr-example-bg-light)');
+            root.style.setProperty('--bg-example-header', isDark ? 'var(--clr-example-header-dark)' : 'var(--clr-example-header-light)');
+            root.style.setProperty('--text-example', isDark ? 'var(--clr-example-text-dark)' : 'var(--clr-example-text-light)');
+
+            toggleButton.textContent = isDark ? '☀️' : '🌙';
+
+            if (editor) {
+                editor.setOption("theme", isDark ? "dracula" : "default");
+            }
+        }
+
+        async function iniciar() {
+            outputEl.textContent = "Carregando o interpretador Python...";
+            try {
+                pyodide = await loadPyodide({
+                    indexURL: "https://cdn.jsdelivr.net/pyodide/v0.23.4/full/",
+                    stdout: msg => {
+                        outputEl.textContent += msg;
+                        outputEl.scrollTop = outputEl.scrollHeight;
+                    },
+                    stderr: msg => {
+                        outputEl.textContent += msg;
+                        outputEl.scrollTop = outputEl.scrollHeight;
+                    }
+                });
+
+                editor = CodeMirror.fromTextArea(document.getElementById("python-editor"), {
+                    mode: "python",
+                    lineNumbers: true,
+                    indentUnit: 4,
+                    tabSize: 4,
+                    theme: isDark ? "dracula" : "default",
+                    smartIndent: true,
+                    matchBrackets: true,
+                    autoCloseBrackets: true,
+                    extraKeys: {
+                        "Ctrl-Enter": () => executarCodigo()
+                    }
+                });
+
+                outputEl.textContent = "Pronto! Digite seu código e clique em Executar ou pressione Ctrl+Enter";
+                outputEl.className = "success";
+                runBtn.disabled = false;
+                clearBtn.disabled = false;
+            } catch (err) {
+                outputEl.textContent = `Falha ao carregar o interpretador: ${err.message}`;
+                outputEl.className = "error";
+            }
+        }
+
+        function limparErros() {
+            if (editor) {
+                editor.eachLine(line => editor.removeLineClass(line, "background", "erro-linha"));
+            }
+        }
+
+        async function executarCodigo() {
+            limparErros();
+            outputEl.textContent = "";
+            outputEl.className = "";
+            runBtn.disabled = true;
+            clearBtn.disabled = true;
+            spinner.style.display = "inline";
+
+            try {
+                await pyodide.runPythonAsync(
+                    `import sys, io
+sys.stdout = io.StringIO()
+sys.stderr = sys.stdout`
+                );
+
+                const execPromise = pyodide.runPythonAsync(editor.getValue());
+                const timeout = new Promise((_, reject) => setTimeout(() => {
+                    reject(new Error('Tempo de execução excedido (5 segundos)'));
+                }, 5000));
+
+                await Promise.race([execPromise, timeout]);
+
+                const out = await pyodide.runPythonAsync('sys.stdout.getvalue()');
+                if (out) {
+                    outputEl.textContent = out;
+                } else {
+                    outputEl.textContent = "Executado com sucesso (sem saída)";
+                    outputEl.className = "success";
+                }
+            } catch (err) {
+                outputEl.textContent = `Erro: ${err.message}`;
+                outputEl.className = "error";
+
+                const lineMatch = err.message.match(/line (\d+)/);
+                const tracebackMatch = err.message.match(/File "<exec>", line (\d+)/);
+                const errorLine = lineMatch ? parseInt(lineMatch[1]) :
+                    tracebackMatch ? parseInt(tracebackMatch[1]) : null;
+
+                if (errorLine && editor) {
+                    editor.addLineClass(errorLine - 1, "background", "erro-linha");
+                    editor.scrollIntoView({ line: errorLine - 1, ch: 0 }, 100);
+                }
+            } finally {
+                runBtn.disabled = false;
+                clearBtn.disabled = false;
+                spinner.style.display = "none";
+            }
+        }
+
+        function limparSaida() {
+            outputEl.textContent = "";
+            outputEl.className = "";
+            limparErros();
+        }
+
+        runBtn.addEventListener("click", executarCodigo);
+        clearBtn.addEventListener("click", limparSaida);
+        toggleButton.addEventListener('click', toggleTheme);
+
+        iniciar();
+    </script>
+</body>
+
+</html>

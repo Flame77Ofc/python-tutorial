@@ -7,8 +7,11 @@
     <title>Preparação</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap"
+        rel="stylesheet">
     <link rel="shortcut icon" href="imagens/logopython.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/aulas.css">
     <style>
         :root {
             --fonte-principal: 'Bricolage Grotesque', sans-serif;
@@ -36,6 +39,7 @@
             --bg-main: var(--clr-main-dark);
             --bg-aside: var(--clr-aside-dark);
             --text-color: var(--clr-text-dark);
+            --filter: none;
             --link-color: var(--clr-link-dark);
             --hover-color: var(--clr-hover-dark);
             --button-color: var(--clr-button-dark);
@@ -158,11 +162,17 @@
             transform: scale(1.25);
         }
 
-        #start {
-            display: block;
-            width: 100%;
-            max-width: 300px;
-            margin: 40px auto 20px;
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px 0 20px;
+            gap: 10px;
+        }
+
+        .nav-button {
+            display: flex;
+            align-items: center;
             padding: 15px 25px;
             background-color: var(--button-color);
             color: white;
@@ -172,14 +182,25 @@
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 200px;
+            justify-content: center;
         }
 
-        #start:hover {
+        .nav-button:hover {
             background-color: var(--hover-color);
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        #left-button::after,
+        #right-button::after {
+            margin-left: 10px;
+        }
+
+        #center-button {
+            flex-grow: 1;
+            max-width: 300px;
         }
 
         @media (max-width: 768px) {
@@ -190,6 +211,20 @@
 
             iframe {
                 height: 300px;
+            }
+
+            .button-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .nav-button {
+                max-width: 100%;
+                margin: 10px 0;
+            }
+
+            #center-button {
+                max-width: 100%;
             }
         }
 
@@ -202,8 +237,7 @@
                 font-size: 1em;
             }
 
-            #start {
-                max-width: 100%;
+            .nav-button {
                 padding: 12px 20px;
                 font-size: 1em;
             }
@@ -237,7 +271,11 @@
             <h1>Etapas Iniciais</h1>
             <p>Feito isso, crie uma pasta, crie um arquivo com qualquer nome e com a extensão de '.py' no final. Vamos
                 utilizar 'main.py'. Quando estiver preparado, vamos começar!</p>
-            <button id="start" onclick="location.href='aula002.html'">Próxima aula</button>
+            <div class="button-container">
+                <button id="left-button" class="nav-button" onclick="location.href='index.html'">Aula anterior</button>
+                <button id="center-button" class="nav-button" onclick="location.href='bot.html'">Área de Testes</button>
+                <button id="right-button" class="nav-button" onclick="location.href='aula002.html'">Próxima Aula</button>
+            </div>
         </main>
     </div>
     <button id="toggle-theme">🌙</button>
