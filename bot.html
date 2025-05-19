@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/dracula.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/hint/show-hint.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/display/fullscreen.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/display/fullscreen.min.css">
     <link rel="shortcut icon" href="imagens/logopython.png" type="image/x-icon">
     <style>
         :root {
@@ -26,15 +27,12 @@
             --bg-editor: #282a36;
             --bg-editor-header: #21222c;
             --bg-dots: #21222c;
-            --bg-example: #343746;
-            --bg-example-header: #21222c;
-            --text-example: #f8f8f2;
-            
+
             --clr-success: #50fa7b;
             --clr-error: #ff5555;
             --clr-warning: #ffb86c;
             --clr-info: #8be9fd;
-            
+
             --light-bg-body: #f8f8f2;
             --light-bg-main: #ffffff;
             --light-text-color: #282a36;
@@ -44,9 +42,6 @@
             --light-bg-editor: #f8f8f2;
             --light-bg-editor-header: #e0e0e0;
             --light-bg-dots: #e0e0e0;
-            --light-bg-example: #ffffff;
-            --light-bg-example-header: #e0e0e0;
-            --light-text-example: #282a36;
         }
 
         body {
@@ -208,7 +203,6 @@
             height: 12px;
             border-radius: 50%;
             margin-right: 6px;
-            transition: all 0.3s;
         }
 
         .red {
@@ -260,25 +254,6 @@
             background-color: var(--hover-color);
         }
 
-        .examples-dropdown {
-            margin-bottom: 15px;
-        }
-
-        #examples-select {
-            padding: 8px 15px;
-            border-radius: 4px;
-            background-color: var(--button-color);
-            color: var(--text-color);
-            border: 1px solid var(--border-color);
-            font-family: 'Bricolage Grotesque', sans-serif;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        #examples-select:hover {
-            background-color: var(--hover-color);
-        }
-
         .tooltip {
             position: relative;
             display: inline-block;
@@ -311,17 +286,17 @@
             .container {
                 padding: 15px;
             }
-            
+
             .button-container {
                 flex-direction: column;
                 align-items: flex-start;
             }
-            
+
             .interpreter-btn {
                 width: 100%;
                 margin-bottom: 5px;
             }
-            
+
             #toggle-theme {
                 top: 10px;
                 right: 10px;
@@ -331,7 +306,6 @@
             }
         }
 
-        /* Fullscreen styles */
         .CodeMirror-fullscreen {
             position: fixed !important;
             top: 0;
@@ -357,20 +331,8 @@
     <div class="container">
         <main>
             <h1>Interpretador Python Online</h1>
-            <p>Execute código Python diretamente no navegador com Pyodide. Experimente os exemplos abaixo ou escreva seu próprio código.</p>
-            
-            <div class="examples-dropdown">
-                <select id="examples-select" onchange="loadExample()">
-                    <option value="">Selecione um exemplo...</option>
-                    <option value="hello">Olá, Mundo!</option>
-                    <option value="factorial">Fatorial</option>
-                    <option value="fibonacci">Sequência Fibonacci</option>
-                    <option value="prime">Números primos</option>
-                    <option value="sort">Ordenação de lista</option>
-                    <option value="graph">Gráfico simples</option>
-                    <option value="oop">Programação Orientada a Objetos</option>
-                </select>
-            </div>
+            <p>Execute código Python diretamente no navegador com Pyodide. Experimente os exemplos abaixo ou escreva seu
+                próprio código.</p>
 
             <div class="editor-container">
                 <div class="code-header">
@@ -423,7 +385,6 @@ print(f"Fatorial de 5: {fatorial(5)}")</textarea>
             </div>
 
             <div class="button-container">
-                <button id="start" class="interpreter-btn" onclick="location.href='index.html'">Voltar</button>
                 <button id="copy-btn" class="interpreter-btn tooltip" disabled>
                     Copiar Código
                     <span class="tooltiptext">Ctrl+Shift+C</span>
@@ -432,6 +393,10 @@ print(f"Fatorial de 5: {fatorial(5)}")</textarea>
                     Download
                     <span class="tooltiptext">Baixar código</span>
                 </button>
+            </div>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <button onclick="location.href='index.html'" class="interpreter-btn" style="margin: 0 auto; padding: 18.5px; width: 150px;">Voltar</button>
             </div>
         </main>
     </div>
@@ -444,7 +409,6 @@ print(f"Fatorial de 5: {fatorial(5)}")</textarea>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/hint/show-hint.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/hint/python-hint.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/display/fullscreen.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/display/placeholder.min.js"></script>
     <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
 
     <script>
@@ -452,7 +416,6 @@ print(f"Fatorial de 5: {fatorial(5)}")</textarea>
         let executionStartTime;
         let isDark = true;
 
-        // Elementos da interface
         const runBtn = document.getElementById("run-btn");
         const clearBtn = document.getElementById("clear-btn");
         const saveBtn = document.getElementById("save-btn");
@@ -466,134 +429,30 @@ print(f"Fatorial de 5: {fatorial(5)}")</textarea>
         const toggleButton = document.getElementById('toggle-theme');
         const fullscreenBtn = document.getElementById('fullscreen-btn');
         const cursorPositionEl = document.querySelector('.cursor-position');
-        const examplesSelect = document.getElementById('examples-select');
 
-        // Exemplos de código
-        const codeExamples = {
-            hello: `print("Olá, Mundo!")`,
-            factorial: `def fatorial(n):
-    return 1 if n <= 1 else n * fatorial(n-1)
-
-num = 5
-print(f"Fatorial de {num}: {fatorial(num)}")`,
-            fibonacci: `def fibonacci(n):
-    a, b = 0, 1
-    for _ in range(n):
-        print(a, end=' ')
-        a, b = b, a + b
-
-fibonacci(10)`,
-            prime: `def is_prime(n):
-    if n <= 1:
-        return False
-    for i in range(2, int(n**0.5) + 1):
-        if n % i == 0:
-            return False
-    return True
-
-print("Números primos até 50:")
-print([n for n in range(2, 51) if is_prime(n)])`,
-            sort: `# Ordenação personalizada
-pessoas = [
-    {'nome': 'Ana', 'idade': 25},
-    {'nome': 'Carlos', 'idade': 30},
-    {'nome': 'Beatriz', 'idade': 22}
-]
-
-# Ordenar por idade
-print("Ordenado por idade:")
-print(sorted(pessoas, key=lambda x: x['idade']))
-
-# Ordenar por nome
-print("\\nOrdenado por nome:")
-print(sorted(pessoas, key=lambda x: x['nome']))`,
-            graph: `# Requer matplotlib instalado
-import matplotlib.pyplot as plt
-
-def plot_example():
-    x = [1, 2, 3, 4, 5]
-    y = [i**2 for i in x]
-    
-    plt.plot(x, y)
-    plt.title("Gráfico de exemplo")
-    plt.xlabel("Eixo X")
-    plt.ylabel("Eixo Y")
-    plt.show()
-
-try:
-    plot_example()
-except Exception as e:
-    print("Para ver o gráfico, instale matplotlib com:")
-    print("micropip.install('matplotlib')")`,
-            oop: `class Animal:
-    def __init__(self, nome):
-        self.nome = nome
-    
-    def falar(self):
-        raise NotImplementedError("Subclasse deve implementar este método")
-
-class Cachorro(Animal):
-    def falar(self):
-        return f"{self.nome} diz: Au Au!"
-
-class Gato(Animal):
-    def falar(self):
-        return f"{self.nome} diz: Miau!"
-
-# Criando instâncias
-rex = Cachorro("Rex")
-whiskers = Gato("Whiskers")
-
-print(rex.falar())
-print(whiskers.falar())`
-        };
-
-        // Tema claro/escuro
         function toggleTheme() {
             isDark = !isDark;
 
-            document.documentElement.style.setProperty('--bg-body', isDark ? 'var(--bg-body)' : 'var(--light-bg-body)');
-            document.documentElement.style.setProperty('--bg-main', isDark ? 'var(--bg-main)' : 'var(--light-bg-main)');
-            document.documentElement.style.setProperty('--text-color', isDark ? 'var(--text-color)' : 'var(--light-text-color)');
-            document.documentElement.style.setProperty('--hover-color', isDark ? 'var(--hover-color)' : 'var(--light-hover-color)');
-            document.documentElement.style.setProperty('--button-color', isDark ? 'var(--button-color)' : 'var(--light-button-color)');
-            document.documentElement.style.setProperty('--border-color', isDark ? 'var(--border-color)' : 'var(--light-border-color)');
-            document.documentElement.style.setProperty('--bg-editor', isDark ? 'var(--bg-editor)' : 'var(--light-bg-editor)');
-            document.documentElement.style.setProperty('--bg-editor-header', isDark ? 'var(--bg-editor-header)' : 'var(--light-bg-editor-header)');
-            document.documentElement.style.setProperty('--bg-dots', isDark ? 'var(--bg-dots)' : 'var(--light-bg-dots)');
-            document.documentElement.style.setProperty('--bg-example', isDark ? 'var(--bg-example)' : 'var(--light-bg-example)');
-            document.documentElement.style.setProperty('--bg-example-header', isDark ? 'var(--bg-example-header)' : 'var(--light-bg-example-header)');
-            document.documentElement.style.setProperty('--text-example', isDark ? 'var(--text-example)' : 'var(--light-text-example)');
+            document.documentElement.style.setProperty('--bg-body', isDark ? '#282a36' : '#f8f8f2');
+            document.documentElement.style.setProperty('--bg-main', isDark ? '#343746' : '#ffffff');
+            document.documentElement.style.setProperty('--text-color', isDark ? '#f8f8f2' : '#282a36');
+            document.documentElement.style.setProperty('--button-color', isDark ? '#44475a' : '#44475a');
+            document.documentElement.style.setProperty('--border-color', isDark ? '#6272a4' : '#6272a4');
+            document.documentElement.style.setProperty('--bg-editor', isDark ? '#282a36' : '#f8f8f2');
+            document.documentElement.style.setProperty('--bg-editor-header', isDark ? '#21222c' : '#e0e0e0');
 
             toggleButton.textContent = isDark ? '🌙' : '☀️';
-            toggleButton.style.backgroundColor = isDark ? 'var(--button-color)' : 'var(--light-button-color)';
+            toggleButton.style.backgroundColor = isDark ? '#44475a' : '#44475a';
 
             if (editor) {
                 editor.setOption("theme", isDark ? "dracula" : "default");
             }
         }
 
-        // Carregar exemplo selecionado
-        function loadExample() {
-            const selectedExample = examplesSelect.value;
-            if (selectedExample && codeExamples[selectedExample]) {
-                editor.setValue(codeExamples[selectedExample]);
-                outputEl.textContent = "✅ Exemplo carregado com sucesso!";
-                outputEl.className = "success";
-                setTimeout(() => {
-                    if (outputEl.textContent.includes("carregado")) {
-                        outputEl.textContent = "";
-                        outputEl.className = "";
-                    }
-                }, 2000);
-            }
-        }
-
-        // Inicializar Pyodide e CodeMirror
         async function iniciar() {
             outputEl.textContent = "🚀 Carregando interpretador Python (Pyodide)...";
             outputEl.className = "info";
-            
+
             try {
                 pyodide = await loadPyodide({
                     indexURL: "https://cdn.jsdelivr.net/pyodide/v0.23.4/full/",
@@ -607,8 +466,8 @@ print(whiskers.falar())`
                     }
                 });
 
-                await pyodide.loadPackage(['numpy', 'micropip']);
-                
+                await pyodide.loadPackage(['numpy']);
+
                 editor = CodeMirror.fromTextArea(document.getElementById("python-editor"), {
                     mode: "python",
                     lineNumbers: true,
@@ -635,21 +494,17 @@ print(whiskers.falar())`
                     }
                 });
 
-                // Atualizar posição do cursor
                 editor.on("cursorActivity", updateCursorPosition);
-                
-                // Habilitar tela cheia
+
                 fullscreenBtn.addEventListener("click", toggleFullscreen);
 
                 outputEl.textContent = "✅ Interpretador Python pronto!\n";
                 outputEl.textContent += "🐍 Versão Python: " + await pyodide.runPythonAsync("import sys; sys.version") + "\n";
                 outputEl.textContent += "📝 Digite seu código e clique em Executar ou pressione Ctrl+Enter\n";
                 outputEl.className = "success";
-                
-                // Habilitar botões
+
                 enableButtons();
-                
-                // Carregar código salvo se existir
+
                 const savedCode = localStorage.getItem('pythonCode');
                 if (savedCode) {
                     editor.setValue(savedCode);
@@ -661,20 +516,16 @@ print(whiskers.falar())`
             }
         }
 
-        // Atualizar posição do cursor
         function updateCursorPosition() {
             const cursor = editor.getCursor();
             cursorPositionEl.textContent = `Linha ${cursor.line + 1}, Coluna ${cursor.ch + 1}`;
         }
 
-        // Tela cheia
         function toggleFullscreen() {
             editor.setOption("fullScreen", !editor.getOption("fullScreen"));
-            document.body.classList.toggle("fullscreen", editor.getOption("fullScreen"));
-            fullscreenBtn.textContent = editor.getOption("fullScreen") ? "Sair da Tela Cheia" : "Tela Cheia";
+            fullscreenBtn.textContent = editor.getOption("fullScreen") ? "Sair" : "Tela Cheia";
         }
 
-        // Habilitar botões
         function enableButtons() {
             runBtn.disabled = false;
             clearBtn.disabled = false;
@@ -685,20 +536,17 @@ print(whiskers.falar())`
             downloadBtn.disabled = false;
         }
 
-        // Limpar highlights de erro
         function limparErros() {
             if (editor) {
                 editor.eachLine(line => editor.removeLineClass(line, "background", "erro-linha"));
             }
         }
 
-        // Formatar tempo de execução
         function formatExecutionTime(ms) {
             if (ms < 1000) return `${ms.toFixed(2)}ms`;
             return `${(ms / 1000).toFixed(2)}s`;
         }
 
-        // Executar código Python
         async function executarCodigo() {
             limparErros();
             outputEl.textContent = "";
@@ -706,7 +554,7 @@ print(whiskers.falar())`
             runBtn.disabled = true;
             spinner.style.display = "inline";
             executionTimeEl.textContent = "";
-            
+
             executionStartTime = performance.now();
 
             try {
@@ -717,7 +565,7 @@ sys.stderr = sys.stdout
 `);
 
                 const code = editor.getValue();
-                
+
                 const execPromise = pyodide.runPythonAsync(code);
                 const timeout = new Promise((_, reject) => setTimeout(() => {
                     reject(new Error('Tempo de execução excedido (10 segundos)'));
@@ -727,19 +575,19 @@ sys.stderr = sys.stdout
 
                 const out = await pyodide.runPythonAsync('sys.stdout.getvalue()');
                 const executionTime = performance.now() - executionStartTime;
-                
+
                 if (out && out.trim()) {
                     outputEl.textContent = out;
                 } else {
                     outputEl.textContent = "✅ Código executado com sucesso (sem saída)";
                     outputEl.className = "success";
                 }
-                
+
                 executionTimeEl.textContent = `⏱️ ${formatExecutionTime(executionTime)}`;
             } catch (err) {
                 const executionTime = performance.now() - executionStartTime;
                 executionTimeEl.textContent = `⏱️ ${formatExecutionTime(executionTime)}`;
-                
+
                 outputEl.textContent = `❌ Erro: ${err.message}`;
                 outputEl.className = "error";
 
@@ -752,7 +600,7 @@ sys.stderr = sys.stdout
                     editor.addLineClass(errorLine - 1, "background", "erro-linha");
                     editor.scrollIntoView({ line: errorLine - 1, ch: 0 }, 100);
                 }
-                
+
                 console.error(err);
             } finally {
                 runBtn.disabled = false;
@@ -760,7 +608,6 @@ sys.stderr = sys.stdout
             }
         }
 
-        // Limpar saída
         function limparSaida() {
             outputEl.textContent = "";
             outputEl.className = "";
@@ -768,7 +615,6 @@ sys.stderr = sys.stdout
             limparErros();
         }
 
-        // Salvar código
         function salvarCodigo() {
             try {
                 const code = editor.getValue();
@@ -787,7 +633,6 @@ sys.stderr = sys.stdout
             }
         }
 
-        // Carregar código
         function carregarCodigo() {
             try {
                 const savedCode = localStorage.getItem('pythonCode');
@@ -811,18 +656,16 @@ sys.stderr = sys.stdout
             }
         }
 
-        // Reiniciar interpretador
         async function resetInterpreter() {
             if (!confirm("Tem certeza que deseja reiniciar o interpretador? Todo o estado será perdido.")) {
                 return;
             }
-            
+
             resetBtn.disabled = true;
             outputEl.textContent = "🔄 Reiniciando interpretador Python...";
             outputEl.className = "info";
-            
+
             try {
-                // Recarregar a página é a maneira mais simples de reiniciar o Pyodide
                 location.reload();
             } catch (err) {
                 outputEl.textContent = `❌ Erro ao reiniciar: ${err.message}`;
@@ -831,7 +674,6 @@ sys.stderr = sys.stdout
             }
         }
 
-        // Copiar código
         function copyCode() {
             try {
                 const code = editor.getValue();
@@ -851,7 +693,6 @@ sys.stderr = sys.stdout
             }
         }
 
-        // Download do código
         function downloadCode() {
             try {
                 const code = editor.getValue();
@@ -864,7 +705,7 @@ sys.stderr = sys.stdout
                 a.click();
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
-                
+
                 outputEl.textContent = "✅ Download iniciado!";
                 outputEl.className = "success";
                 setTimeout(() => {
@@ -879,7 +720,6 @@ sys.stderr = sys.stdout
             }
         }
 
-        // Event listeners
         runBtn.addEventListener("click", executarCodigo);
         clearBtn.addEventListener("click", limparSaida);
         saveBtn.addEventListener("click", salvarCodigo);
@@ -889,7 +729,6 @@ sys.stderr = sys.stdout
         downloadBtn.addEventListener("click", downloadCode);
         toggleButton.addEventListener('click', toggleTheme);
 
-        // Atalhos de teclado
         document.addEventListener('keydown', (e) => {
             if (e.ctrlKey && e.key === 'Enter') {
                 e.preventDefault();
@@ -912,7 +751,6 @@ sys.stderr = sys.stdout
             }
         });
 
-        // Iniciar o interpretador
         iniciar();
     </script>
 </body>
