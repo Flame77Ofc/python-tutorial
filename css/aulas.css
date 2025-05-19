@@ -94,8 +94,8 @@ main {
 }
 
 #toggle-theme {
-    position: fixed;
-    top: 10px;
+    position: absolute;
+    top: 70px;
     right: 20px;
     background: none;
     border: none;
@@ -313,57 +313,156 @@ pre {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 40px 0 20px;
-    gap: 10px;
+    margin: 20px 0;
+    gap: 8px;
+    width: 100%;
 }
 
 .nav-button {
     display: flex;
     align-items: center;
-    padding: 15px 25px;
+    padding: 10px 15px; /* Reduzido o padding */
     background-color: var(--button-color);
     color: white;
     border: none;
-    border-radius: 8px;
-    font-size: 1.2em;
+    border-radius: 6px;
+    font-size: 0.9em; /* Fonte menor */
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 200px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    flex: 1; /* Ocupa espaço igual */
+    min-width: 0; /* Permite que o texto quebre */
+    text-align: center;
     justify-content: center;
+    white-space: nowrap; /* Impede que o texto quebre */
+    overflow: hidden;
+    text-overflow: ellipsis; /* ... se o texto for muito longo */
 }
 
 .nav-button:hover {
     background-color: var(--hover-color);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 #center-button {
     flex-grow: 1;
-    max-width: 300px;
+    max-width: none;
 }
 
+/* Ajustes para mobile */
 @media (max-width: 768px) {
     .button-container {
-        flex-direction: column;
-        align-items: stretch;
+        gap: 5px;
+        margin: 15px 0;
     }
 
     .nav-button {
-        max-width: 100%;
-        margin: 10px 0;
-    }
-
-    #center-button {
-        max-width: 100%;
+        padding: 8px 10px; /* Mais compacto */
+        font-size: 0.8em; /* Fonte menor */
+        border-radius: 4px;
     }
 }
 
 @media (max-width: 480px) {
-    .nav-button {
-        padding: 12px 20px;
-        font-size: 1em;
+    .button-container {
+        gap: 3px;
     }
+
+    .nav-button {
+        padding: 6px 8px; /* Mínimo possível */
+        font-size: 0.75em; /* Fonte muito pequena */
+    }
+}
+
+/* Estilos para o header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem;
+    background-color: var(--clr-editor-header);
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+    top: 0;
+    z-index: 100;
+    font-family: var(--fonte-principal);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+p {
+    font-size: 18px;
+}
+
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+header span {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Ajustes no container para acomodar o header sticky */
+body {
+    padding-top: 0; /* Removemos o padding-top já que o header é sticky */
+}
+
+.container {
+    margin-top: 20px; /* Mantemos uma margem menor no topo */
+    margin-bottom: 40px;
+}
+
+/* Ajustes para mobile */
+@media (max-width: 768px) {
+    header {
+        flex-direction: row; /* Mantemos em linha mesmo em mobile */
+        text-align: left;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    header h1 {
+        font-size: 1.3rem;
+    }
+    
+    header span {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 0.75rem;
+        flex-wrap: wrap;
+    }
+    
+    header h1 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    header span {
+        font-size: 0.9rem;
+        width: 100%;
+        text-align: right;
+    }
+}
+
+
+.class-header {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 20px; 
+    background-color: var(--bg-example-header); 
+    color: var(--text-example); 
+    border-bottom: 1px solid var(--border-color);
+
 }

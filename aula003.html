@@ -15,9 +15,13 @@
 </head>
 
 <body>
+    <header class="class-header">
+        <h1 style="margin: 0;"><a href="index.html" style="text-decoration: none; color: currentColor;">Curso de Python</a></h1>
+        <span style="font-size: 1.2em; font-weight: bold;">Aula 3 - Conceitos Iniciais</span>
+    </header>
     <div class="container">
         <main>
-            <h2>Saída de informações</h2>
+            <h1>Saída de informações</h1>
             <p>Imagine um programa sem saídas, por exemplo, uma calculadora. Imagine que você forneça a operação que
                 você
                 quer realizar, como 5 + 4 e a calculadora simplesmente não te responde, em outras palavras, não te dá
@@ -27,7 +31,7 @@
                 dessa operação. É exatamente essa a saída que vamos ver, elas são fundamentais em programas.</p>
             <h3>Seu primeiro código</h3>
             <p>Digite print() e dentro dos parênteses, escreva um texto cercado por aspas (podem ser simples ou duplas),
-                como esse:</p>
+                geralmente o primeiro código de todo aprendiz em programação é o famoso "Olá, Mundo"</p>
             <div class="example-code-container">
                 <div class="example-code-header">
                     <div class="dots">
@@ -45,8 +49,8 @@
             </div>
 
             <br>
-            <p>Isso produzirá uma saída. O interpretador (executador) do python executará esse print e mostrará na tela
-                Olá, Mundo! Legal, né?? No mundo da programação, quando utilizamos o comando print(), dizemos que
+            <p>Isso produzirá uma saída. O interpretador (executador) do python executará esse print e imprimirá na tela
+                Olá, Mundo! Legal, né?? Em python, quando utilizamos o comando print(), dizemos que
                 estamos
                 imprimindo algo. Vamos imprimir mais coisas!</p>
 
@@ -61,7 +65,7 @@
                 </div>
                 <pre class="example-pre"><code>print('Meu nome é Pedro')
 print('Eu tenho 23 anos')
-print('Gosto da natureza e dos animais')</code></pre>
+print('Gosto de programar em python')</code></pre>
                 <div class="example-output-container">
                     <div class="example-output-header">Saída:</div>
                     <div class="output">Meu nome é Pedro<br>Eu tenho 23 anos<br>Gosto da natureza e dos animais</div>
@@ -85,14 +89,85 @@ print('Gosto da natureza e dos animais')</code></pre>
                     <div class="output">Exemplo</div>
                 </div>
             </div>
+            <h2>Docstrings e impressão de multilinhas</h2>
+            <p>Podemos utilizar um "comentário" especial chamado 'docstring'. Ele não é bem um comentário, e não é
+                recomendado utilizar ele por termos de beleza, porém vamos ver como ele funciona:
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>docstring.py</span>
+                </div>
+                <pre
+                    class="example-pre"><code>"""Uma docstring que<br>se parece com um comentário,<br>porém não é recomendado,<br>mas pode ser útil"""</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">Nenhuma</div>
+                </div>
+            </div>
+            <p>Que tal imprimir uma docstring?</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>docstring.py</span>
+                </div>
+                <pre
+                    class="example-pre"><code>print("""Veja um exemplo<br>de uma docstring<br>sendo impressa""")</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">Veja um exemplo<br>de uma docstring<br>sendo impressa</div>
+                </div>
+            </div>
+            <p>Também existe uma outra forma de imprimir múltiplas linhas (na verdade, apenas você no seu código verá
+                múltiplas linhas, mas na saída de código é exibida apenas uma). Para fazer isso utilizamos a barra
+                invertida (\) num certo ponto e aí podemos pular linhas. Vamos ver um exemplo: </p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>docstring.py</span>
+                </div>
+                <pre class="example-pre"><code>print('Um exemplo de \
+impressão em múltiplas \
+linhas')</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">Um exemplo de impressão em múltiplas linhas</div>
+                </div>
+            </div>
+            <h4 style="color: rgb(237, 46, 46);">Cuidado!</h4>
+            <p>Não esqueça que print() se escreve em letras minúsculas. Não é possível digitar algo como Print(),
+                PRINT() ou PrInt(), pois isso é um erro e o programa diferencia as letra minúsculas das maiúsculas, e
+                esses pequenos erros podem ser o motivo pela qual seu código possui falhas. Outra coisa muito importante
+                que você não deve esquecer é que quando você escreve um texto ou uma frase dentro da função print, não
+                esqueça de delimitar o texto entre aspas simples ou duplas, porque estes textos são
+                <strong>strings</strong>, conteúdo da próxima aula!
+            </p>
+
+
+            </p>
 
             <div class="button-container">
-                <button id="left-button" class="nav-button" onclick="location.href='aula002.html'">Aula anterior</button>
+                <button id="left-button" class="nav-button" onclick="location.href='aula002.html'">Aula
+                    anterior</button>
                 <button id="center-button" class="nav-button" onclick="location.href='bot.html'">Área de Testes</button>
-                <button id="right-button" class="nav-button" onclick="location.href='aula004.html'">Próxima Aula</button>
+                <button id="right-button" class="nav-button" onclick="location.href='aula004.html'">Próxima
+                    Aula</button>
             </div>
         </main>
     </div>
+
+
     <button id="toggle-theme">🌙</button>
 
     <script>

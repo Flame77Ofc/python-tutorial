@@ -1,27 +1,4 @@
 "# TERMOS INICIAIS"
-# Podemos utilizar um comentário especial chamado 'docstring'. Ele não é bem um comentário, e não é recomendado utilizar ele, porém vamos ver como ele funciona:
-"""Uma docstring que
-se parece com um comentário
-porém não é recomendado
-mas pode ser útil"""
-
-'''Outro exemplo
-de docstrings com
-3 aspas simples'''
-# Utiliza-se 3 aspas (simples ou duplas) e coloca o que você quiser ali dentro. É possível imprimir as dosctrings também, veja um exemplo:
-print("""Veja um exemplo
-de uma docstring""") # saída: Veja um exemplo 
-# de uma docstring
-
-# Utiliza-se uma barra invertida (\) para múltiplas linhas, mas só será impresso apenas uma única linha. Veja um exemplo:
-print("Utilizando uma \
-barra invertida. Isso é \
-impresso em apenas uma linha, por \
-incrível que pareça") # saída: Utilizando uma barra invertida. Isso é impresso em apenas uma linha, por incrível que pareça
-
-# Lembrete: Não esqueça que print() se escreve tudo em minúsculos. Não é possível digitar algo como Print(), PRINT() ou PrInt(), pois isso é um erro e o programa diferencia as letra minúsculas das maiúsculas.
-
-# [EXERCÍCIOS]
 
 # Agora vamos avançar um pouco e aprender sobre variáveis.
 "# VARIÁVEIS"
