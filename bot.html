@@ -240,18 +240,29 @@
             color: var(--text-color);
         }
 
-        .fullscreen-btn {
-            background: none;
+        .exit-fullscreen-btn {
+            background: var(--button-color);
             border: none;
             color: var(--text-color);
             cursor: pointer;
             font-size: 14px;
             padding: 2px 5px;
             border-radius: 3px;
+            margin-left: 10px;
+            display: none;
         }
 
-        .fullscreen-btn:hover {
+        .exit-fullscreen-btn:hover {
             background-color: var(--hover-color);
+        }
+
+        .CodeMirror-fullscreen~.editor-container .exit-fullscreen-btn {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 10000;
+            background-color: var(--bg-editor-header);
+            padding: 5px 10px;
         }
 
         .tooltip {
@@ -314,6 +325,16 @@
             bottom: 0;
             height: auto !important;
             z-index: 9999;
+            background-color: var(--bg-editor);
+        }
+
+        .CodeMirror-fullscreen~.editor-container .code-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10000;
+            padding: 10px 15px;
         }
 
         .fullscreen .editor-container {
@@ -330,9 +351,8 @@
 <body>
     <div class="container">
         <main>
-            <h1>Interpretador Python Online</h1>
-            <p>Execute código Python diretamente no navegador com Pyodide. Experimente os exemplos abaixo ou escreva seu
-                próprio código.</p>
+            <h1>Interpretador Python</h1>
+            <p>Teste seus códigos python com o editor de código implementado!</p>
 
             <div class="editor-container">
                 <div class="code-header">
@@ -343,15 +363,10 @@
                     </div>
                     <span>interpretador.py</span>
                 </div>
-                <textarea id="python-editor">print("Olá, Mundo!")
-
-def fatorial(n):
-    return 1 if n <= 1 else n * fatorial(n-1)
-
-print(f"Fatorial de 5: {fatorial(5)}")</textarea>
+                <textarea id="python-editor">print("Olá, Mundo!")</textarea>
                 <div class="status-bar">
                     <span class="cursor-position">Linha 1, Coluna 1</span>
-                    <button class="fullscreen-btn" id="fullscreen-btn">Tela Cheia</button>
+                    <button class="exit-fullscreen-btn" id="exit-fullscreen-btn">Sair da Tela Cheia</button>
                 </div>
             </div>
 
@@ -396,7 +411,8 @@ print(f"Fatorial de 5: {fatorial(5)}")</textarea>
             </div>
 
             <div style="text-align: center; margin-top: 20px;">
-                <button onclick="location.href='index.html'" class="interpreter-btn" style="margin: 0 auto; padding: 18.5px; width: 150px;">Voltar</button>
+                <button onclick="location.href='index.html'" class="interpreter-btn"
+                    style="margin: 0 auto; padding: 18.5px; width: 150px;">Voltar</button>
             </div>
         </main>
     </div>
@@ -427,7 +443,7 @@ print(f"Fatorial de 5: {fatorial(5)}")</textarea>
         const spinner = document.getElementById("spinner");
         const executionTimeEl = document.getElementById("execution-time");
         const toggleButton = document.getElementById('toggle-theme');
-        const fullscreenBtn = document.getElementById('fullscreen-btn');
+        const exitFullscreenBtn = document.getElementById('exit-fullscreen-btn');
         const cursorPositionEl = document.querySelector('.cursor-position');
 
         function toggleTheme() {
@@ -496,7 +512,7 @@ print(f"Fatorial de 5: {fatorial(5)}")</textarea>
 
                 editor.on("cursorActivity", updateCursorPosition);
 
-                fullscreenBtn.addEventListener("click", toggleFullscreen);
+                exitFullscreenBtn.addEventListener("click", toggleFullscreen);
 
                 outputEl.textContent = "✅ Interpretador Python pronto!\n";
                 outputEl.textContent += "🐍 Versão Python: " + await pyodide.runPythonAsync("import sys; sys.version") + "\n";
@@ -522,8 +538,16 @@ print(f"Fatorial de 5: {fatorial(5)}")</textarea>
         }
 
         function toggleFullscreen() {
-            editor.setOption("fullScreen", !editor.getOption("fullScreen"));
-            fullscreenBtn.textContent = editor.getOption("fullScreen") ? "Sair" : "Tela Cheia";
+            const isFullscreen = !editor.getOption("fullScreen");
+            editor.setOption("fullScreen", isFullscreen);
+
+            exitFullscreenBtn.style.display = isFullscreen ? "block" : "none";
+
+            if (isFullscreen) {
+                document.documentElement.style.setProperty('--bg-editor', isDark ? '#21222c' : '#e0e0e0');
+            } else {
+                document.documentElement.style.setProperty('--bg-editor', isDark ? '#282a36' : '#f8f8f2');
+            }
         }
 
         function enableButtons() {
