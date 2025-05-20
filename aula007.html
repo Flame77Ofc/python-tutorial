@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrada de Dados</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/aulas.css">
+    <link rel="shortcut icon" href="assets/logopython.png" type="image/x-icon">
+</head>
+
+<body>
+    <header class="class-header">
+        <h1 style="margin: 0;"><a href="index.html" style="text-decoration: none; color: currentColor;">Curso de
+                Python</a></h1>
+        <span style="font-size: 1.2em; font-weight: bold;">Aula 7 - Entrada de Dados</span>
+    </header>
+    <div class="container">
+        <main>
+            <h1>Entrada de dados</h1>
+            <p>Entrada de dados é responsável por pedir para o usuário qualquer coisa que se possa imaginar. Desde nome,
+                idade, cidade, cpf, número de telefone entre outros. Vamos ver como perguntar ao usuário o seu nome:</p>
+
+            <h2>Utilizando a função input()</h2>
+            <p>Para pedir algo ao usuário, basta escrever o comando input() e pedir o que quiser dentro dos parênteses.
+                Vamos pedir o nome do usuário:</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>input.py</span>
+                </div>
+                <pre class="example-pre"><code>input('Qual o seu nome? ')</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Qual o seu nome? _</pre>
+                    </div>
+                </div>
+            </div>
+
+            <p>Ao executar esse programa, é exibido a mensagem que está dentro do input (Qual o seu nome?). O programa
+                espera você digitar algo e quando teclar enter, nada acontecerá. O nome que você digitou é perdido e não
+                poderá ser acessado, pois não guardamos essa informação na memória RAM do computador... É aí que entram
+                as variáveis! Você pode criar uma variável e atribuir o seu valor como um input! Vamos ver um exemplo:
+            </p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>input_variavel.py</span>
+                </div>
+                <pre class="example-pre"><code>nome = input("Digite o seu nome: ")</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Digite o seu nome: _</pre>
+                    </div>
+                </div>
+            </div>
+
+            <p>Ao executar o programa, pede para o usuário digitar o seu nome, então você digita, e... ainda não aparece
+                nada, que estranho! Isso acontece pois esquecemos de utilizar o print()! Sempre que você quer mostrar
+                algo, lembre-se do print()! Então o código ficaria assim:</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>input_print.py</span>
+                </div>
+                <pre class="example-pre"><code>nome = input('Digite o seu nome: ')
+print(nome)</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Digite o seu nome: João
+João</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Pedindo a idade do usuário</h3>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>idade.py</span>
+                </div>
+                <pre class="example-pre"><code>idade = input('Digite a sua idade: ')
+print(idade)</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Digite a sua idade: 25
+25</pre>
+                    </div>
+                </div>
+            </div>
+
+            <p>Ok, conseguimos imprimir agora a idade do usuário. Mas tem uma pequena coisa errada na variável idade.
+                Como você sabe, o input() pergunta algo ao usuário. Porém essa pergunta é feita e retornada um tipo de
+                dado string, e nós estamos perguntando a idade, ou seja, é do tipo int (inteiro). Quando você responde a
+                variável idade, sempre retornará uma string '25' e não um número inteiro 25. Isso é muito ruim pois não
+                permite realizar cálculos matemáticos. Vamos ver um exemplo:</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>erro_idade.py</span>
+                </div>
+                <pre class="example-pre"><code>idade = input('Digite a sua idade: ')
+ano = 2025
+print(ano - idade) # Isso causará um erro!</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre style="color: red;">Erro, não é possível fazer cálculos com strings e inteiros</pre>
+                    </div>
+                </div>
+            </div>
+
+            <p>Se o usuário digitasse que sua idade é 10, então ele nasceu em 2015 pelo cálculo. Mas há um grande
+                problema, pois isso resultará em um erro, porque esquecemos de um pequeno detalhe. Como eu disse, o
+                comando input() SEMPRE RETORNARÁ uma string. É aí que está o problema. Quando o programa executa aquele
+                código, o programa se pergunta: "Mas como eu vou subtrair 2025 de um texto?". Não é possível fazer
+                cálculos utilizando um inteiro e uma string. Mas é possível resolver isso utilizando o int() antes do
+                input para indicar que isso precisa retornar um inteiro. Vamos ver como fica:</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>idade_correta.py</span>
+                </div>
+                <pre class="example-pre"><code>idade = int(input('Digite a sua idade: '))
+ano = 2025
+print(ano - idade)</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Digite a sua idade: 10
+2015</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Exemplo com saldo bancário</h3>
+            <p>Vamos ver mais um exemplo:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>saldo_erro.py</span>
+                </div>
+                <pre class="example-pre"><code>saldo = input('Digite o seu saldo: ')
+aposentadoria = 2400
+print(saldo + aposentadoria) # Isso causará erro!</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre style="color: red;">Erro</pre>
+                    </div>
+                </div>
+            </div>
+
+            <p>Consegue perceber se tem algum erro neste código? Analise bem! Esquecemos de utilizar o int antes do input.  Vamos ajustar o código novamente:</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>saldo_correto.py</span>
+                </div>
+                <pre class="example-pre"><code>saldo = int(input('Digite o seu saldo: '))
+aposentadoria = 2400
+print(saldo + aposentadoria)</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Digite o seu saldo: 1000
+3400</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Usando float para números decimais</h3>
+            <p>Também é possível utilizar o float, aquele tipo de dado que possui casas decimais, se lembra? Um exemplo
+                que pede ao usuário seu peso:</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>peso.py</span>
+                </div>
+                <pre class="example-pre"><code>peso = float(input("Olá, você pesa quantos quilos? "))
+print(peso)</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Olá, você pesa quantos quilos? 68.5
+68.5</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Fazendo uma calculadora de soma</h2>
+            <p>Agora vamos fazer um pequeno projetinho de uma calculadora que apenas soma. Será assim: pede para o
+                usuário digitar dois números, e o programa retorna a soma entre eles. Vamos ver:</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>calculadora.py</span>
+                </div>
+                <pre class="example-pre"><code>num1 = int(input('Digite o primeiro número: '))
+num2 = int(input('Digite o segundo número: '))
+soma = num1 + num2
+print(soma)</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Digite o primeiro número: 5
+Digite o segundo número: 7
+12</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Imprimindo de um jeito diferente</h2>
+            <p>Você percebeu que imprimimos as coisas, mas não especificamos o que é aquela mensagem? Exemplo: Você pede
+                ao usuário seu nome, e você só imprime na tela o nome do usuário. Parece um pouco sem graça, então que
+                tal criar mensagens personalizadas para as mensagens que são impressas? Vamos ver como funciona:</p>
+
+            <h3>Concatenação</h3>
+            <p>A concatenação mescla dois valores utilizando o operador de adição (+). Vamos supor que você tenha que
+                pedir o nome do usuário e o seu sobrenome, e no final, você junta tudo e mostra seu nome completo:</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>concatenacao.py</span>
+                </div>
+                <pre class="example-pre"><code>nome = input("Digite o seu primeiro nome: ")
+sobrenome = input("Digite o seu sobrenome: ")
+nome_completo = nome + sobrenome
+print(nome_completo)</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Digite o seu primeiro nome: João
+Digite o seu sobrenome: Silva
+JoãoSilva</pre>
+                    </div>
+                </div>
+            </div>
+
+            <p>Ainda há um pequeno probleminha neste código, pois não há espaço. Vamos apenas adicionar um espaço:</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>concatenacao.py</span>
+                </div>
+                <pre class="example-pre"><code>nome = input("Digite o seu primeiro nome: ")
+sobrenome = input("Digite o seu sobrenome: ")
+nome_completo = nome + ' ' + sobrenome
+print(nome_completo)</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Digite o seu primeiro nome: João
+Digite o seu sobrenome: Silva
+João Silva</pre>
+                    </div>
+                </div>
+            </div>
+
+            <p>Não vou detalhar muito sobre esse código, apenas siga em frente e você entenderá.</p>
+            <p>Ok, isso só imprime o nome completo. Mas vamos supor que queremos enviar uma mensagem do tipo "Seu nome
+                completo é: {e nesse espaço aqui mostre o nome que o usuário digitou}". Isso é totalmente possível e
+                muito fácil. Vamos ver como funciona:</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>mensagem_personalizada.py</span>
+                </div>
+                <pre class="example-pre"><code>nome = input("Digite o seu primeiro nome: ")
+sobrenome = input("Digite o seu sobrenome: ")
+nome_completo = nome + ' ' + sobrenome
+print('Seu nome completo é ' + nome_completo)</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Digite o seu primeiro nome: Lucas
+Digite o seu sobrenome: dos Santos
+Seu nome completo é Lucas dos Santos</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h3>f-strings (formatação de strings)</h3>
+            <p>Que legal, não é? Mas ainda há um jeito que facilita a concatenção! Essa forma se chama f-string, que
+                consiste em utilizar um f antes das aspas e as chaves para o nome de variáveis. Vamos ver como é:</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>f-string.py</span>
+                </div>
+                <pre class="example-pre"><code>cidade = input('Qual a sua cidade? ')
+print(f'Você mora em {cidade}')</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Qual a sua cidade? São Paulo
+Você mora em São Paulo</pre>
+                    </div>
+                </div>
+            </div>
+
+            <p>Uau, fácil, não acha? Apenas utilizamos um f antes das aspas, seguido pela mensagem que queremos e em
+                seguida utilizamos chaves e a variável dentro das chaves. Mais simples que a concatenação! Vamos ver
+                outro exemplo:</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>amigos.py</span>
+                </div>
+                <pre class="example-pre"><code>amigos = int(input('Quantos amigos você tem? ')) # Não esqueça do int!!
+print(f'Uau! Você tem {amigos} amigos')</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Quantos amigos você tem? 16
+Uau! Você tem 16 amigos</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <button id="left-button" class="nav-button" onclick="location.href='aula006.html'">Aula
+                    anterior</button>
+                <button id="center-button" class="nav-button" onclick="location.href='bot.html'">Área de Testes</button>
+                <button id="right-button" class="nav-button" onclick="location.href='aula008.html'">Próxima
+                    Aula</button>
+            </div>
+        </main>
+    </div>
+    <button id="toggle-theme">🌙</button>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>

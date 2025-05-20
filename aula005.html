@@ -22,8 +22,19 @@
     </header>
     <div class="container">
         <main>
+            
+            <h1>Termos Iniciais</h1>
+            <p>As strings não são apenas tipos de dados. É possível fazer inúmeras coisas com as strings, ela possui
+                diversas funções, o que deixa as strings mais poderosas e com mais funcionalidades. Vamos ver o que é
+                possível fazer com elas?</p>
 
-
+            <h2>Indexação: Acessando caracteres ou sequências de strings</h2>
+            <p>O índice de strings é uma forma de acessar um caractere ou uma sequência de caracteres.</p>
+            <p>Os índices podem ser positivos e negativos. Os índices positivos sempre começam do 0, e terminam até a
+                quantidade da string -1. Então se uma string possui 23 caracteres, por exemplo, o seu último índice será
+                22, o último caractere da string será 22. Já os índices negativos, o primeiro índice é o total de
+                caracteres, porém negativos, e o último caractere sempre será -1. Exemplo: se uma string possui 15
+                caracteres, é possível acessar o seu primeiro índice com o -15, que representa o primeiro caractere.</p>
 
             <div class="example-code-container">
                 <div class="example-code-header">
@@ -32,18 +43,316 @@
                         <div class="dot yellow"></div>
                         <div class="dot green"></div>
                     </div>
-                    <span>atribuicoes.py</span>
+                    <span>indexacao.py</span>
                 </div>
-                <pre class="example-pre"><code>print(carro)
-carro = 'Ferrari'</code></pre>
+                <pre class="example-pre"><code></code>nome_do_estabelecimento = 'La Praire'
+# índices positivos:       012345678
+# índices negativos:      -987654321</code></pre>
+            </div>
+            <p>O índice 0 dessa string representa o caractere 'L', porque cada índice identifica um caractere numa string. Já o índice 6 dessa string representa o caractere 'i'</p>
+
+            <h3>Acessando os caracteres</h3>
+            <p>Para visualizar melhor os caracteres pelo índice, podemos acessar cada caractere de uma string pelo seu próprio índice. Vamos ver como isso funciona</p>
+            <p>Para acessar os caracteres pelos seus índices, utilizamos o nome da variável que armazena a string, seguido por colchetes, e dentro dos colchetes utilizamos o índice que queremos para acessar um caractere. A sintaxe seria assim:</p>
+            <p><code>nome_da_string[índice]</code></p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>acesso.py</span>
+                </div>
+                <pre class="example-pre"><code>print(nome_do_estabelecimento[4]) # r
+print(nome_do_estabelecimento[-8]) # a</code></pre>
                 <div class="example-output-container">
                     <div class="example-output-header">Saída:</div>
                     <div class="output">
-                        <pre><span style="color: rgb(255, 25, 25);">Erro!!</span></pre>
+                        <pre>r<br>a</pre>
                     </div>
                 </div>
             </div>
 
+            <h2>Fatiamento de Strings</h2>
+            <p>Também é possível acessar sequências da string. Os fatiamento de Strings sempre serão assim:</p>
+            <p><code>string[inicio:fim +1]</code> # fim+1 porque é a sintaxe do python, ou seja, foi definido assim</p>
+            <p>Se você quer acessar do índice 1 até o 6, na verdade estaria indo do 1 até o 5. Então incremente mais um,
+                ficando:</p>
+            <p><code>string[1:6+1]</code> Ou simplesmente <code>string[1:7]</code> (Mais recomendável)</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>fatiamento.py</span>
+                </div>
+                <pre class="example-pre"><code>nome_do_estabelecimento[1:6] # a Pra
+nome_do_estabelecimento[-5:-1] # rair</code></pre>
+            </div>
+
+            <p>Nesse caso, estará acessando a partir do índice da string 4 até o final da string.</p>
+            <p><code>string[indice:]</code> # (acessará o final da string)</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>fatiamento2.py</span>
+                </div>
+                <pre class="example-pre"><code>nome_do_estabelecimento[4:] # raire</code></pre>
+            </div>
+
+            <p>Nesse caso, estará acessando o começo da string até o índice especificado:</p>
+            <p><code>string[:índice]</code></p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>fatiamento3.py</span>
+                </div>
+                <pre class="example-pre"><code>print(nome_do_estabelecimento[:6]) # La Pra</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>La Pra</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Acessando a quantidade de caracteres</h3>
+            <p>É possível acessar a quantidade de caracteres de uma string com a função <code>len()</code>:</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>len.py</span>
+                </div>
+                <pre class="example-pre"><code>string = 'Acessando a quantidade de caracteres dessa String'
+print(len(string)) # saída: 49</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>49</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h1>Métodos de String</h1>
+
+            <h2>Convertendo para maiúsculas (.upper())</h2>
+            <p>Vamos supor que por algum motivo você tem um nome de uma empresa enorme, e queria alterar todas as suas
+                letras em maiúsculas. É possível fazer isso utilizando a função <code>.upper()</code></p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>upper.py</span>
+                </div>
+                <pre class="example-pre"><code>empresa = 'empresa ltca produtora de produtos tecnológicos e inovadores lctd importação da china e estados unidos'
+print(empresa.upper())</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>EMPRESA LTCA PRODUTORA DE PRODUTOS TECNOLÓGICOS E INOVADORES LCTD IMPORTAÇÃO DA CHINA E ESTADOS UNIDOS</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Convertendo para minúsculas (.lower())</h2>
+            <p>Agora imagine que você tenha um texto e quer modificar todas as suas letras para minúsculas. Utilizando a
+                função <code>.lower()</code> conseguimos fazer isso:</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>lower.py</span>
+                </div>
+                <pre class="example-pre"><code>texto = 'O RATO ROEU A ROUPA DO REI DE ROMA'
+print(texto.lower())</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>o rato roeu a roupa do rei de roma</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Capitalizando strings (.capitalize())</h2>
+            <p>Você tem um estado e quer alterar o primeiro caractere da string para maiúscula. O
+                <code>capitalize()</code> é responsável por isso.</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>capitalize.py</span>
+                </div>
+                <pre class="example-pre"><code>estado = 'mato grosso do sul'
+print(estado.capitalize())</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Mato grosso do sul</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Formatando títulos (.title())</h2>
+            <p>Você pede ao usuário seu nome, mas ele pode fornecer esquecendo de colocar as primeiras letras da palavra
+                como maiúsculas. É isso que a função <code>title()</code> faz:</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>title.py</span>
+                </div>
+                <pre class="example-pre"><code>nome = 'joão felipe dos santos'
+print(nome.title())</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>João Felipe Dos Santos</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Removendo espaços (.strip())</h2>
+            <p>Removendo espaços desnecessários de uma string: Utilizando <code>.strip()</code></p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>strip.py</span>
+                </div>
+                <pre class="example-pre"><code>string = ' texto ' # Veja que há diversos espaços desnecessários antes e depois do conteúdo principal
+# É possivel remover utilizando a função .strip()
+print(string.strip())</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>texto</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Verificando início e fim de strings (.startswith() e .endswith())</h2>
+            <p>Verificando se uma string começa ou termina com uma sequência especifica de caracteres: utlizando o
+                <code>startswith</code> e o <code>endswith</code></p>
+            <p>As funções <code>startswith</code> e <code>endswith</code> avalia se alguma parte começa ou termina em uma
+                string, retornando um valor booleano (True ou False). Vamos ver alguns exemplos:</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>startswith.py</span>
+                </div>
+                <pre class="example-pre"><code>comida = 'pizza'
+print(comida.endswith('zza')) # Verifica se pizza termina com 'zza'. saída: True
+
+animal = 'leão'
+print(animal.startswith('le')) # Verifica se leão começa com 'le'. saída: True</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>True<br>True</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Encontrando caracteres (.find())</h2>
+            <p>Encontrar um caractere em uma string: utilizando o <code>.find()</code></p>
+            <p>O <code>find</code> retorna o índice em que o caractere se encontra. Vamos ver um exemplo:</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>find.py</span>
+                </div>
+                <pre class="example-pre"><code>frase = 'Estou aprendendo Python'
+print(frase.find('aprendendo')) # saída: 6</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>6</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Substituindo caracteres (.replace())</h2>
+            <p>Substituir um caractere ou uma sequência de caracteres antigas por outra nova com a função
+                <code>.replace()</code></p>
+            <p><code>.replace('caracteres antigos', 'novos caracteres')</code></p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>replace.py</span>
+                </div>
+                <pre class="example-pre"><code>string = 'Olá, Mundo'
+string = string.replace('Mundo', 'Marte')
+print(string)</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Olá, Marte</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <button id="left-button" class="nav-button" onclick="location.href='aula004.html'">Aula
+                    anterior</button>
+                <button id="center-button" class="nav-button" onclick="location.href='bot.html'">Área de Testes</button>
+                <button id="right-button" class="nav-button" onclick="location.href='aula006.html'">Próxima
+                    Aula</button>
+            </div>
         </main>
     </div>
     <button id="toggle-theme">🌙</button>

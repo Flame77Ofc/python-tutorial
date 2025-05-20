@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estruturas Condicionais</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/aulas.css">
+    <link rel="shortcut icon" href="assets/logopython.png" type="image/x-icon">
+</head>
+
+<body>
+    <header class="class-header">
+        <h1 style="margin: 0;"><a href="index.html" style="text-decoration: none; color: currentColor;">Curso de
+                Python</a></h1>
+        <span style="font-size: 1.2em; font-weight: bold;">Aula 9 - Estruturas Condicionais</span>
+    </header>
+    <div class="container">
+        <main>
+            <h1>Estruturas de Condição Simples (If)</h1>
+            <p>Você já deve saber que o computador executa suas instruções (códigos) de cima para baixo e da esquerda
+                para a direita (O modo como lemos). Porém as estruturas condicionais servem justamente para alterar o
+                fluxo de execução, avaliando condições para determinar se algum bloco de código será executado ou não.
+                As condições são as verificações, ou seja, o programa verifica se a expressão é verdadeira (True) ou
+                falsa (False).</p>
+
+            <h2>Sintaxe básica do if</h2>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>if.py</span>
+                </div>
+                <pre class="example-pre"><code>if condição:
+    # bloco de códigos</code></pre>
+            </div>
+
+            <h3>Exemplo 1</h3>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>if_example1.py</span>
+                </div>
+                <pre class="example-pre"><code>if 5 > 10:
+    print('5 é maior que 10')
+print('Fim')</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Fim</pre>
+                    </div>
+                </div>
+            </div>
+
+            <p>Antes de mais nada, uma coisa muitíssima importante é observar os espaços antes da instrução print(),
+                dentro do bloco de códigos do if. Consegue observar que há alguns espaços? O nome disso é indentação, e
+                isso é obrigatório para que o código funcione. Sempre que houver 2 pontos(:) então isso significa que a
+                próxima linha deverá estar indentada (com 4 espaços). Isso sinaliza que aquele bloco de código está
+                dentro da estrutura do if.</p>
+
+            <h3>Exemplo 2</h3>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>if_example2.py</span>
+                </div>
+                <pre class="example-pre"><code>if 10 > 1:
+    print('10 é maior que 1')
+print('Fim')</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>10 é maior que 1
+Fim</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Exemplo com variável</h3>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>if_var.py</span>
+                </div>
+                <pre class="example-pre"><code>chovendo = True
+if chovendo == True:
+    print('Está chovendo!')
+print('Fim')</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Está chovendo!
+Fim</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Exemplo com condição falsa</h3>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>if_false.py</span>
+                </div>
+                <pre class="example-pre"><code>pets = False
+if pets == True:
+    print("Você tem pets!")
+print("Fim do programa")</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Fim do programa</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h1>Estruturas de Condição Compostas (If-Else)</h1>
+            <p>As condicionais compostas permitem que o programa escolha entre um bloco de código ou outro. Na estrutura
+                composta, funciona da seguinte forma:</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>if_else.py</span>
+                </div>
+                <pre class="example-pre"><code>luz = True
+if luz == True:
+    print('A luz está acessa')
+else:
+    print('A luz está apagada')</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>A luz está acessa</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Exemplo com operadores de comparação</h3>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>if_else_comp.py</span>
+                </div>
+                <pre class="example-pre"><code>animais = 5
+if animais > 3:
+    print('Você não pode entrar com mais de 5 animais aqui!')
+else:
+    print('Pode entrar!')</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Você não pode entrar com mais de 5 animais aqui!</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Exemplo com condição falsa</h3>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>if_else_false.py</span>
+                </div>
+                <pre class="example-pre"><code>altura = 1.59
+if altura > 1.65:
+    print('Pode entrar na montanha russa')
+else:
+    print('Altura insuficiente')</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Altura insuficiente</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Exemplo com strings</h3>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>if_else_str.py</span>
+                </div>
+                <pre class="example-pre"><code>nome = 'Henrique'
+if nome == 'Admin':
+    print('Bem vindo, Admin!')
+else:
+    print('Bem vindo, usuário')</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Bem vindo, usuário</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h1>Estruturas de Condição Encadeada (If-Elif-Else)</h1>
+            <p>Esta estrutura permite que o programa verifique quantas condições forem necessárias. Diferente da
+                condição composta que verifica apenas duas condições.</p>
+
+            <h3>Exemplo com idade</h3>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>if_elif.py</span>
+                </div>
+                <pre class="example-pre"><code>idade = 23
+if idade <= 18:
+    print('Você é um Jovem')
+elif idade <= 60:
+    print('Você é um adulto')
+else:
+    print('Você é um idoso')</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Você é um adulto</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Exemplo com semáforo</h3>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>semaforo.py</span>
+                </div>
+                <pre class="example-pre"><code>semaforo = 'vermelho'
+if semaforo == 'verde':
+    print('Acelerar!')
+elif semaforo == 'amarelo':
+    print('Esperar!')
+elif semaforo == 'vermelho':
+    print('Parar!')
+else:
+    print('Cor desconhecida!')</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Parar!</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Tópicos Avançados</h2>
+            <p>Quando você tem uma condição verdadeira, você pode simplesmente omitir a parte que compara:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>simplificado.py</span>
+                </div>
+                <pre class="example-pre"><code># Forma completa
+if True == True:
+    print('Isso é verdadeiro')
+
+# Forma simplificada
+if True:
+    print('Isso é verdadeiro')</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Isso é verdadeiro
+Isso é verdadeiro</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <button id="left-button" class="nav-button" onclick="location.href='aula008.html'">Aula
+                    anterior</button>
+                <button id="center-button" class="nav-button" onclick="location.href='bot.html'">Área de Testes</button>
+                <button id="right-button" class="nav-button" onclick="location.href='aula010.html'">Próxima
+                    Aula</button>
+            </div>
+        </main>
+    </div>
+    <button id="toggle-theme">🌙</button>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>

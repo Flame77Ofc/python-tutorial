@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operadores Aritméticos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/aulas.css">
+    <link rel="shortcut icon" href="assets/logopython.png" type="image/x-icon">
+</head>
+
+<body>
+    <header class="class-header">
+        <h1 style="margin: 0;"><a href="index.html" style="text-decoration: none; color: currentColor;">Curso de
+                Python</a></h1>
+        <span style="font-size: 1.2em; font-weight: bold;">Aula 6 - Operadores Aritméticos</span>
+    </header>
+    <div class="container">
+        <main>
+            <h1>Operadores Aritméticos</h1>
+            <p>São os operadores matemáticos básicos que permitem efetuar expressões matemáticas. A partir deles são
+                formadas as expressões. Vamos ver quais são!</p>
+
+            <h2>Adição (+)</h2>
+            <p>Soma dois valores:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>adicao.py</span>
+                </div>
+                <pre class="example-pre"><code>5 + 6 # 11
+3 + 9 # 12</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>11<br>12</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Subtração (-)</h2>
+            <p>Subtrai o segundo valor do primeiro:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>subtracao.py</span>
+                </div>
+                <pre class="example-pre"><code>4 - 2 # 2
+6 - 10 # -4</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>2<br>-4</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Multiplicação (*)</h2>
+            <p>Multiplica dois valores:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>multiplicacao.py</span>
+                </div>
+                <pre class="example-pre"><code>6 * 6 # 36
+3 * 8 # 24</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>36<br>24</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Divisão (/)</h2>
+            <p>Divide o primeiro valor pelo segundo, retornando um resultado em ponto flutuante (float):</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>divisao.py</span>
+                </div>
+                <pre class="example-pre"><code>12 / 3 # 4.0
+15 / 2 # 7.5</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>4.0<br>7.5</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Divisão de inteiros (//)</h2>
+            <p>Divide dois números e retorna um valor inteiro:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>divisao_inteira.py</span>
+                </div>
+                <pre class="example-pre"><code>15 // 7 # 2
+120 // 10 # 12</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>2<br>12</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Resto da divisão (%)</h2>
+            <p>Retorna o resto da divisão do primeiro valor pelo segundo:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>resto_divisao.py</span>
+                </div>
+                <pre class="example-pre"><code>17 % 5 # 2
+10 % 3 # 1</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>2<br>1</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Exponenciação (**)</h2>
+            <p>Eleva o primeiro valor à potência do segundo:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>exponenciacao.py</span>
+                </div>
+                <pre class="example-pre"><code>2**3 # 8 (2*2 = 4, 4*2 = 8)
+5**3 # 125 (5*5 = 25, 25*5 = 125)</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>8<br>125</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h1>Ordem de precedência</h1>
+            <p>As expressões possuem uma ordem específica de execução. Por exemplo, multiplicação é mais importante que
+                adição, então multiplicação será sempre executado primeiro do que adição. Porém com a ordem de
+                precedência é possível modificar a ordem de execução de expressões utilizando os parênteses, pois é
+                prioridade. Vamos ver como funciona!</p>
+            <p>Imagine que você queira calcular a seguinte expressão:</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>precedencia.py</span>
+                </div>
+                <pre class="example-pre"><code>5 + 6 * 2 # Executa primeira a multiplicação, resultando em 17
+(5 + 6) * 2 # Executa o que está dentro dos parênteses, resultando em 22
+12 + 3 * 5 # 27
+(12 + 3) * 5 # 75</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>17<br>22<br>27<br>75</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h1>Operadores de Atribuição</h1>
+            <p>São usados para atribuir novos valores nas variáveis. Existe uma diferença entre essas duas declarações:
+            </p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>atribuicao.py</span>
+                </div>
+                <pre class="example-pre"><code>x = 10
+x + 5 # Isso é um comando solto que não altera o valor da variável
+print(x) # O valor de x ainda será 10, pois 5 não foi incrementado no x.
+
+# Para alterar o valor de x, usamos os operadores de atribuição
+x = 10
+x = x + 5 # Isso incrementa ao valor antigo da variável x, alterado seu valor
+print(x) # Agora sim o valor de x é 15, pois atribuímos a ela o seu valor antigo + 5</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>10<br>15</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Tipos de Operadores de Atribuição</h2>
+
+            <h3>Atribuição Simples (=)</h3>
+            <p>Atribui o valor à direita a uma variável à esquerda.</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>simples.py</span>
+                </div>
+                <pre class="example-pre"><code>y = 6
+x = 12</code></pre>
+            </div>
+
+            <h3>Atribuição com adição (+=)</h3>
+            <p>Soma o valor à direita ao valor atual da variável e atribui o resultado à variável.</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>adicao_atrib.py</span>
+                </div>
+                <pre class="example-pre"><code>x = 6
+x += 2 # x agora é 8
+y = 7
+y += 5 # y agora é 12</code></pre>
+            </div>
+
+            <h3>Atribuição com subtração (-=)</h3>
+            <p>Subtrai o valor à direita do valor atual da variável.</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>subtracao_atrib.py</span>
+                </div>
+                <pre class="example-pre"><code>x = 4
+x -= 4 # x agora é 0
+y = 5
+y -= 1 # y agora é 4</code></pre>
+            </div>
+
+            <h3>Atribuição com multiplicação (*=)</h3>
+            <p>Multiplica o valor atual da variável pelo valor à direita e atribui o resultado.</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>multiplicacao_atrib.py</span>
+                </div>
+                <pre class="example-pre"><code>x = 6
+x *= 5 # x agora é 30
+y = 9
+y *= 5 # y agora é 45</code></pre>
+            </div>
+
+            <h3>Atribuição com divisão (/=)</h3>
+            <p>Divide o valor atual da variável pelo valor à direita e atribui o resultado (retorna float).</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>divisao_atrib.py</span>
+                </div>
+                <pre class="example-pre"><code>x = 6
+x /= 3 # x agora é 2.0
+y = 20
+y /= 5 # y agora é 4.0</code></pre>
+            </div>
+
+            <h3>Atribuição com divisão inteira (//=)</h3>
+            <p>Divide o valor atual da variável pelo valor à direita e atribui a parte inteira do resultado.</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>divisao_inteira_atrib.py</span>
+                </div>
+                <pre class="example-pre"><code>x = 10
+x //= 2 # x agora é 5
+y = 7
+y //= 3 # y agora é 2</code></pre>
+            </div>
+
+            <h3>Atribuição com módulo (%=)</h3>
+            <p>Calcula o resto da divisão do valor atual da variável pelo valor à direita e atribui o resultado.</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>modulo_atrib.py</span>
+                </div>
+                <pre class="example-pre"><code>x = 15
+x %= 5 # x agora é 0
+y = 8
+y %= 3 # y agora é 2</code></pre>
+            </div>
+
+            <h3>Atribuição com exponenciação (**=)</h3>
+            <p>Eleva o valor atual da variável à potência do valor à direita e atribui o resultado.</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>exponenciacao_atrib.py</span>
+                </div>
+                <pre class="example-pre"><code>x = 2
+x **= 3 # x agora é 8
+y = 3
+y **= 4 # y agora é 81</code></pre>
+            </div>
+
+            <div class="button-container">
+                <button id="left-button" class="nav-button" onclick="location.href='aula005.html'">Aula
+                    anterior</button>
+                <button id="center-button" class="nav-button" onclick="location.href='bot.html'">Área de Testes</button>
+                <button id="right-button" class="nav-button" onclick="location.href='aula007.html'">Próxima
+                    Aula</button>
+            </div>
+        </main>
+    </div>
+    <button id="toggle-theme">🌙</button>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>

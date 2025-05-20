@@ -1,444 +1,11 @@
-"# TERMOS INICIAIS"
-# As strings não são apenas tipos de dados. É possível fazer inúmeras coisas com as strings, ela possui diversas funções, o que deixa as strings mais poderosas e com mais funcionalidades. Vamos ver o que é possível fazer com elas?
 
-# Indexação: Acessando caracteres ou sequências de strings
-# O índice de strings é uma forma de acessar um caractere ou uma sequência de caracteres.
-# Os índices podem ser positivos e negativos. Os índices positivos sempre começam do 0, e terminam até a quantidade da string -1. Então se uma string possui 23 caracteres, por exemplo, o seu último índice será 22, o último caractere da string será 22. Já os índices negativos, o primeiro índice é o total de caracteres, porém negativos, e o último caractere sempre será -1. Exemplo: se uma string possui 15 caracteres, é possível acessar o seu primeiro índice com o -15, que representa o primeiro caractere.
-nome_do_estabelecimento = 'La Praire'
-# ìndices positivos:     012345678
-# índices negativos:    -987654321
-# Acessando os caracteres: Para acessar os caracteres pelos seus índices, basta utilizar a seguinte sintaxe:
-# nome_da_string[índice]
-print(nome_do_estabelecimento[4]) # r
-print(nome_do_estabelecimento[-8]) # a
-# Fatiamento de Strings: Também é possível acessar sequências da string
-# Os fatiamento de Strings sempre serão assim:
-# string[inicio:fim +1] # fim+1 porque é a sintaxe do python, ou seja, foi definido assim;
-# Se você quer ir do índice 1 até o 6, na verdade estaria indo do 1 até o 5. Então incremente mais um, ficando:
-# string[1:6+1] Ou simplesmente string[1:7] (Mais recomendável)
-nome_do_estabelecimento[1:6] # a Pra
-nome_do_estabelecimento[-5:-1] # rair
-# Nesse caso, estará acessando a partir do índice da string 4 até o final da string.
-# string[indice:(acessará o final da string)]
-# nome_do_estabelecimento[4:] # raire
-# Nesse caso, estará acessando o começo da string até o 
-# string[(começo atééé...):índice]
-# print(nome_do_estabelecimento[:6]) # La Pra
-# acessando a quantidade de caracteres de uma string com a função len()
-string = 'Acessando a quantidade de caracteres dessa String'
-print(len(string)) # saída: 49
 
 
-# MÉTODOS DE STRING
-# vamos supor que por algum motivo você tem um nome de uma empresa enorme, e queria alterar todas as suas letras em maiúsculas. É possível fazer isso utilizando a função .upper()
-empresa = 'empresa ltca produtora de produtos tecnológicos e inovadores lctd importação da china e estados unidos'
-print(empresa.upper()) # saída: EMPRESA LTCA PRODUTORA DE PRODUTOS TECNOLÓGICOS E INOVADORES LCTD IMPORTAÇÃO DA CHINA E ESTADOS UNIDOS
 
 
-# Agora imagine que você tenha um texto e quer modificar todas as suas letras para minúsculas. Utilizando a função .lower() conseguimos fazer isso:
-texto = 'O RATO ROEU A ROUPA DO REI DE ROMA'
-print(texto.lower()) # saída: o rato roeu a roupa do rei de roma
 
-# Você tem um estado e quer alterar o primeiro caractere da string para maiúscula. O capitalize() é responsável por isso.
-estado = 'mato grosso do sul'
-print(estado.capitalize()) # Mato grosso do sul
 
-# Você pede ao usuário seu nome, mas ele pode fornecer esquecendo de colocar as primeiras letras da palavra como maiúsculas. É isso que a função title() faz:
-nome = 'joão felipe dos santos'
-print(nome.title()) # João Felipe Dos Santos
 
-
-# Removendo espaços desnecessários de uma string: Utilizando .strip()
-string = '  texto        ' # Veja que há diversos espaços desnecessários antes e depois do conteúdo principals
-# É possivel remover utilizando a função .strip()
-print(string.strip()) # texto
-
-
-# Verificando se uma string começa ou termina com uma sequência especifica de caracteres: utlizando o startswith e o endswith
-# As funções startswith e endswith avalia se alguma parte está presente numa string, retornando um valor booleano (True ou False). Vamos ver alguns exemplos:
-comida = 'pizza'
-print(comida.endswith('zza')) # Verifica se pizza termina com 'zza'. saída: True
-
-animal = 'leão'
-print(animal.startswith('le')) # Verifica se leão começa com 'le'. saída: True
-
-# Encontrar um caractere em uma string: utilizando o .find()
-# O find retorna o índice em que o caractere se encontra. Vamos ver um exemplo:
-frase = 'Estou aprendendo Python'
-print(frase.find('aprendendo')) # saída: 6
-
-# Substituir um caractere ou uma sequência de caracteres antigas por outra nova com a função .replace()
-# .replace('caracteres antigos', 'novos caracteres')
-string = 'Olá, Mundo'
-string = string.replace('Mundo', 'Marte')
-print(string) # Olá, Marte
-
-"# Operadores Aritméticos: São os operadores matemáticos básicos que permitem efetuar expressões matemáticas. A partir deles são formadas as expressões. Vamos ver quais são!"
-# (+) Adição: Soma dois valores
-5 + 6 # 11
-3 + 9 # 12
-
-# (-) Subtração: Subtrai o segundo valor do primeiro
-4 - 2 # 2
-6 - 10 # -4
-
-# (*) Multiplicação: Multiplica dois valores 
-6 * 6 # 36
-3 * 8 # 24
-
-# (/) Divisão: Divide o primeiro valor pelo segundo, retornando um resultado em ponto flutuante (float)
-12 / 3 # 4.0
-15 / 2 #  7.5
-
-# (//) Divisão de inteiros: Divide dois números e retorna um valor inteiro
-15 // 7 # 2
-120 // 10 # 12
-
-# (%) Resto da divisão: Retorna o resto da divisão do primeiro valor pelo segundo
-17 % 5 # 2
-10 % 3 # 1
-
-# (**) Exponenciação: Eleva o primeiro valor à potência do segundo
-2**3 # 8 (2*2 = 4, 4*2 = 8)
-5**3 # 125 (5*5 = 25, 25*5 = 125)
-
-# Ordem de precedência
-# As expressões possuem uma ordem específica de execução. Por exemplo, multiplicação é mais importante que adição, então multiplicação será sempre executado primeiro do que adição. Porém com a ordem de precedência é possível modificar a ordem de execução de expressões utilizando os parênteses, pois é prioridade. Vamos ver como funciona!
-# Imagine que você queira calcular a seguinte expressão:
-5 + 6 * 2 # Executa primeira a multiplicação, resultando em 17
-(5 + 6) * 2 # Executa o que está dentro dos parênteses, resultando em 22
-12 + 3 * 5 # 27
-(12 + 3) * 5 # 75
-
-
-
-# Operadores de Atribuição
-# São usados para atribuir novos valores nas variáveis. Existe uma diferença entre essas duas declarações:
-x = 10
-x + 5 # Isso é um comando solto que não altera o valor da variável
-print(x) # O valor de x ainda será 10, pois 5 não foi incrementado no x.
-
-# Para alterar o valor de x, usamos os operadores de atribuição. Agora vamos ver um exemplo de atribuição de x:
-x = 10
-x = x + 5 # Isso incrementa ao valor antigo da variável x, alterado seu valor
-print(x) # Agora sim o valor de x é 15, pois atribuímos a ela o seu valor antigo + 5
-# Veja quais são os operadores de atribuição
-# Atribuição Simples (=): Atribui o valor à direita a uma variável à esquerda.
-
-y = 6
-x = 12
-# Atribuição com adição(+=): Soma o valor à direita ao valor atual da variável e atribui o resultado à variável. 
-
-x = 6
-x += 2 # x agora é 8
-y = 7
-y += 5 # y agora é 12
-# Atribuição com subtração(-=):
-
-x = 4
-x -= 4 # x agora é 0
-y = 5
-y -= 1 # y agora é 3
-# Atribuição com multiplicação: Multiplica o valor atual da variável pelo valor à direita e atribui o resultado
-
-x = 6
-x *= 5 # x agora é 30
-y = 9
-y *= 5 # y agora é 45
-# Atribuição com divisão:  Divide o valor atual da variável pelo valor à direita e atribui o resultado (retorna float)
-
-x = 6
-x /= 3 # x agora é 2
-y = 20
-y /= 5 # y agora é 4
-# Atribuição com divisão inteira: Divide o valor atual da variável pelo valor à direita e atribui a parte inteira do resultado. 
-
-x = 10
-x //= 2 # x agora é 5
-y = 7
-y //= 3 # y agora é 2
-# Atribuição com módulo: Calcula o resto da divisão do valor atual da variável pelo valor à direita e atribui o resultado.  
-
-x = 15
-x %= 5 # x agora é 0
-y = 8
-y %= 3 # x agora é 2
-# Atribuição com exponenciação: Eleva o valor atual da variável à potência do valor à direita e atribui o resultado.  
-
-
-"# Entrada de dados"
-# Entrada de dados é responsável por pedir para o usuário qualquer coisa que se possa imaginar. Desde nome, idade, cidade, cpf, número de telefone entre outros. Vamos ver como perguntar ao usuário o seu nome:
-# Utilizando a função input()
-# Para pedir algo ao usuário, basta escrever o comando input() e pedir o que quiser dentro dos parênteses. Vamos pedir o nome do usuário:
-input('Qual o seu nome? ')
-# Ao executar esse programa, é exibido a mensagem que está dentro do input (Qual o seu nome?). O programa espera você digitar algo e quando teclar enter, nada acontecerá. O nome que você digitou é perdido e não poderá ser acessado, pois não guardamos essa informação na memória RAM do computador... É aí que entram as variáveis! Você pode criar uma variável e atribuir o seu valor como um input! Vamos ver um exemplo:
-nome = input("Digite o seu nome: ")
-# Ao executar o programa, pede para o usuário digitar o seu nome, então você digita, e... ainda não aparece nada, que estranho! Isso acontece pois esquecemos de utilizar o print()! Sempre que você quer mostrar algo, lembre-se do print()! Então o código ficaria assim:
-nome = input('Digite o seu nome: ')
-print(nome) # saída: o nome que o usuário digitar
-
-# Vamos pedir ao usuário sua idade
-idade = input('Digite a sua idade: ')
-print(idade)
-
-# Ok, conseguimos imprimir agora a idade do usuário. Mas tem uma pequena coisa errada na variável idade. Como você sabe, o input() pergunta algo ao usuário. Porém essa pergunta é feita e retornada um tipo de dado string, e nós estamos perguntando a idade, ou seja, é do tipo int (inteiro). Quando você responde a variável idade, sempre retornará uma string. Vamos supor que o usuário digitou a idade como 25. Retorna na verdade uma string '25' e não um número inteiro 25. Isso é muito ruim pois não permite realizar cálculos matemáticos. Vamos ver um exemplo
-# Pede ao usuário a sua idade e subtrai o ano atual - idade, para descobrir em que ano o usuário nasceu:
-"""idade = input('Digite a sua idade: ')
-ano = 2025
-print(ano - idade) # Subtrai o ano atual - a idade do usuário
-"""
-# Se o usuário digitasse que sua idade é 10, então ele nasceu em 2015 pelo cálculo. Mas há um grande problema, pois isso resultará em um erro, porque esquecemos de um pequeno detalhe. Como eu disse, o comando input() SEMPRE RETORNARÁ uma string. É aí que está o problema. Quando o programa executa aquele código, o programa se pergunta: "Mas como eu vou subtrair 2025 de um texto?". Não é possível fazer cálculos utilizando um inteiro e uma string. Mas é possível resolver isso utilizando o int() antes do input para indicar que isso precisa retornar um inteiro. Vamos ver como fica:
-idade = int(input('Digite a sua idade: '))
-ano = 2025
-print(ano - idade)
-# Agora sim, o programa efetuará o cálculo e retornará o ano em que o usuário nasceu. Então lembre-se de utilizar o int() quando for fazer cálculos envolvendo entradas do usuário com input(). Vamos ver mais um exemplo:
-# Pede ao usuário o seu saldo e efetua a adição entre o saldo e a aposentadoria
-"""saldo = input('Digite o seu saldo: ')
-aposentadoria = 2400
-print(saldo + aposentadoria)
-"""
-# Consegue perceber se tem algum erro neste código? Analise bem!
-# Se você consegui que falta o int, parabéns! Vamos ajustar o código novamente:
-saldo = int(input('Digite o seu saldo: '))
-aposentadoria = 2400
-print(saldo + aposentadoria)
-
-# Também é possível utilizar o float, aquele tipo de dado que possui casas decimais, se lembra? Um exemplo que pede ao usuário seu peso:
-peso = float(input("Olá, você pesa quantos quilos? "))
-print(peso)
-
-# Fazendo uma cálculadora de soma
-# Agora vamos fazer um pequeno projetinho de uma calculadora que apenas soma. Será assim:
-# pede para o usuário digitar dois números, e o programa retorna a soma entre eles. Vamos ver:
-num1 = int(input('Digite o primeiro número: ')) # Pede ao usuário o primeiro número
-num2 = int(input('Digite o segundo número: ')) # Pede ao usuário o segundo número
-soma = num1 + num2 # Criamos uma variável a atribuímos o seu valor como soma dos dois números, é totalmente possível fazer isso!
-print(soma) # Imprime a soma dos dois números
-
-# Imprimindo de um jeito diferente
-# Você percebeu que imprimimos as coisas, mas não especificamos o que é aquela mensagem? Exemplo: Você pede ao usuário seu nome, e você só imprime na tela o nome do usuário. Parece um pouco sem graça, então que tal criar mensagens personalizadas para as mensagens que são impressas? Vamos ver como funciona:
-# Concatenação
-# A concatenação mescla dois valores utilizando o operador de adição (+). Vamos supor que você tenha que pedir o nome do usuário e o seu sobrenome, e no final, você junta tudo e mostra seu nome completo:
-nome = input("Digite o seu primeiro nome: ")
-sobrenome = input("Digite o seu sobrenome: ")
-nome_completo = nome + sobrenome
-print(nome_completo)
-# Ainda há um pequeno probleminha neste código, pois não há espaço. Vamos apenas adicionar um espaço:
-nome = input("Digite o seu primeiro nome: ")
-sobrenome = input("Digite o seu sobrenome: ")
-nome_completo = nome + ' ' + sobrenome
-print(nome_completo)
-# Não vou detalhar muito sobre esse código, apenas siga em frente e você entenderá.
-# Ok, isso só imprime o nome completo. Mas vamos supor que queremos enviar uma mensagem do tipo "Seu nome completo é: {e nesse espaço aqui mostre o nome que o usuário digitou}". Isso é totalmente possível e muito fácil. Vamos ver como funciona:
-nome = input("Digite o seu primeiro nome: ")
-sobrenome = input("Digite o seu sobrenome: ")
-nome_completo = nome + ' ' + sobrenome
-print('Seu nome completo é ' + nome_completo)
-# Perfeito! Se o usuário digitar Lucas dos Santos, então a saída será: Seu nome completo é Lucas dos Santos
-
-# Que legal, não é? Mas ainda há um jeito que facilita a concatenção! Essa forma se chama f-string, que consiste em utilizar um f antes das aspas. Vamos ver como é:
-# Vamos supor que queremos pedir a cidade do usuário:
-cidade = input('Qual a sua cidade? ')
-print(f'Você mora em {cidade}')
-
-# Uau, fácil, não acha? Apenas utilizamos um f antes das aspas, seguido pela mensagem que queremos e em seguida utilizamos chaves e a variável dentro das chaves. Mais simples que a concatenação! Vamos ver outro exemplo
-# Vamos pedir ao usuário quantos amigos ele tem:
-amigos = int(input('Quantos amigos você tem? ')) # Não esqueça do int!!
-print(f'Uau! Você tem {amigos} amigos')
-
-# Se o usuário digitar 16, então a imprimirá na tela: 'Uau! Você tem 16 amigos'
-
-
-# Operadores de comparação
-# Os operadores de comparação utilizam símbolos para comparar expressões. Ao fazer a comparação, o programa retorna um valor booleano (True ou False). Vamos supor que você faça a seguinte comparação entre dois valores: Você se pergunta: "3 é maior que 1?" Então você analisa, e dirá verdadeiro ou falso. É isso que um programa faz, avalia a expressão e retorna verdadeiro (True) ou falso (False). Vamos ver melhor como esses operadores funcionam.
-# Operador Maior Que(>):
-# Compara se o valor da esquerda é MAIOR que o valor da direita. Vamos ver alguns exemplos:
-5 > 9 # Pergunte-se a si mesmo: 5 é maior que 9? Não, certo? Então o programa retornará False
-4 > 1 # 4 é maior que 1? verdadeiro, então o programa retornará o booleano True
-10 > 0 # 10 é maior que 0? True
-
-# Operador Menor Que(<):
-# Compara se o valor da esquerda é MENOR que o valor da direita. Veja os exemplos:
-3 < 10 # 3 é menor que 10? True
-5 < 2 # 5 é menor que 2? False, 5 é MAIOR que 2
-8 < 15 # 8 é menor que 15? True
-
-# Operador Maior ou Igual Que (>=):
-# Compara se o valor da esquerda é MAIOR OU IGUAL que o valor da direita. Exemplos:
-5 >= 10 # 5 é maior ou igual a 10? False
-10 >= 10 # 10 é maior ou igual a 10? True, 10 não é maior, mas sim igual
-15 >= 5 # 15 é maior ou igual a 5? True, 15 é maior
-
-# Operador Menor ou Igual Que (<=):
-# Compara se o valor da esquerda é MENOR OU IGUAL que o valor da direita. Vamos ver!:
-8 <= 10 # 8 é menor ou igual a 10? True, 8 é menor
-10 <= 5 # 10 é menor ou igual a 5? False
-4 <= 1 # 4 é menor ou igual a 1? False
-
-# Operador Diferente de (!=):
-# Compara se o valor da esquerda é DIFERENTE do valor da direita. Em outras palavras, comparam se ambos são diferentes:
-10 != 5 # 10 é diferente de 5? True
-5 != 5 # 5 é diferente de 5? False, ambos são iguais
-3 != 7 # 7 é diferente de 7? True
-
-# Operador Igual a (==):
-# Compara se o valor da esquerda é IGUAL ao valor da direita. Em outras palavras, comparam se ambos são iguais:
-6 == 7 # 6 é igual a 7? False, são diferentes
-5 == 5 # 5 é igual a 5? True
-10 == 5 # 10 é igual a 5? False, são diferentes
-
-# Operadores lógicos: Unem as expressões condicionais. Por exemplo, você pode unir operadores de comparação. Vamos ver como isso funciona:
-# and: Compara se a expressão da esquerda e da direita são verdadeiras. Se ambas as expressões forem verdadeiras, então retornará True. Mas, se ao meno uma expressão for falsa, então o programa retornará False. Vamos ver com alguns exemplos:
-5 == 5 and 12 > 8
-# 5 é igual a 5? True! 
-# 12 é maior que 8? Sim, então retornará True
-
-12 < 8 and 5 != 3
-# 12 é menor que 8? False
-# 5 é diferente de 3? True, porém como a expressão anterior é False, retornará False
-
-6 > 3 and 8 > 10 
-# 6 é maior que 3? True
-# 8 é maior que 10? False, então o resultado será False
-# Resumo: As duas expressões precisam ser True para retornar True, caso contrário retornará False
-
-# or: Compara se o valor da esquerda e o valor da direita são verdadeiras. Se ambas forem falsas, então retornará False. Mas para retornar True, ao menos uma expressão deve ser True. Vamos ver como funciona:
-7 < 10 or 6 == 6
-# 7 é menor que 10? True
-# 6 é igual a 6? True, então retornará True
-
-4 == 5 or 9 > 5
-# 4 é igual a 5? False
-# 9 é maior que 5? True, então retornará True, pois uma expressão é True
-
-9 != 9 or 4 < 4
-# 9 é diferente de 9? False
-# 4 é menor que 4? False, são iguais, então retornará False
-# Resumo: Ao menos uma expressão deverá ser True para retornar True. retornará False quando ambas as expressões forem falsas.
-
-# not: O not é o operador que nega um booleano, ou seja, você utilizar uma negação num True, ele será alterado para False e vice-versa. Vamos ver como funciona:
-not True # False
-not False # True
-
-not 12 > 5 # Era True, mas foi invertido, resultando em False
-not 5 < 1 # A expressão era False, mas o operador not interteu o valor, resultando em True
-# Resumo: Inverte um booleano
-
-
-"# Estruturas de Condição Simples (Condicionais Simples) If"
-# Você já deve saber que o computador executa suas instruções (códigos) de cima para baixo e da esquerda para a direita (O modo como lemos). Porém as estruturas condicionais servem justamente para alterar o fluxo de execução, avaliando condições para determinar se algum bloco de código será executado ou não. As condições são as verificações, ou seja, o programa verifica se a expressão é verdadeira (True) ou falsa (False). Você se lembra dos booleanos? Imagine se eu te perguntar: 5 é maior que 10? Não, né? Então, isso é uma condição. Condições basicamente são expressões que o computador precisa verificar se está certa ou errada, e sempre executará aquela condição que for verdadeira.
-# Sintaxe básica do if:
-# if condição:
-    # <bloco de códigos>
-# Vamos ver alguns exemplos:
-if 5 > 10:
-    print('5 é maior que 10') 
-print('Fim')
-# Antes de mais nada, uma coisa muitíssima importante é observar os espaços antes da instrução print(), detro do bloco de códigos do if. Consegue observar que há alguns espaços? O nome disso é indentação, e isso é obrigatório para que o código funcione. Sempre que houver 2 pontos(:) então isso significa que a próxima linha deverá estar indentada (com 4 espaços). Isso sinaliza que aquele bloco de código está dentro da estrutura do if. Não esqueça desses 4 espaços! Quando não existe mais esses 4 espaços, então quer dizer que a instrução não está dentro do bloco de código.
-# Vamos entender: O programa está comparando se 5 é maior que 10. Essa condição é falsa, pois 5 é menor, e não maior que 10, então o programa simplesmente ignora este bloco de código e não executa o que está dentro dele, aquela parte indentada, e logo após imprime 'Fim'. Vamos ver outro exemplo:
-
-if 10 > 1:
-    print('10 é maior que 1')
-print('Fim')
-# Agora vamos nos perguntar: "10 é maior que 1?" sim, então a condição é True, ou seja, será executado o bloco de código dentro do if, e imprimirá '10 é maior que 1') e por último Fim
-
-
-# Vamos ver um exemplo utilizando uma variável
-chovendo = True
-if chovendo == True:
-    print('Está chovendo!')
-print('Fim')
-
-# Declaramos a variável chovendo, atribuímos o valor dela para True e logo em seguida o programa verificou se a variável chovendo era verdadeira, e executou o bloco de código do if. Logo após isso imprimiu 'Fim'
-
-# Mais um exemplo:
-pets = False # Declarando a variável pets e atribuindo seu valor para False
-if pets == True: # O programa verifica ses pets é True, ou seja, se tem pets
-    print("Você tem pets!") # Se a condição pets for verdadeira (True) então será executado esse bloco de código
-
-# Declaramos a variável pets como False e o programa verificou se a variável é True. Como a variável é False, o programa simplesmente ignorou o bloco de código.
-
-# Bem fácil de entender as condicionais, não é? Resumo: O programa verifica se a condição é verdadeira, se for executa a parte indentada (o bloco de código), mas se não for apenas ignora e continua a executar o programa normalmente.
-
-
-
-# Estruturas de condição compostas (Condicionais compostas) If, else:
-# Como você já viu anteriormente, as condicionais compostas são muito limitadas e serão poucas vezes executadas, pois testam apenas uma condição. Pensando nisso, existem as condicionais compostas, que permite que o programa escolha entre um bloco de código ou outro. Na estrutura composta, funciona da seguinte forma: 
-# O programa primeiramente verifica se a condição do If é verdadeira, e se for, executará o bloco de código que pertence a ele (o bloco de código indentado). Porém, se a condição do if for falsa, o programa automaticamente executará o bloco de código do else, pois é sua única opção.
-# Vamos ver um exemplo:
-
-luz = True # Declarando a variável luz para True, que significa que a lâmpada está acessa
-if luz == True: # O programa verifica se luz é True. Nesse caso é.
-    print('A luz está acessa') # Então executará este bloco de código
-else: # E ignora este bloco de código, porque a condição já foi satisfeita.
-    print('A luz está apagada')
-
-# Simplificando: Verifica se a condição do if é verdadeira
-# Se for, executará o bloco de código dentro dele (a parte indentada)
-# Mas se a condição do if for falsa, automaticamente executará a condição do else. O else é sempre o "Se a condição if for falsa, serei executado".
-
-# Vamos ver mais exemplos, dessa vez usando operadores de comparação:
-animais = 5 # Declaramos a variável animais atribuindo seu valor a 5
-if animais > 3: # O programa verifica se animais é maior que 5. Nesse caso é, então será executado o bloco de código indentado:
-    print('Você não pode entrar com mais de 5 animais aqui!')
-else: # O else não será executado pois a condição já foi satisfeita
-    print('Pode entrar!')
-
-# Veja um exemplo em que a codição do if é falsa:
-altura = 1.59 # Declaramos a variável altura e seu valor é 1.59
-if altura > 1.65: # O programa verifica se altura é maior que 1.65, nesse caso não é
-    print('Pode entrar na montanha russa') # Esse bloco de código não será executado pois a condição do if é False
-else: # Então só resta o programa executar o código do else
-    print('Altura insuficiente') # Imprime 'Altura insuficiente', pois altura é menor que 1.65
-
-# Novamente mais um
-nome = 'Henrique'
-if nome == 'Admin':
-    print('Bem vindo, Admin!')
-else:
-    print('Bem vindo, usuário')
-# Declaramos uma variável nome e seu valor é Henrique, logo em seguida, o programa verifica se o nome é 'Admin', nesse caso, não é, então será executado o bloco de código do else, e imprimirá 'Bem vindo, usuário'
-
-
-
-# Estruturas de condicão encadeada (Condicional Encadeada) If, elif, else: Essa é uma etapa muito importante, então se entender isso, entenderá facilmente qualquer outra estrutura condicional. A única grande diferença entre a condição encadeada e a condição composta é que a condição encadeada utiliza o elif, permitindo que o programa verifique quantas condições forem necessárias. As estruturas compostas como vimos acima, são também um pouco limitadas, pois permite que o programa verifique apenas duas condições. Mas também existe outra forma de verificar mais condições, na verdade, quantas você quiser! Dê uma olhada rápida neste código:
-idade = 23
-if idade <= 18:
-    print('Você é um Jovem')
-elif idade <= 60:
-    print('Você é um adulto')
-else:
-    print('Você é um idoso')
-# Vamos lá, declaramos a variável idade que recebe um inteiro 23 e logo em seguida verificamos se a idade é menor ou igual a 18. Vamos pensar: 23 é menor ou igual a 18? Não, certo? Então essa condicional já não será executada, vamos para a próxima. Verificamos: A idade (23) é menor ou igual a 60? Opa! A idade é menor que 60, por que 23 não é maior que 60, e sim menor, então esse bloco de código será executado, e imprimirá na tela: Você é um adulto
-# O que achou? Fácil? Que tal mais um exemplo um pouco mais difícil?
-semaforo = 'vermelho'
-if semaforo == 'verde':
-    print('Acelerar!')
-elif semaforo == 'amarelo':
-    print('Esperar!')
-elif semaforo == 'vermelho':
-    print('Parar!')
-
-# Vamos analisar: Criamos uma variável semaforo e atribuímos o valor dela para 'vermelho'. Logo em seguida, verificamos se o semaforo está verde. O semaforo está verde? Não, né? Então simplesmente pulamos para a próxima condição. No elif, a condição está comparando se o semaforo é 'amarelo'. o semaforo não é amarelo, então pulamos essa condição e não executamos o bloco de código. Na última condição está comparando se o semaforo é 'vermelho', então basta olhar para a variável e... o semaforo é vermelho! Então este bloco de códigos será executado! Uma boa recomendação é sempre utilizar um else, ficando assim:
-
-semaforo = 'vermelho'
-if semaforo == 'verde':
-    print('Acelerar!')
-elif semaforo == 'amarelo':
-    print('Esperar!')
-elif semaforo == 'vermelho':
-    print('Parar!')
-else:
-    print('Cor desconhecida!')
-# É recomendado utilizar o else em todas as condições, porque pode ser útil para evitar erros, imagine fosse uma entrada de usuário, e o usuário digitasse 'azul'?
-
-# Tópicos Avançados
-# Quando você tem uma condição verdadeira, você pode simplesmente omite a parte que compara. Veja um exemplo para esclarecer:
-if True == True:
-    print('Isso é verdadeiro')
-# Você pode simplesmente fazer isso, e será a mesma coisa:
-if True: # Omitindo a comparação 'True == True'
-    print('Isso é verdadeiro')
 
 
 # Listas são um tipo de dado (como os inteiros, booleanos, strings), mais especificamente, são sequências ordenadas e mutáveis (É possível alterar seus elementos) e possuem índices. Seus elementos são cercados por colchetes [] e cada elemento é separado por vírgulas. O índice é o identificador de um elemento, e começa do 0 até a quantidade de elementos - 1. Por exemplo, se uma lista tem 50 elementos, o primeiro índice será 0 e o último será a quantidade -1, que é 49.
@@ -762,9 +329,91 @@ print(fim) # Morcego
 # Agora como a ordem foi alterada, a variável inicio possui os primeiros elementos da lista, e o fim possui o último elemento da lista, que é o Morcego.
 
 
-#   -   -   -   -   Tuplas  -   -   -   -   -
+# Tuplas em Python
 
+# Tuplas são coleções de dados que, ao contrário das listas, não podem ser modificadas depois de criadas.
+# São úteis quando você quer garantir que os dados permaneçam os mesmos.
 
+# Criando tuplas
+tupla1 = ('elemento1', 'elemento2')  # Forma mais comum, usando parênteses
+tupla2 = 'elemento1', 'elemento2'    # Também funciona sem parênteses
+print(tupla1)
+print(tupla2)
+
+# Índices em tuplas
+# Cada elemento da tupla tem uma posição (índice), começando do zero
+frutas = ('Laranja', 'Maçã', 'Abacate')
+# Índices:     0        1        2
+
+# Acessando elementos pelos índices
+print(frutas[0])  # Acessa o primeiro elemento: Laranja
+print(frutas[2])  # Acessa o terceiro elemento: Abacate
+
+# Índices negativos acessam do fim para o começo
+print(frutas[-1])  # Último elemento: Abacate
+print(frutas[-2])  # Penúltimo elemento: Maçã
+
+# Descobrindo o tamanho da tupla com len()
+coordenadas = ('N', 50, 100, -457, -121)
+print(len(coordenadas))  # Retorna 5, pois há 5 elementos
+
+# Tuplas são imutáveis
+# Após a criação, não é possível mudar os valores
+tupla = ('Maria', 'João', 'Pedro')
+# tupla[2] = 'Felipe'  # Isso causaria um erro, pois não se pode alterar tuplas
+
+# Tuplas são iteráveis
+# Podemos percorrer seus elementos usando um loop
+nome = ('Pedro')  # Isso é uma string, não uma tupla com um elemento
+for letra in nome:
+    print(letra)  # Vai imprimir letra por letra: P, e, d, r, o
+
+# Empacotamento de tupla
+# Podemos armazenar múltiplos valores em uma variável
+tupla = (1, 2, 3)
+print(tupla)
+
+# Também é possível empacotar sem parênteses
+tupla = 4, 5, 6
+print(tupla)
+
+# Desempacotamento de tupla
+# Podemos extrair os valores da tupla para variáveis separadas
+tupla = (10, 20, 30)
+a, b, c = tupla
+print(a)  # 10
+print(b)  # 20
+print(c)  # 30
+
+# Podemos usar o operador * para capturar múltiplos valores em uma variável
+tupla = ('e1', 'e2', 'e3', 'e4', 'e5')
+a, *resto = tupla
+print(a)      # 'e1'
+print(resto)  # ['e2', 'e3', 'e4', 'e5'] → repara que o "resto" vira uma lista
+
+# Verificando a existência de um valor na tupla
+tupla = (1, 2, 3, 4, 5)
+print(3 in tupla)         # Retorna True, pois 3 está na tupla
+print('Felipe' not in tupla)  # Retorna True, pois 'Felipe' não está na tupla
+
+# Unindo tuplas com o operador +
+# Isso cria uma nova tupla com os elementos das duas
+tupla1 = (250, 120)
+tupla2 = (-35, 90)
+tupla3 = tupla1 + tupla2
+print(tupla3)  # Resultado: (250, 120, -35, 90)
+
+# Fatiamento de tuplas (igual listas)
+# Podemos acessar fatias da tupla, definindo início e fim
+cores = ('Azul', 'Branco', 'Verde', 'Preto', 'Laranja')
+print(cores[1])     # Acessa o segundo elemento: Branco
+print(cores[-2])    # Acessa o penúltimo elemento: Preto
+print(cores[1:4])   # Acessa os elementos do índice 1 ao 3: ('Branco', 'Verde', 'Preto')
+
+# Conclusão
+# Tuplas são úteis quando queremos armazenar dados que não devem mudar.
+# Elas se parecem com listas, mas não possuem métodos de modificação como append ou remove.
+# Por serem imutáveis, são mais seguras e podem ser usadas como chave de dicionários, por exemplo.
 
 
 #   -   -   -   -   -   -   Sets  -   -   -   -   -   -   -   -   -   -   
@@ -831,129 +480,171 @@ print(quantidade) # 4
 
 # Ótimo, isso mostra que os sets são muito poderosos e apresentam muitas funcionalidades!
 
-#   -   -   -   -   -   -   -   Dicionários -   -   -   -   -   -   -   -   -   -   -   
-# Os dicionários apresentam pares de chave-valor, isso é muito útil quando você precisa de uma forma mais organizada de criar dados mais significativos pelo seu programa. Dicionários também são mutáveis, o que significa que podem ser usados funções implicitamente para alterar os pares chave-valor do dicionário. Chaves serão os identificadores dos valores (como um índice que identifica os elementos em uma lista)
-# Vamos ver alguns exemplos:
 
+# DICIONÁRIOS EM PYTHON 🧠🍉
+
+# Dicionários são mutáveis como listas, mas usam CHAVES em vez de índices.
+# Cada chave aponta para um VALOR, formando pares únicos de chave-valor.
+
+# Exemplo: estamos no mercado! 🛒
+frutas = {
+    'Maçã': 0.99,
+    'Laranja': 1.39,
+    'Abacaxi': 1.99
+}
+print(frutas)
+
+# Podemos escrever o dicionário numa linha só também:
+frutas = {'Maçã': 0.99, 'Laranja': 1.39, 'Abacaxi': 1.99}
+
+# Dicionários funcionam muito bem para dados únicos! 👤
+dados_pessoais = {
+    'João Lucas': 14,
+    'Maria Fernanda': 23,
+    'Alexandre Ferreira': 37
+}
+# Mas cuidado: nomes podem se repetir! Melhor usar CPF, ID ou telefone.
+
+# Vamos ver como acessar dados no dicionário:
+dados = {
+    1: 'Henrique da Costa',
+    2: 'Felipe dos Santos',
+    3: 'Arthur Feitosa',
+    4: 'Marcos Teixeira',
+    5: 'Fábio Alberto'
+}
+
+print(dados[2])  # Felipe dos Santos
+print(dados[5])  # Fábio Alberto
+
+# Alterando valores:
+dados[3] = 'Marco Antônio'  # Substitui valor da chave existente
+dados[6] = 'Luiza Moura'    # Adiciona novo par chave-valor
+print(dados)
+
+# Deletando pares chave-valor:
+del dados[2]
+del dados[4]
+print(dados)
+
+# Acessando chaves, valores e itens:
+chaves = dados.keys()
+valores = dados.values()
+itens = dados.items()
+
+print(chaves)
+print(valores)
+print(itens)
+
+# Verificando se existe uma chave ou valor:
+print(1 in dados)  # True
+print('Fábio' in dados.values())  # False (valor completo é 'Fábio Alberto')
+print('Henrique' not in dados.values())  # True
+
+# Dicionário dentro de outro dicionário 😮
+pessoas = {
+    'João Miguel': {
+        'idade': 14,
+        'cidade': 'Cidade dos Astronautas',
+        'rua': 'Rua dos Capixabas'
+    },
+    'Lucas Ferreira': {
+        'idade': 23,
+        'cidade': 'Cidade do Folclore',
+        'rua': 'Rua dos Caçadores'
+    }
+}
+print(pessoas['João Miguel']['idade'])  # 14
+
+# Outro exemplo simples:
 compras = {
     'Arroz': 3.45,
     'Feijão': 2.90,
     'Macarrão': 4.50
-#   chave: valor
 }
-# Criamos um dicionário e seu nome é compras. Repare que todos os 3 pares de chave-valor tem a mesma estrutura, primeiro a chave, seguido dos dois pontos e por fim o seu valor. As chaves são únicas, isso quer dizer que um único dicionário não pode contér duas chaves iguais. Exemplo: duas chaves do dicionário possuem o nome 'Abacaxi'. Isso pode causar confusões no seu dicionário.
-# Imprimindo os dicionários
-# É possível imprimir o dicionários apenas digitando print() e dentro dos parênteses o nome do dicionário:
 print(compras)
-# Também é possível acessar o valor de um dicionário pela sua chave, quase igual uma lista com índices:
-print(compras['Arroz']) # saída: 3.45 (imprime o valor)
+print(compras['Arroz'])  # 3.45
 
+# Modificando valores:
+compras['Sushi'] = 1.35      # Adiciona novo item
+compras['Macarrão'] = 0.35   # Atualiza valor existente
 
-# Modificando e alterando os pares-chave
-# Neste tipo de modificação ou acrescentação, o programa verifica no dicionário se a chave já existe no dicionário, veja:
-compras['Sushi'] = 1.35 # O programa verifica se já existe 'Sushi' no dicionário. Como não existe, então apenas adicinará um novo elemento, juntamente com o seu valor. Porém se já existisse, apenas alteraria o seu valor. Veja um exemplo em que a chave já existe:
-compras['Macarrão'] = 0.35 # Como a chave já existe no dicionário, apenas substituirá o seu valor, que antes era 4.50 e agora passa a ser 0.35.
-
-
-
+# Funções úteis com dicionários:
 frutas = {
     'Maçã': 3.99,
     'Laranja': 4.99,
     'Limão': 2.99,
     'Abacaxi': 1.99,
-    'Manga': 1.59,
+    'Manga': 1.59
 }
-# Funções e métodos de dicionários
-# As funções e métodos permitem deixar os dicionários com mais funcionalidades e com mais poder. Vamos quais são:
-# del: A função del serve para deletar o par de chave-valor do dicionário
+
+# del: remove um par chave-valor
 del frutas['Abacaxi']
-print(frutas) # {'Maçã': 3.99, 'Laranja': 4.99, 'Limão': 2.99, 'Manga': 1.59}
-
-# popitem: A função popitem é responsável por remover o último par de chave-valor do dicionário
-frutas.popitem()
-print(frutas) # {'Maçã': 3.99, 'Laranja': 4.99, 'Limão': 2.99}
-
-# pop: O pop remove um par de chave-valor pela sua chave
-frutas.pop('Maçã')
-print(frutas) # {'Laranja': 4.99, 'Limão': 2.99}
-
-# get('valor', 'mensagem se não encontrar'): Retorna o valor da chave. Muito útil para evitar erros
-print(frutas.get('Limão', 'Fruta não foi encontrada')) # 2.99
-print(frutas.get('Pêra', 'Fruta não foi encontrada')) # Fruta não foi encontrada
-
-
-# operadores de pertencimento (in e not in): Retornam um boolean dizendo se tal item está presente no dicionário
-print('Laranja' in frutas) # True
-print('Tomate' not in frutas) # True
-
-# clear: Limpa todos os pares chave-valor da lista
-frutas.clear()
 print(frutas)
 
-# Acessando a chave, o valor e item
+# popitem(): remove o último par adicionado
+frutas.popitem()
+print(frutas)
+
+# pop(): remove pela chave
+frutas.pop('Maçã')
+print(frutas)
+
+# get(): acessa valor de forma segura
+print(frutas.get('Limão', 'Fruta não encontrada'))     # 2.99
+print(frutas.get('Pêra', 'Fruta não encontrada'))      # Fruta não encontrada
+
+# in / not in: operadores de verificação
+print('Laranja' in frutas)     # True
+print('Tomate' not in frutas)  # True
+
+# clear(): limpa todo o dicionário
+frutas.clear()
+print(frutas)  # {}
+
+# Acessando chaves, valores e itens de novo:
 compras = {
     'Arroz': 3.45,
     'Feijão': 2.90,
-    'Macarrão': 4.50
-#   chave: valor
+    'Macarrão': 4.50,
+    'Sushi': 1.35
 }
+print(compras.keys())    # dict_keys(['Arroz', 'Feijão', 'Macarrão', 'Sushi'])
+print(compras.values())  # dict_values([3.45, 2.9, 4.5, 1.35])
+print(compras.items())   # dict_items([('Arroz', 3.45), ...])
 
-# chave, valor, item
-# keys: Chaves do dicionário (Identificadores)
-print(compras.keys()) # dict_keys(['Arroz', 'Feijão', 'Macarrão', 'Sushi'])
-
-# values: Valores das chaves
-print(compras.values()) # dict_values([3.45, 2.9, 0.35, 1.35])
-
-# items: São tuplas individuais que contém os pares de chave-valor
-print(compras.items()) # dict_items([('Arroz', 3.45), ('Feijão', 2.9), ('Macarrão', 0.35), ('Sushi', 1.35)])
-
-# Vamos supor que eu tenho um dicionário de alunos e quero ter uma visão geral desse dicionário, como o total de notas, a média de notas e quantos alunos há no dicionário. Vamos ver:
+# Vamos fazer uma análise com notas de alunos 📚
 alunos = {
     'João': 7.90,
     'Mariane': 5.60,
     'Cristopher': 8.55,
     'Lucas': 4.50
-#   nome: nota
 }
-# Queremos o total de notas, a média e quantos alunos há, vamos fazer isso.
-# Primeiramente, para descobrir o total de notas, deveremos utilizar as values e a função sum. Vamos ver como isso ficaria:
+# Total de notas:
 total = sum(alunos.values())
 print(total)
-# A variável total está armazenando a soma dos valores do dicionários alunos, e os valores são as notas.
-# Agora para saber a quantidade de alunos, utilizamos a função len() e dentro dos parênteses as chaves do dicionário. Ficará assim:
-quantidade = len(alunos.keys())
+
+# Número de alunos:
+quantidade = len(alunos)
 print(quantidade)
-# A variável quantidade está armazenando a quantidade de alunos baseado na quantidade de chaves
-# Por fim, para saber a média, apenas dividimos o total das notas pela quantidade de alunos
+
+# Média das notas:
 media = total / quantidade
 print(media)
-# A média está armazenando a divisão do total das notas pela quantidade de alunos
 
-
-# Tópicos avançados
-# Iteração com dicionários
-# É possível iterar sobre cada par de chave-valor de um dicionário. Isso é um assunto mais avançado, porém muito útil. Não vou explicar detalhadamente o que são iterações nesta aula, mas sim na própria aula de iterações com o loop for. Enfim, não se preocupe se não entender o código a seguir. Darei uma breve explicada:
-# Loops for são laços de repetição que podem iterar sobre elementos ou sequências, como listas, strings e dicionários também. Ou seja, eles podem acessar cada elemento individualmente. Tudo que quero te mostrar a seguir é apenas um jeito elegante de imprimir as chaves e os valores de um dicionário. Veja o seguinte código:
-# Considere o seguinte dicionário:
+# Iterando com for:
 produtos = {
     'smartphone': 3500,
     'tablet': 2675,
     'smartwatch': 375
 }
-items = produtos.items()
-
-for chave, valor in items:
+for chave, valor in produtos.items():
     print(chave, valor)
 
-# A saída deste código será:
-"""
-smartphone 3500
-tablet 2675
-smartwatch 375
-"""
-# Isso imprime os itens de maneira mais organizadas.
-
+# Saída:
+# smartphone 3500
+# tablet 2675
+# smartwatch 375
 
 
 

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operadores de Comparação</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/aulas.css">
+    <link rel="shortcut icon" href="assets/logopython.png" type="image/x-icon">
+</head>
+
+<body>
+    <header class="class-header">
+        <h1 style="margin: 0;"><a href="index.html" style="text-decoration: none; color: currentColor;">Curso de
+                Python</a></h1>
+        <span style="font-size: 1.2em; font-weight: bold;">Aula 8 - Operadores de Comparação</span>
+    </header>
+    <div class="container">
+        <main>
+            <h1>Operadores de comparação</h1>
+            <p>Os operadores de comparação utilizam símbolos para comparar expressões. Ao fazer a comparação, o programa
+                retorna um valor booleano (True ou False). Vamos supor que você faça a seguinte comparação entre dois
+                valores: Você se pergunta: "3 é maior que 1?" Então você analisa, e dirá verdadeiro ou falso. É isso que
+                um programa faz, avalia a expressão e retorna verdadeiro (True) ou falso (False). Vamos ver melhor como
+                esses operadores funcionam.</p>
+
+            <h2>Operador Maior Que (&gt;)</h2>
+            <p>Compara se o valor da esquerda é MAIOR que o valor da direita. Vamos ver alguns exemplos:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>maior_que.py</span>
+                </div>
+                <pre class="example-pre"><code>5 > 9 # 5 é maior que 9? False
+4 > 1 # 4 é maior que 1? True
+10 > 0 # 10 é maior que 0? True</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>False<br>True<br>True</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Operador Menor Que (&lt;)</h2>
+            <p>Compara se o valor da esquerda é MENOR que o valor da direita. Veja os exemplos:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>menor_que.py</span>
+                </div>
+                <pre class="example-pre"><code>3 < 10 # 3 é menor que 10? True
+5 < 2 # 5 é menor que 2? False
+8 < 15 # 8 é menor que 15? True</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>True<br>False<br>True</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Operador Maior ou Igual Que (&gt;=)</h2>
+            <p>Compara se o valor da esquerda é MAIOR OU IGUAL que o valor da direita. Exemplos:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>maior_igual.py</span>
+                </div>
+                <pre class="example-pre"><code>5 >= 10 # 5 é maior ou igual a 10? False
+10 >= 10 # 10 é maior ou igual a 10? True
+15 >= 5 # 15 é maior ou igual a 5? True</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>False<br>True<br>True</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Operador Menor ou Igual Que (&lt;=)</h2>
+            <p>Compara se o valor da esquerda é MENOR OU IGUAL que o valor da direita. Vamos ver:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>menor_igual.py</span>
+                </div>
+                <pre class="example-pre"><code>8 <= 10 # 8 é menor ou igual a 10? True
+10 <= 5 # 10 é menor ou igual a 5? False
+4 <= 1 # 4 é menor ou igual a 1? False</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>True<br>False<br>False</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Operador Diferente de (!=)</h2>
+            <p>Compara se o valor da esquerda é DIFERENTE do valor da direita. Em outras palavras, comparam se ambos são
+                diferentes:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>diferente.py</span>
+                </div>
+                <pre class="example-pre"><code>10 != 5 # 10 é diferente de 5? True
+5 != 5 # 5 é diferente de 5? False
+3 != 7 # 3 é diferente de 7? True</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>True<br>False<br>True</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Operador Igual a (==)</h2>
+            <p>Compara se o valor da esquerda é IGUAL ao valor da direita. Em outras palavras, comparam se ambos são
+                iguais:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>igual.py</span>
+                </div>
+                <pre class="example-pre"><code>6 == 7 # 6 é igual a 7? False
+5 == 5 # 5 é igual a 5? True
+10 == 5 # 10 é igual a 5? False</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>False<br>True<br>False</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h1>Operadores lógicos</h1>
+            <p>Unem as expressões condicionais. Por exemplo, você pode unir operadores de comparação. Vamos ver como
+                isso funciona:</p>
+
+            <h2>Operador AND</h2>
+            <p>Compara se a expressão da esquerda e da direita são verdadeiras. Se ambas as expressões forem
+                verdadeiras, então retornará True. Mas, se ao menos uma expressão for falsa, então o programa retornará
+                False.</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>and.py</span>
+                </div>
+                <pre class="example-pre"><code>5 == 5 and 12 > 8 # True and True → True
+12 < 8 and 5 != 3 # False and True → False
+6 > 3 and 8 > 10 # True and False → False</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>True<br>False<br>False</pre>
+                    </div>
+                </div>
+            </div>
+            <p><strong>Resumo:</strong> As duas expressões precisam ser True para retornar True, caso contrário
+                retornará False.</p>
+
+            <h2>Operador OR</h2>
+            <p>Compara se o valor da esquerda e o valor da direita são verdadeiras. Se ambas forem falsas, então
+                retornará False. Mas para retornar True, ao menos uma expressão deve ser True.</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>or.py</span>
+                </div>
+                <pre class="example-pre"><code>7 < 10 or 6 == 6 # True or True → True
+4 == 5 or 9 > 5 # False or True → True
+9 != 9 or 4 < 4 # False or False → False</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>True<br>True<br>False</pre>
+                    </div>
+                </div>
+            </div>
+            <p><strong>Resumo:</strong> Ao menos uma expressão deverá ser True para retornar True. Retornará False
+                quando ambas as expressões forem falsas.</p>
+
+            <h2>Operador NOT</h2>
+            <p>O NOT é o operador que nega um booleano, ou seja, você utilizar uma negação num True, ele será alterado
+                para False e vice-versa.</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>not.py</span>
+                </div>
+                <pre class="example-pre"><code>not True # False
+not False # True
+not 12 > 5 # False (era True, mas foi invertido)
+not 5 < 1 # True (era False, mas foi invertido)</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>False<br>True<br>False<br>True</pre>
+                    </div>
+                </div>
+            </div>
+            <p><strong>Resumo:</strong> Inverte um booleano (True vira False e False vira True).</p>
+
+            <div class="button-container">
+                <button id="left-button" class="nav-button" onclick="location.href='aula007.html'">Aula
+                    anterior</button>
+                <button id="center-button" class="nav-button" onclick="location.href='bot.html'">Área de Testes</button>
+                <button id="right-button" class="nav-button" onclick="location.href='aula009.html'">Próxima
+                    Aula</button>
+            </div>
+        </main>
+    </div>
+    <button id="toggle-theme">🌙</button>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>
