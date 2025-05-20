@@ -1,12 +1,4 @@
 "# TERMOS INICIAIS"
-
-
-
-
-
-
-
-
 # As strings não são apenas tipos de dados. É possível fazer inúmeras coisas com as strings, ela possui diversas funções, o que deixa as strings mais poderosas e com mais funcionalidades. Vamos ver o que é possível fazer com elas?
 
 # Indexação: Acessando caracteres ou sequências de strings
@@ -770,6 +762,76 @@ print(fim) # Morcego
 # Agora como a ordem foi alterada, a variável inicio possui os primeiros elementos da lista, e o fim possui o último elemento da lista, que é o Morcego.
 
 
+#   -   -   -   -   Tuplas  -   -   -   -   -
+
+
+
+
+#   -   -   -   -   -   -   Sets  -   -   -   -   -   -   -   -   -   -   
+# Sets são sequências desordenadas(Não possuem uma ordem especifica, a ordem de seus elementos é aleatória) e são muito úteis em situações específicas. Os sets, diferentemente das listas, possuem chaves, e cada elemento também é separado por vírgulas. Os sets não aceitam valores repetidos, isso é muito bom para eliminar todos os valores de uma lista comum, por exemplo. Vamos ver um exemplo:
+lista = ['a', 'a', 'b', 'a', 'c', 'a', 'b', 'b', 'b', 'c']
+lista = set(lista)
+lista = list(lista)
+print(lista) # ['a', 'b', 'c']
+
+# Vamos mergulhar no mundo dos sets!
+# Vamos supor que queremos fazer um bolo. Alguém muito inexperiente em culinária separou os igredientes, veja:
+igredientes = {'Farinha', 'Trigo', 'Madeira', 'Alface'}
+# índices          0         1         2          3
+print(igredientes)
+
+# Você vê os igrediente e se pergunta: "Por que Madeira e Alface estão entre os igredientes?" Você precisa achar algum jeito de remove-los! Por sorte existe a função remove, vamos ver!
+
+# a função remove é responsável por remover algum elemento dentro de um set. Basta dizer o nome do elemento e ele será removido. Vamos remover os igredientes que não fazem sentido:
+# sintaxe: set.remove('elemento')
+igredientes.remove('Madeira')
+print(igredientes) # {'Farinha', 'Alface', 'Trigo'}
+# Isso! Removemos a Madeira! Agora vamos remover o Alface! 
+igredientes.remove('Alface')
+print(igredientes) # {'Farinha', 'Trigo'}
+
+# Ok, o bolo está com apenas dois igredientes, precisamos de mais! Vamos adicionar o fermento!
+# Podemos adicionar um elemento com a função add. Ficaria assim:
+igredientes.add('Fermento')
+print(igredientes) # {'Trigo', 'Farinha', 'Fermento'}
+# Ainda faltam igredientes, vamos adiconar mais!
+igredientes.add('Açucar')
+igredientes.add('Ovos')
+igredientes.add('Leite')
+igredientes.add('Manteiga')
+print(igredientes) # {'Açucar', 'Farinha', 'Fermento', 'Ovos', 'Trigo', 'Leite', 'Manteiga'}
+# Ah, agora sim! Já temos todos os igredientes!
+
+
+# Imagine agora temos um set que possui algumas frutas dentro dele:
+frutas = {'Maçã', 'João', 'Banana', 'Pedro', 'Vinicius', 'Abacaxi', 'Limão', 'Felipe', 'Macarrão', 'Peixes'}
+# Mas espera. Essa lista está cheia de coisas que não são frutas! Podemos remover cada elemento um por um, mas isso seria trabalhoso. Uma maneira mais fácil é limpar a lista toda de uma vez e utilizar a função add para adicionar novas frutas posteriormente.
+# Limpando a lista
+# Com os sets é possível limpar a lista utilizando a função clear:
+# sintaxe: set.clear()
+frutas.clear()
+print(frutas) # set() Isso mostra que o set está vazio e não possui nenhum elemento. Ótimo, agora vamos adicionar os elementos na lista
+
+frutas.add('Maçã')
+frutas.add('Banana')
+frutas.add('Limão')
+frutas.add('Abacaxi')
+print(frutas) # {'Banana', 'Maçã', 'Limão'}
+
+# Para ter certeza, vamos verificar se os elementos estão no set:
+print('Maçã' in frutas) # True
+print('Banana' in frutas) # True
+# E também vamos verificar se os elementos antigos não estão mais no set:
+print('Vinicius' not in frutas) # True
+print('Pedro' not in frutas) # True
+
+# Perfeito, só faltou verificar quantas frutas nosso set possui. Vamos fazer isso utilizando a função len
+quantidade = len(frutas)
+print(quantidade) # 4
+
+# Ótimo, isso mostra que os sets são muito poderosos e apresentam muitas funcionalidades!
+
+#   -   -   -   -   -   -   -   Dicionários -   -   -   -   -   -   -   -   -   -   -   
 # Os dicionários apresentam pares de chave-valor, isso é muito útil quando você precisa de uma forma mais organizada de criar dados mais significativos pelo seu programa. Dicionários também são mutáveis, o que significa que podem ser usados funções implicitamente para alterar os pares chave-valor do dicionário. Chaves serão os identificadores dos valores (como um índice que identifica os elementos em uma lista)
 # Vamos ver alguns exemplos:
 
@@ -1184,6 +1246,199 @@ if pet:
 else:
     print('Não possui um pet')
 
+
+
+
+
+# -   -   -   -   -   -   - Funções -   -   -   -   -   -   -   -   -
+# FUNÇÕES
+# Imagine que você tenha diversos blocos de códigos repetidos ao longo do programa. Isso é muito ruim pois utiliza diversas linhas de código atoa, mas por outro lado é uma bela oportunidade para as funções entrarem no caminho. Funções basicamente são blocos de códigos que são gerenciáveis e tem uma alta facilidade de reúso, evitando a repetição de códigos. Vamos ver como isso funciona:
+# Sintaxe básica
+# def nome_da_funcao(argumentos/parâmetros opcionais):
+#     <bloco de codigos>
+# nome_da_funcao(argumentos/parâmetros opcionais)
+# Lembrete: Argumentos e parâmetros são usados para se referirem a mesma coisa.
+
+
+# As funções possuem 3 partes principais:
+# - Nome da função: É o que identificará a função
+# - Argumentos: São as variáveis da função que serão retornadas e são opcionais.
+# - Chamada da função: É a saída da função. Quando é chamada uma função, executará o que estiver dentro da função, ou seja, o bloco de código dentro dela.
+
+# Vamos esclarecer melhor isso:
+# Primeiro utilizamos a palavra-chave def, seguido do nome que você quiser atribuir a função e por fim utiliza-se parênteses e os dois pontos (:). Em seguida, dentro do bloco de código indentado que pertence a função, é colocado o que você quiser para quando executar a função, exibir o que está lá dentro. Por fim, fora do bloco de comando da função, é chamada a função, com o nome da função e os parênteses.
+def prazer(): # Utiliza-se a palavra-chave def, seguido do nome da função e parênteses.
+    print('Olá, Mundo!') # É imprimido 'Olá, Mundo' na tela, mas só será executado quando a função é chamada.
+prazer() # Para chamar a função, basta escrever o nome da função seguida por parênteses.
+# saída: Olá, Mundo!
+
+# Podemos executar essa função quantas vezes quisermos, basta chamá-las quantas vezes precisar. Cada chamada de função executará o bloco de comando dentro da função.
+prazer() # saída: Olá, Mundo!
+prazer() # saída: Olá, Mundo!
+prazer() # saída: Olá, Mundo!
+
+
+
+# Existem dois tipos de funções: as funções sem argumentos/parâmetros (as que não possuem nada dentro dos parênteses) e as funções com argumentos/parâmetros (que possuem uma variável dentro dos seus parênteses)
+# Vamos ver novamente uma função sem argumentos:
+def oi():
+    print("Oi! prazer em te conhecer!")
+oi() # saída: Oi! prazer em te conhecer!
+
+def clima():
+    print("O clima está chuvoso")
+clima() # saída: O clima está chuvoso
+
+
+# As funções podem imprimir quantos blocos de código forem necessários, não tem limites. Apenas coloque o que deseja que seja impresso dentro do bloco de código da função.
+def restaurante():
+    print("O garçom está a caminho")
+    print("O garçom chegou")
+    print("Comemos a pizza")
+restaurante() # saída:
+"""
+"O garçom está a caminho"
+"O garçom chegou"
+"Comemos a pizza"
+
+"""
+
+# Agora vamos ver uma função com argumentos/parâmetros. A única diferença é que ela possui algo dentro dos seus parênteses.
+def prazer(nome): # O argumento da função é nome
+    print(f'Oi, {nome}!') # Imprimindo 'Oi, {e o nome da pessoa}'
+prazer('Gustavo') # Na chamada da função é especificado o nome da pessoa
+prazer('Guilherme')
+prazer('Nicolas')
+# saída: Oi, Gustavo
+# saída: Oi, Guilherme
+# saída: Oi, Nicolas
+
+
+# Mais um exemplo utilizando funções com argumentos:
+def exibe_lugar(lugar):
+    print(f'Você está em {lugar}')
+exibe_lugar('Casa do Tio Bento')
+# Primeiramente criamos o nome da função, seu nome é 'exibe_lugar' e tem como parâmetro a variável 'lugar'. Em seguida o bloco de código imprime 'Você está em {e o nome do lugar}'. Chamamos a função e colocamos o parâmetro para 'Casa do Tio Bento'. Então após executar o programa, retornará: 'Você está em Casa Do Tio Bento'
+
+
+# Mais um exemplo:
+def imprime_dobro(lista):
+    for elemento in lista:
+        print(elemento * 2)
+lista = [6, 7, 12, 4, 8]
+imprime_dobro(lista)
+
+# Esse código já é um pouco mais complexo, mas vamos entender: Criamos uma função e seu nome é imprime_dobro, ela possui um argumento (lista) e dentro de seu bloco de código, é utilizado uma iteração para cada elemento da lista. Esses elementos individuais são multiplicados por 2, e logo após isso criamos uma lista e atribuímos alguns valores a ela. Logo, chamamos a função com o nome da lista e o programa automaticamente duplicará cada elemento. saída:
+"""
+12
+14
+24
+8
+16
+"""
+
+
+# Tópicos Avançados
+# Valores padrão
+# Imagine que você crie uma função que possui argumentos. Se você de alguma maneira esquecer de responder ao argumento na chamada de função, isso resultará em um erro. Veja um exemplo:
+def informacoes(nome, idade):
+    print(f"Seu nome é {nome} e você tem {idade} anos")
+# informacoes() # Isso resultaria em um erro pois não foi preenchido aos argumentos da função.
+informacoes('Lucas', 25) # Isso executaria o programa normalmente pois você preencheu o argumento que a função pedia.
+
+# Sabendo disso, é possível criar argumentos pre-preenchidos para evitar erros. Vamos entender isso:
+def informacoes(nome='usuario', idade=0):
+    print(f"Seu nome é {nome} e você tem {idade} anos")
+# Ok, vamos entender. Repare nos argumentos da função, dentro dos parênteses. Percebeu que já possui argumentos pre-definidos? nome está pre-definido como 'usuario' e idade está pre-definida como '0'. Então se você de repente esquecer de preencher aos argumentos na chamada da função, por padrão aqueles argumentos pre-definidos serão exibidos, veja só:
+informacoes() # Seu nome é usuario e você tem 0 anos
+# Mas também ainda é possível preencher seus próprios argumentos:
+informacoes('Jorge', 19) # Seu nome é Jorge e você tem 19 anos
+
+# vamos ver mais algum exemplo:
+def info(continente='América do Norte', pais='Estados Unidos'):
+    print(f'Você está na {continente} em {pais}')
+info() # Você está na América do Norte em Estados Unidos^
+info('América do Sul', 'Brasil')
+
+
+# Return
+# Como vimos, os blocos de código podem ter qualquer coisa dentro do seu bloco de código, porém utilizamos apenas os comandos print(). Mas existe um comando específico apenas para funções, o return. Pelo seu próprio nome, ele retorna algo. Quando usamos a função print, estamos apenas imprimindo na tela nossa mensagem. Porém a função return retorna um argumento ou qualquer outra coisa que desejar. Vamos ver com um exemplo simples:
+def mensagem(nome):
+    texto = f'Seu nome é {nome}'
+    return texto
+print(mensagem('João')) # Seu nome é João
+# Para chamar uma função com o return, devemos utilizar o print agora.
+# Vamos entender: Criamos a função mensagem com o argumento de nome, dentro do seu bloco de código criamos uma variável texto e atribuímos o seu valor para receber o nome que será digitado na chamada de função, e logo na próxima linha utilizamos o return para retornar aquele texto. Na chamada de função, primeiro utilizamos print() e dentro dos parênteses chamamos a função, definindo o nome para 'João'. A saída deste código é 'Seu nome é João'
+
+# E é apenas isso. Apesar de ser simples, é recomendável que toda função retorne algo. Elas podem retornar textos também, não apenas argumentos. Veja o exemplo a seguir:
+def retorna_texto():
+    return 'Um exemplo de texto'
+print(retorna_texto()) # Um exemplo de texto
+
+
+
+# ARGS E KWARGS
+# Bom, evoluindo mais em questões sobre as funções, vamos ver sobre args e kwargs. Elas servem especialmente quando você não sabe exatamente quantos argumentos a função terá. Como vimos, as funções tem seus próprios argumentos, ou seja, se definimos 2 argumentos a uma função, então ela terá 2 argumentos, nem mais nem menos. Mas isso muda ao falar sobre args e kwargs, pois isso te permite declarar na chamada da função quantos argumentos você quiser. Vamos ver como isso funciona
+# *args
+# Permite que uma função receba múltiplos argumentos, muito útil quando não se sabe a quantidade de argumentos que será necessário. Vamos voltar um pouco nas funções normais que recebem um argumento:
+def imprime_nome(nome):
+    print(f'Seu nome é {nome}')
+imprime_nome('Lucas') # saída: Seu nome é Lucas
+# Como vimos acima, a função recebeu um argumento, e quando chamamos a função, especificamos o valor do argumento, que era Lucas. Mas imagine só se houvesse uma função que recebe uma fila. Como você sabe, uma fila não tem um número exato de pessoas, pode ser uma fila de 3 pessoas até uma fila de 50 mil, simplesmente não existe um número exato. É nesse momento em que entram as args, quando você não sabe quantos argumentos será necessário. Vamos ver um exemplo:
+def fila(*nomes):
+    print(f'Está agora na fila: {nomes}')
+fila('Maria', 'Pedro', 'Lucas', 'Ricardo', 'João', 'Paulo', 'Emanuel') # Está agora na fila: ('Maria', 'Pedro', 'Lucas', 'Ricardo', 'João', 'Paulo', 'Emanuel')
+# !Lembre-se de que os args sempre retornam uma tupla
+# Vamos entender o código. Criamos uma função nomeada de fila. Essa função tem o argumento de nomes, e note que há um asterisco neste argumento, indicando que é uma arg. No bloco de código da função é exibida a mensagem 'Está agora na fila {nome da pessoa}' e note que dentro das chaves não é colocado '*nomes' com asterisco, apenas nomes. Na chamada da função, usamos o nome da função e dentro dos parênteses declaramos 7 nomes de pessoas que estão na fila, ou seja, os agrs permitem que você especifique quantos argumentos desejar, diferentemente da função normal que segue um limite de argumentos, nada mais e nada menos que aqueles argumentos que precisam ser especificados.
+# Vamos ver mais um exemplo:
+
+def linguas(*idiomas):
+    print(f'Você sabe falar {idiomas}')
+linguas('Inglês', 'Espanhol', 'Coreano')
+# A regra segue a mesma aqui, declaramos a função linguas que recebe como argumento args de idiomas, imprimindo 'Você sabe falar {e as linguas}', seguida da chamada da função, que declaramos 3 argumentos: Inglês, Espanhol e Coreano. Então a saída desta função será:
+# Você sabe falar ('Inglês', 'Espanhol', 'Coreano')
+# Entendeu bem as *args? Então vamos para as **kwargs!
+
+
+# As kwargs são muito parecidas com as *args, porém a única diferença é que as kwargs possuem dois asteriscos e seus argumentos na chamada de função são diferentes. Vamos ver a um exemplo:
+def loja(**produtos):
+    print(f'A loja possui {produtos}')
+loja(iphone = 3400, tablet = 2100, tv = 4500)
+# Você conseguiu notar alguma coisa diferente, comparando com as args? Vamos lá, a primeira coisa foram os dois asteriscos no argumento produtos, indicando que isso é uma kwarg. Na chamada de função, as coisas são um pouco diferentes. Você deve especificar a chave e o valor daquele argumento que está criando. Nesse caso, a nossa chave é o nome do produto, e o valor dessa chave é o valor do produto. iphone = 3400 indica que a chave é 'iphone' e '3400' é o valor. Isso te lembra algo?... Chave... Valor...? As args retornam uma tupla, e as kwargs retornam um dicionário!
+# Vamos ver mais um exemplo:
+
+
+def informacoes(**dados):
+    print(dados)
+informacoes(Lucas = 12, Pedro = 56,  Maria = 35,  João = 16)
+# Agora criamos um dicionário, onde o primeiro argumento é o nome da pessoa seguido da idade dela.
+
+
+# ESCOPO
+# Quando você declara uma variável em qualquer lugar que não seja dentro do bloco de código de uma função, então essa variável é global. Isso significa que essa variável pode ser utilizada aonde quer que seja, dentro de qualquer estrutura, como estruturas condicionais, loops, e até mesmo nas próprias funções! Porém, ao declarar uma variável DENTRO do bloco de código de uma função, então essa variável não passa mais ser uma variável global, mas sim uma variável local. Variáveis locais são todas as variáveis que são declaradas DENTRO de funções. Ok, mas por que isso importa? Há uma grande diferença entre variáveis de escopo global e local, e isso pode causar uma grande confusão no programa. Primeiramente, vamos ver um exemplo de uma variável global e uma variável local:
+# Variável global
+variavel = 'global'
+
+# variavel local
+def funcao():
+    variavel = 'local'
+
+# Ok, mas qual o problema disso? Vamos ver um exemplo muito confuso para você entender qual o perigo das variáveis locais:
+variavel = 'global'
+
+def funcao():
+    variavel = 'local'
+    return variavel
+print(funcao()) # local
+print(variavel) # global
+
+# Vamos entender esse código. Primeiro declaramos uma variável com o nome de variavel e atribuímos seu valor a 'global', logo após isso criamos uma função, dentro dela CRIAMOS outra variável, com o mesmo nome, porém agora atribuímos o seu valor para 'local', e então utilizamos o return para retornar a variável dentro da função. Então utilizamos o print() e dentro de seus parênteses chamamos a função, que por sua vez retornou o valor da variável dentro da função, que era 'local', o que imprimiu 'local'. E depois disso utilizamos o print, e imprimimos o valor da variável global, que estava fora da função, e retornou 'global'. Isso é muito perigoso, pois pode causar muitos problemas no seu programa.
+
+
+
+
+
+
 # Operador ternário
 print('Possui um pet' if pet else 'Não possui um pet')
 # O código se lê assim:
@@ -1201,3 +1456,231 @@ print('Jovem' if idade < 18 else 'Adulto')
 luz = True
 ternario = 'luz acessa' if luz else 'luz apagada'
 print(ternario) # 'luz acessa'
+
+
+
+
+
+# - -   -   -   -   -   -   Arquivos    -   -   -   -   -   -   
+# Arquivos: O Python permite que você leia e modifique o conteúdo de arquivos! Lembrando que nesse curso, vamos focar nos arquivos de texto, aqueles com a extensão '.txt'. Vamos lá. Imagine que você precise ler o conteúdo de um arquivo ou até alterar ele.
+# Que tal fazer isso com Python? É simples e poderoso!
+
+# Primeira coisa: pra mexer em um arquivo, a gente precisa abrir ele, certo? Então vamos aprender a abrir arquivos com Python.
+
+# A sintaxe básica pra isso é:
+# open(nome_do_arquivo, modo, encoding)
+
+# Agora vamos entender o que cada parte dessa função faz:
+# - nome_do_arquivo: o nome do arquivo que você quer acessar. Simples assim.
+# - modo: o que você vai fazer com o arquivo? Ler? Escrever? Adicionar mais conteúdo?
+# - encoding: define como o texto será codificado. Usamos 'utf-8' pra aceitar acentos, emojis e caracteres especiais.
+
+# Vamos ver os modos mais comuns:
+"""
+w  - write: escreve no arquivo, apagando tudo o que tinha antes (cuidado!)
+r  - read: só lê o conteúdo do arquivo
+a  - append: adiciona conteúdo no final, sem apagar o que já tinha
+a+ - append and read: adiciona conteúdo e também permite leitura
+"""
+
+# Vamos ver isso funcionando na prática!
+
+# Primeiro, criamos uma variável chamada 'arquivo', e abrimos um arquivo pra escrita ('w'):
+arquivo = open('arquivo.txt', 'w', encoding='utf-8')
+
+# Aqui a gente criou (ou sobrescreveu) um arquivo chamado 'arquivo.txt'.
+# Estamos usando o modo 'w', que vai apagar qualquer conteúdo antigo e escrever do zero.
+# Também usamos encoding='utf-8' pra garantir que acentuação e caracteres especiais funcionem.
+
+# Agora vamos escrever alguma coisa nesse arquivo:
+arquivo.write('Escrevendo coisas aqui')
+
+# Pronto! Quando esse código é executado, ele cria o arquivo (se não existir) e escreve exatamente o que colocamos no .write(). Fácil, né?
+
+# Agora vamos ver como a gente lê o conteúdo de um arquivo.
+# Pra isso, usamos o modo 'r':
+arquivo = open('arquivo.txt', 'r', encoding='utf-8')
+print(arquivo.read())  # saída esperada: Escrevendo coisas aqui
+
+# Legal! Agora vamos conhecer o modo 'a', que é usado pra adicionar conteúdo sem apagar o que já tinha:
+arquivo = open('arquivo.txt', 'a', encoding='utf-8')
+arquivo.write('Escrevendo coisas aqui novamente!')
+
+# Vamos ler o conteúdo de novo e ver como ficou:
+arquivo = open('arquivo.txt', 'r', encoding='utf-8')
+print(arquivo.read())
+
+# saída:
+"""
+Escrevendo coisas aqui
+Escrevendo coisas aquiEscrevendo coisas aqui novamente!
+"""
+
+# Repara que o texto ficou tudo grudado. Isso acontece porque o write() escreve exatamente como a gente manda, e não coloca uma quebra de linha automática. Porém a solução é simples: apenas usar '\n' pra pular pra próxima linha.
+
+# Vamos corrigir isso:
+arquivo = open('arquivo.txt', 'a', encoding='utf-8')
+arquivo.write('\nEscrevendo coisas aqui novamente!')
+
+# Agora sim, tudo organizadinho!
+arquivo = open('arquivo.txt', 'r', encoding='utf-8')
+print(arquivo.read())
+
+# saída:
+"""
+Escrevendo coisas aqui
+Escrevendo coisas aqui novamente!
+"""
+
+# Legal demais, né? Agora deixa eu te mostrar um truque profissional: Ao invés de abrir e fechar arquivos manualmente, dá pra usar o 'with'. É um método mais seguro para abrir arquivos e modificá-los. Vamos ver:
+
+# Veja só como usar:
+with open('arquivo.txt', 'a', encoding='utf-8') as arquivo:
+    arquivo.write('\nMais uma linha adicionada com segurança!')
+
+# Aqui usamos o 'with open(...) as arquivo', o que significa que ele automaticamente fecha o arquivo, evitando desastres posteriores.
+
+
+
+
+
+
+
+
+
+# Exceções e Tratamento de Erros
+# Exceções são essenciais num programa para mostrar uma mensagem menos assustadora, mas não só por causa disso, os erros também são um péssimo vilão, uma vez que não foram identificados, o programa todo se quebra e o usuário fica perdido. As exceções tratam erros gerais, mas você pode especificar qual erro deseja tratar.
+# # sintaxe básica:
+# try:
+#     <bloco de código>
+# except:
+#     <mensagem de erro>
+# Primeiramente utilizamos o try, e dentro de seu bloco de códigos inserimos o código que é suspeito de falhas. Logo em seguida, fora do bloco de códigos do try, utilizamos o except, e no bloco de código do except colocamos os códigos que serão exibidos caso ocorra algum erro.
+
+# Vamos ver o seguinte exemplo em que tentamos dividir uma STRING por um INT:
+try:
+    divisao = 3 / "string"
+    print(divisao) # Isso sempre dará um erro porque não é possível dividir um inteiro por uma string.
+except:
+    print("Ocorreu um erro!")
+
+# saída: Ocorreu um erro!
+
+
+# É muito recomendado que se utilize tratamento de erros em todo programa que você for criar, especialmente quando é utilizado a interação com o usuário (os inputs), mesmo que você não suspeite que aconteça erros. Vamos ver um exemplo geral:
+try:
+    n1 = int(input('Digite o primeiro número: '))
+    n2 = int(input('Digite o segundo número: '))
+    print(f'A soma entre {n1} e {n2} é {n1 + n2}')
+except:
+    print('Ops! Não foi possível calcular a soma entre os dois números!')
+
+# Aqui tentamos realizar a soma entre n1 e n2, mas surge uma pergunta: "Como que isso pode dar um erro?". Uma das respostas é se o usuário digitar um número decimal (float), isso causaria um erro porque declaramos n1 e n2 como inteiros, e não decimais. Outra possível falha é caso o usuário não digitasse nada e apenas apertasse ENTER, isso também seria um erro pois ENTER é um valor nulo, não um inteiro.
+
+
+
+
+
+
+# Atenção! Para ter acesso aos módulos, você deve ter um editor de código (Recomendo o VSCode) instalado e o python também! Há o tutorial de como fazer isso na primeira aula do curso!
+# Python por si só já possui diversas funcionalidades. Mas imagina só se tivessemos uma chave para descbloquear novas funcionalidades, tornando ele ainda mais funcional e divertido? Então eu gostaria de te apresentar os MÓDULOS! Os módulos são tipo um cofre, aonde você mesmo pode abrir esses cofres com chaves, ou melhor, comandos!
+# Um comando essencial para utilizar módulos é o 'pip install'. Você utiliza esse comando no seu prompt de comandos ou no terminal do seu editor de códigos. Vamos utilizar o prompt de comandos.
+# [Aqui vai os comandos aí bla bla bla e as fotos]
+# Ok, depois de ter feito isso, vamos lá!
+
+# O módulo random
+# Imagine brincar de adivinhar o número, mas quem escolher o número é o seu computador e quem faz os chutes é você?? Hah, com o módulo random isso é muito possível e simples fácil de fazer!
+# random é um módulo do python que permite que o próprio computador possa escolher números, letras ou até elementos de uma lista! Vamos ver como funciona o random!
+# Imagine o seguinte: Você dizer ao computador para escolher um número entre 1 a 100, então vamos ver como fazer isso agora!
+# Primeiro importamos o módulo random, basta digitar import random
+import random
+# A seguir utilizamos o comando random.radint(inicio, fim), onde inicio é o número que desejamos que o computador comece a escolher, e o número fim é o número que desejamos que o computador termine de escolher. Como queremos que ele escolha de um número de 1 a 100, então ficará assim:
+escolha = random.randint(1, 101)
+print(escolha) # 92
+
+# Repare que dentro dos parênteses de randint, o número começa do 1 e ter,ina até 101, nesse caso na verdade termina em 100, pois o término é sempre subtraído em 1. Mas tirando isso, é super fácil de entender!
+
+# Ok, agora vamos supor que você tenha uma lista, e queira que o computador escolha um elemento dessa lista. Você pode fazer isso utilizando o random.choice(lista). Vamos ver num exemplo:
+alimentos = ['Arroz', 'Macarrão', 'Strogonoff']
+elemento = random.choice(alimentos)
+print(elemento)
+
+# Pronto, simplesmente isso!
+
+# Agora que tal criar um mini joguinho em que você tenta acertar o número aleatório que o programa criar?
+# Vamos criar um programa onde seu objetivo é acertar o número que o computador acertar:
+import random
+numero = random.randint(1, 101)
+while True:
+    palpite = int(input("Qual é o seu palpite? "))
+    if palpite > 101 or palpite < 0:
+        print('Por favor, digite um número entre 1 a 100!')
+    elif palpite > numero:
+        print('Chute alto!')
+    elif palpite < numero:
+        print('Chute baixo!')
+    elif palpite == numero:
+        print('Você acertou!')
+        break
+# Vamos entender: Primeiro importamos o módulo random, depois criamos a variável numero, que recebe um número aleatório entre 1 a 100. Logo em seguida criamos um loop while True, e perguntamos o palpite para o usuário. O programa avalia se o palpite é maior que 101 ou menor que 0 (exceções) e depois verifica se é maior ou menor que o número. A última condição verifica se o palpite é igual ao número aleatório gerado, se for, imprime na tela 'Você acertou' e quebra o loop para não ser executado eternamente.
+
+# Datetime
+# Já pensou em aplicar datas e horas no seu programa? É totalmente possível fazer isso utilizando o datetime, uma biblioteca do python que te permite trabalhar com horas e datas, vamos nessa?
+# Antes de tudo, você deve ir no seu terminal, ou no seu prompt de comandos, digitar 'python', teclar ENTER e em seguida digitar 'pip install datetime'
+# A primeira coisa que se deve fazer é importar o datetime, deste jeito:
+import datetime
+# Pronto, após isso podemos brincar com as datas e as horas!
+# Primeiramente vamos ver como acessar o ano, o mes e o dia:
+ano = datetime.datetime.now().year
+mes = datetime.datetime.now().month
+dia = datetime.datetime.now().day
+# Criamos uma variável ano e utilizando as funcionalidades do datetime, atribuímos o seu valor para o ano atual. Fizemos a mesma coisa para o mês e o dia. Isso segue um padrão: datetime.datetime.now() e logo após o now utilizamos a função que queremos em inglês, por exemplo, dia -> day; mês -> month; ano -> year
+
+# Vamos acessar também a hora, o minuto, o segundo e até o microssegundo!
+hora = datetime.datetime.now().hour
+minuto = datetime.datetime.now().minute
+segundo = datetime.datetime.now().second
+microsegundo = datetime.datetime.now().microsecond
+# Novamente segue o mesmo padrão anteriormente já dito. Se você já sabe ano, mês, dia, hora, minuto, segundo e microssegundo em inglês, então pode facilmente entender o conceito de datas e horas utilizando o datetime. 
+# Que tal criarmos nossa própria data?
+# Utilizando o datetime.datetime(ano, mês, dia) podemos criar nossas próprias datas. Vamos ver um exemplo:
+# datetime: Ano, mês, dia {opcional horas, minutos, segundos, microssegundos}
+data = datetime.datetime(2025, 5, 4)
+print(data) # 2025-05-04 00:00:00
+# Não especificamos as horas, mins, segs e microsegs, vamos fazer isso:
+data = datetime.datetime(2025, 5, 4, 15, 30, 00)
+print(data) # 2025-05-04 15:30:00
+
+# Agora vamos supor que queremos apenas as horas, mins e segs. Podemos criar isso utilizando o datetime.time(horas, minutos, segundos, microssegundos)
+# time: horas, minutos, segundos, microssegundos
+time = datetime.time(12, 30, 00)
+print(time) # 12:30:00
+
+
+# Também é possível utilizar matemática com datas! Vamos ver como isso funciona:
+# Vamos supor que vamos ao cinema, e o cinema fecha daqui 15 minutos, considerando que agora são 13:30.
+agora = datetime.datetime(2025, 5, 17, 13, 30, 00)
+cinema = datetime.datetime(2025, 5, 17, 13, 45, 00)
+print(cinema - agora) # 0:15:00
+
+# Podemos fazer cálculos envolvendo anos, meses, dias, enfim, qualquer função.
+amanha = datetime.datetime.now().day + 1
+print(amanha)
+ano_posterior = datetime.datetime.now().year + 1
+print(ano_posterior)
+
+
+# Criando os seus próprios módulos
+# Imagina só agora você comandando seus próprios módulos? Vamos ver isso agora!
+# [Blá blá blá prints e dezenas de prints]
+# Primeiramente, vamos criar uma pasta nomeada de 'modulos'
+# Depois, dentro desta pasta, criamos dois arquivos. O primeiro arquivo será o 'main.py' e depois criaremos mais um, o 'modulo.py'. Dentro do modulo.py, vamos criar uma função:
+def prazer():
+    return f'Olá, prazer em te conhecer!'
+print(prazer())
+
+# Ok, agora vamos ir no 'main.py' e utilizar o seguinte comando:
+# import main
+# Vamos executar o código
+# saída:
+# Olá, prazer em te conhecer!

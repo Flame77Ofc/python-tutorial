@@ -754,10 +754,7 @@ sys.stderr = sys.stdout
         toggleButton.addEventListener('click', toggleTheme);
 
         document.addEventListener('keydown', (e) => {
-            if (e.ctrlKey && e.key === 'Enter') {
-                e.preventDefault();
-                executarCodigo();
-            } else if (e.ctrlKey && e.key === 's') {
+            if (e.ctrlKey && e.key === 's') {
                 e.preventDefault();
                 salvarCodigo();
             } else if (e.ctrlKey && e.key === 'o') {
@@ -774,7 +771,6 @@ sys.stderr = sys.stdout
                 copyCode();
             }
         });
-
         iniciar();
     </script>
 </body>
