@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulação de Arquivos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/aulas.css">
+    <link rel="shortcut icon" href="assets/logopython.png" type="image/x-icon">
+</head>
+
+<body>
+    <header class="class-header">
+        <h1 style="margin: 0;"><a href="index.html" style="text-decoration: none; color: currentColor;">Curso de
+                Python</a></h1>
+        <span style="font-size: 1.2em; font-weight: bold;">Aula 17 - Manipulação de Arquivos</span>
+    </header>
+    <div class="container">
+        <main>
+            <h1>Manipulação de Arquivos</h1>
+            <p>O Python permite que você leia e modifique o conteúdo de arquivos! Lembrando que nessa aula vamos falar
+                apenas de arquivos de texto, aqueles com a extensão <code>.txt</code>. Vamos lá. Imagine que você
+                precise ler o conteúdo de um arquivo ou até alterar ele. Que tal fazer isso com Python? É simples e
+                poderoso!</p>
+
+            <h2>Abrindo Arquivos</h2>
+            <p>Primeira coisa: pra mexer em um arquivo, a gente precisa abrir ele, certo? Então vamos aprender a abrir
+                arquivos com Python.</p>
+            <p>A sintaxe básica pra isso é:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>sintaxe_open.py</span>
+                </div>
+                <pre class="example-pre"><code>open(nome_do_arquivo, modo, encoding)</code></pre>
+            </div>
+            <p>Agora vamos entender o que cada parte dessa função faz:</p>
+            <ul>
+                <li><strong>nome_do_arquivo</strong>: o nome do arquivo que você quer acessar. Simples assim.</li>
+                <li><strong>modo</strong>: o que você vai fazer com o arquivo? Ler? Escrever? Adicionar mais conteúdo?
+                </li>
+                <li><strong>encoding</strong>: define como o texto será codificado. Usamos <code>'utf-8'</code> pra
+                    aceitar acentos, emojis e caracteres especiais.</li>
+            </ul>
+            <p>Vamos ver os modos mais comuns:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>modos_arquivo.py</span>
+                </div>
+                <pre class="example-pre"><code>w - write: escreve no arquivo, apagando tudo o que tinha antes (cuidado!)
+r - read: só lê o conteúdo do arquivo
+a - append: adiciona conteúdo no final, sem apagar o que já tinha
+a+ - append and read: adiciona conteúdo e também permite leitura</code></pre>
+            </div>
+
+            <h2>Exemplos Práticos</h2>
+            <h3>Exemplo 1: Escrevendo em um Arquivo</h3>
+            <p>Primeiro, criamos uma variável chamada <code>arquivo</code>, e abrimos um arquivo pra escrita
+                (<code>'w'</code>):</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>escrever_arquivo.py</span>
+                </div>
+                <pre class="example-pre"><code>arquivo = open('arquivo.txt', 'w', encoding='utf-8')
+arquivo.write('Escrevendo coisas aqui')</code></pre>
+            </div>
+            <p>Aqui a gente criou (ou sobrescreveu) um arquivo chamado <code>arquivo.txt</code>. Estamos usando o modo
+                <code>'w'</code>, que vai apagar qualquer conteúdo antigo e escrever do zero. Também usamos
+                <code>encoding='utf-8'</code> pra garantir que acentuação e caracteres especiais funcionem. Quando esse
+                código é executado, ele cria o arquivo (se não existir) e escreve exatamente o que colocamos no
+                <code>.write()</code>.
+            </p>
+
+            <h3>Exemplo 2: Lendo um Arquivo</h3>
+            <p>Agora vamos ver como a gente lê o conteúdo de um arquivo. Pra isso, usamos o modo <code>'r'</code>:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>ler_arquivo.py</span>
+                </div>
+                <pre class="example-pre"><code>arquivo = open('arquivo.txt', 'r', encoding='utf-8')
+print(arquivo.read())</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Escrevendo coisas aqui</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Exemplo 3: Adicionando Conteúdo com Append</h3>
+            <p>Legal! Agora vamos conhecer o modo <code>'a'</code>, que é usado pra adicionar conteúdo sem apagar o que
+                já tinha:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>append_arquivo.py</span>
+                </div>
+                <pre class="example-pre"><code>arquivo = open('arquivo.txt', 'a', encoding='utf-8')
+arquivo.write('Escrevendo coisas aqui novamente!')</code></pre>
+            </div>
+            <p>Vamos ler o conteúdo de novo e ver como ficou:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>ler_apos_append.py</span>
+                </div>
+                <pre class="example-pre"><code>arquivo = open('arquivo.txt', 'r', encoding='utf-8')
+print(arquivo.read())</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Escrevendo coisas aquiEscrevendo coisas aqui novamente!</pre>
+                    </div>
+                </div>
+            </div>
+            <p>Repara que o texto ficou tudo grudado. Isso acontece porque o <code>write()</code> escreve exatamente
+                como a gente manda, e não coloca uma quebra de linha automática. Porém a solução é simples: apenas usar
+                <code>'\n'</code> pra pular pra próxima linha.
+            </p>
+
+            <h3>Exemplo 4: Corrigindo com Quebra de Linha</h3>
+            <p>Vamos corrigir isso:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>append_com_quebra.py</span>
+                </div>
+                <pre class="example-pre"><code>arquivo = open('arquivo.txt', 'a', encoding='utf-8')
+arquivo.write('\nEscrevendo coisas aqui novamente!')</code></pre>
+            </div>
+            <p>Agora sim, tudo organizadinho! Vamos ler o conteúdo novamente:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>ler_apos_quebra.py</span>
+                </div>
+                <pre class="example-pre"><code>arquivo = open('arquivo.txt', 'r', encoding='utf-8')
+print(arquivo.read())</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Escrevendo coisas aqui
+Escrevendo coisas aqui novamente!</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Exemplo 5: Usando o 'with'</h3>
+            <p>Legal demais, né? Agora deixa eu te mostrar um truque profissional: Ao invés de abrir e fechar arquivos
+                manualmente, dá pra usar o <code>with</code>. É um método mais seguro para abrir arquivos e
+                modificá-los.</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>with_arquivo.py</span>
+                </div>
+                <pre class="example-pre"><code>with open('arquivo.txt', 'a', encoding='utf-8') as arquivo:
+    arquivo.write('\nMais uma linha adicionada com segurança!')</code></pre>
+            </div>
+            <p>Aqui usamos o <code>with open(...) as arquivo</code>, o que significa que ele automaticamente fecha o
+                arquivo, evitando desastres posteriores.</p>
+
+            <div class="button-container">
+                <button id="left-button" class="nav-button" onclick="location.href='aula016.html'">Aula
+                    anterior</button>
+                <button id="center-button" class="nav-button" onclick="location.href='bot.html'">Área de Testes</button>
+                <button id="right-button" class="nav-button" onclick="location.href='aula018.html'">Próxima
+                    Aula</button>
+            </div>
+        </main>
+    </div>
+    <button id="toggle-theme">🌙</button>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>

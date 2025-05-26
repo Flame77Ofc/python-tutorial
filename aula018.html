@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exceções e Tratamento de Erros</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/aulas.css">
+    <link rel="shortcut icon" href="assets/logopython.png" type="image/x-icon">
+</head>
+
+<body>
+    <header class="class-header">
+        <h1 style="margin: 0;"><a href="index.html" style="text-decoration: none; color: currentColor;">Curso de
+                Python</a></h1>
+        <span style="font-size: 1.2em; font-weight: bold;">Aula 18 - Exceções e Tratamento de Erros</span>
+    </header>
+    <div class="container">
+        <main>
+            <h1>Exceções e Tratamento de Erros</h1>
+            <p>Exceções são essenciais num programa para mostrar uma mensagem menos assustadora, mas não só por causa
+                disso, os erros também são um péssimo vilão, uma vez que não foram identificados, o programa todo se
+                quebra e o usuário fica perdido. As exceções tratam erros gerais, mas você pode especificar qual erro
+                deseja tratar.</p>
+
+            <h2>Sintaxe Básica</h2>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>sintaxe_try_except.py</span>
+                </div>
+                <pre class="example-pre"><code>try:
+    # bloco de código
+except:
+    # mensagem de erro</code></pre>
+            </div>
+            <p>Primeiramente utilizamos o <code>try</code>, e dentro de seu bloco de códigos inserimos o código que é
+                suspeito de falhas. Logo em seguida, fora do bloco de códigos do <code>try</code>, utilizamos o
+                <code>except</code>, e no bloco de código do <code>except</code> colocamos os códigos que serão exibidos
+                caso ocorra algum erro.</p>
+
+            <h2>Exemplos Práticos</h2>
+            <h3>Exemplo 1: Tratando um Erro de Divisão</h3>
+            <p>Vamos ver o seguinte exemplo em que tentamos dividir uma <code>STRING</code> por um <code>INT</code>:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>erro_divisao.py</span>
+                </div>
+                <pre class="example-pre"><code>try:
+    divisao = 3 / "string"
+    print(divisao) # Isso sempre dará um erro porque não é possível dividir um inteiro por uma string.
+except:
+    print("Ocorreu um erro!")</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Ocorreu um erro!</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Exemplo 2: Tratando Erros com Input do Usuário</h3>
+            <p>É muito recomendado que se utilize tratamento de erros em todo programa que você for criar, especialmente
+                quando é utilizado a interação com o usuário (os <code>inputs</code>), mesmo que você não suspeite que
+                aconteça erros. Vamos ver um exemplo geral:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>soma_com_input.py</span>
+                </div>
+                <pre class="example-pre"><code>try:
+    n1 = int(input('Digite o primeiro número: '))
+    n2 = int(input('Digite o segundo número: '))
+    print(f'A soma entre {n1} e {n2} é {n1 + n2}')
+except:
+    print('Ops! Não foi possível calcular a soma entre os dois números!')</code></pre>
+            </div>
+            <p>Aqui tentamos realizar a soma entre <code>n1</code> e <code>n2</code>, mas surge uma pergunta: "Como que
+                isso pode dar um erro?". Uma das respostas é se o usuário digitar um número decimal
+                (<code>float</code>), isso causaria um erro porque declaramos <code>n1</code> e <code>n2</code> como
+                inteiros, e não decimais. Outra possível falha é caso o usuário não digitasse nada e apenas apertasse
+                <code>ENTER</code>, isso também seria um erro pois <code>ENTER</code> é um valor nulo, não um inteiro.
+            </p>
+
+            <div class="button-container">
+                <button id="left-button" class="nav-button" onclick="location.href='aula017.html'">Aula
+                    anterior</button>
+                <button id="center-button" class="nav-button" onclick="location.href='bot.html'">Área de Testes</button>
+                <button id="right-button" class="nav-button" onclick="location.href='aula019.html'">Próxima
+                    Aula</button>
+            </div>
+        </main>
+    </div>
+    <button id="toggle-theme">🌙</button>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estruturas de Repetição: for</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/aulas.css">
+    <link rel="shortcut icon" href="assets/logopython.png" type="image/x-icon">
+</head>
+
+<body>
+    <header class="class-header">
+        <h1 style="margin: 0;"><a href="index.html" style="text-decoration: none; color: currentColor;">Curso de
+                Python</a></h1>
+        <span style="font-size: 1.2em; font-weight: bold;">Aula 15 - Estruturas de Repetição: for</span>
+    </header>
+    <div class="container">
+        <main>
+            <h1>Estruturas de Repetição: for</h1>
+            <p>
+                Além do loop while, também existe um outra alternativa para repetições no python, o for. O for possui
+                uma
+                sintaxe bem menos verbosa (isso significa que o for pode fazer a mesma coisa que o loop while, porém com
+                menos linhas de código) e ainda te permite iterar sobre listas ou coleções (Assunto mais adiante).
+            </p>
+
+            <h2>Exemplo básico de for</h2>
+            <p>Exemplo ruim de uma contagem até 5:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>exemplo_ruim.py</span>
+                </div>
+                <pre class="example-pre"><code>print('Contagem: 1')
+print('Contagem: 2')
+print('Contagem: 3')
+print('Contagem: 4')
+print('Contagem: 5')</code></pre>
+            </div>
+
+            <p>Exemplo recomendável e certo de contar até 5:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>contagem_for.py</span>
+                </div>
+                <pre class="example-pre"><code>for contagem in range(1, 6):
+    print(f'Contagem: {contagem}')</code></pre>
+            </div>
+
+            <h2>Entendendo o loop for range</h2>
+            <p>
+                for range: Conta do início até o fim, como uma contagem regressiva (ou progressiva).
+            </p>
+            <p>Sintaxe:</p>
+            <pre class="syntax-pre"><code>for contador in range(inicio, fim, passos):
+    bloco de códigos</code></pre>
+
+            <p>
+                Primeiramente utiliza-se a palavra-chave for, em seguida uma variável desejada, como contador, e por fim
+                utiliza-se 'in' e o range(), contendo dentro dos seus parênteses os números especificados. Vamos ver um
+                exemplo:
+            </p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>range_completo.py</span>
+                </div>
+                <pre class="example-pre"><code>for contador in range(0, 5, 1):
+    print(contador)</code></pre>
+            </div>
+
+            <p>
+                Utilizamos o for, a variável contador, logo em seguida o in range(0, 5, 1). Vamos explicar o range. O
+                primeiro número do range significa em qual número ele deve começar, nesse caso, 0. O segundo número diz
+                até
+                quando o contador deve parar, nesse caso 4, pois o fim sempre é subtraído em -1, ou seja, se o número
+                final
+                é 10, então na verdade seu fim é 9. E o último número diz quantos em quantos passos o contador irá
+                pular,
+                nesse caso é 1, então contará normalmente de 0 a 4. Por fim é colocado dentro da estrutura do for o
+                comando
+                de blocos, nesse caso, imprimirá o contador, ou seja, imprimirá: 0, 1, 2, 3, 4.
+            </p>
+
+            <p>Vamos ver mais um exemplo:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>range_simples.py</span>
+                </div>
+                <pre class="example-pre"><code>for i in range(1, 6, 1):
+    print(i)</code></pre>
+            </div>
+
+            <p>
+                Declaramos a variável i, e o range começa do 1, termina até o 6, e pula de 1 em 1 número (isso é,
+                normalmente). A saída será: 1, 2, 3, 4, 5
+            </p>
+
+            <p>
+                Lembre-se que o for é uma estrutura de repetição, então sempre que executar uma vez o bloco de código
+                dentro dele, a variável contador será subtraída ou adicionada em 1, como um loop while. Veremos mais a
+                frente a diferença entre loop while e loop for.
+            </p>
+
+            <h3>Omitindo parâmetros do range</h3>
+            <p>
+                Mas não é necessário colocar em quantos em quantos passos a variável vai pular. podemos utilizar essa
+                sintaxe:
+            </p>
+            <pre class="syntax-pre"><code>for i in range(inicio, fim):
+    bloco de comandos</code></pre>
+
+            <p>Vamos ver um exemplo:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>range_sem_passos.py</span>
+                </div>
+                <pre class="example-pre"><code>for i in range(1, 4):
+    print(i)</code></pre>
+            </div>
+
+            <p>
+                Declaramos a variável contadora 'i', e o seu range de início é de 1, ou seja, comecará em 1, e seu
+                range de fim é 4, ou seja, terminará em 3, pois o fim é sempre subtraído. A saída desse for é: 1, 2, 3
+            </p>
+
+            <p>
+                Porém ainda é possível omitir o range de início, restando apenas o range de fim! Vamos ver como isso
+                ficaria:
+            </p>
+            <pre class="syntax-pre"><code>for i in range(fim):
+    bloco de comandos</code></pre>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>range_apenas_fim.py</span>
+                </div>
+                <pre class="example-pre"><code>for i in range(5):
+    print(i)</code></pre>
+            </div>
+
+            <p>
+                Aqui omitimos o range de início, então ele começará em 0, e terminará em 4, bela reduzida, não é
+                mesmo?
+            </p>
+
+            <h3>Exemplo prático</h3>
+            <p>Vamos ver um exemplo mais avançado:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>foguete.py</span>
+                </div>
+                <pre class="example-pre"><code>for foguete in range(4):
+    print(f'Lançando em {foguete}')</code></pre>
+            </div>
+
+            <p>
+                Vamos entender o código. Declaramos a variável foguete, que conta de 0 até 3. O seu bloco de
+                código imprimirá 'Lançando em {e o número do contador}'. Cada execução que o loop realizar, será
+                incrementado em +1 a variável foguete. Vamos entender melhor isso:
+            </p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>contagem_detalhada.py</span>
+                </div>
+                <pre class="example-pre"><code>for i in range(1, 4):
+    print(i)</code></pre>
+            </div>
+
+            <p>
+                Esse bloco de código começa em 1, e termina em 3. A cada execução, é incrementada +1 a variável i,
+                e o programa verifica se i é maior que 3. Se a variável i for maior que 3, então o loop para de
+                executar, pois sua condição já esteve satisfeita. Não parece, mas o loop for também há uma condição,
+                conseguiu perceber?
+            </p>
+
+            <pre class="syntax-pre"><code>for i in condição:
+    bloco de código</code></pre>
+
+            <p>
+                Mas nesse caso a condição é o range, e não uma comparação tradicional com operadores de
+                comparação como num loop while. É claro que o programa faz comparação no loop for, mas isso não
+                é visível. Vamos ver apenas um último exemplo:
+            </p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>repeticao_simples.py</span>
+                </div>
+                <pre class="example-pre"><code>for repeticao in range(1, 6):
+    print('Estou repetindo!')</code></pre>
+            </div>
+
+            <p>
+                Ok, declaramos uma variável repeticao e agora ela repete de 1 até 5, e a cada repetição, será
+                incrementada +1 na variável, executando o bloco de código 'Estou repetindo!'. Acompanhe comigo:
+                A variável repeticao tem o valor de 1, então o programa verifica se a repeticao é menor que 5, e
+                como 1 é menor que 5, então executa o bloco de código, imprimindo o que estiver lá dentro. Na
+                segunda, terceira, quarta, quinta repetição, o programa verifica se ainda a variável não é 5,
+                então executa novamente. Mas quando a variável repeticao é 6, o programa compara, e vê que a
+                variável já chegou ao fim, já terminou. Então simplesmente para de executar o loop e executa o
+                resto do programa.
+            </p>
+
+            <h2>For com else</h2>
+            <p>
+                Então, que tal ver um loop for com um else, lembrando muito as condições?
+            </p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>foguete_else.py</span>
+                </div>
+                <pre class="example-pre"><code>for foguete in range(4):
+    print(f'Lançando em {foguete}')
+else:
+    print('Lançar!')</code></pre>
+            </div>
+
+            <p>
+                Vamos lá, foi declarada a variável foguete, que começa em 0 e termina em 3. Na primeira
+                repetição é executado o loop, executando o seu bloco de código, e imprime 'lançando em {e a
+                variável}'. Como nesse caso não especificamos o início e apenas o fim, então a repetição
+                começará do 0. Ou seja, na primeira repetição imprimirá 'Lançando em 0', pois a variável foguete
+                tem o valor 0. Então é feita mais uma repetição, e desta vez o valor da variável é 1, pois a
+                cada execução a variável é incrementada em 1, e então, imprime 'Lançando em 1'. E repete isso
+                até chegar na repetição 4. O programa verifica se a variável é 4, e então, ignora o bloco de
+                código do loop for e executa o else. Lembra do else, aquele utilizado em condições, que quando
+                uma condição é falsa, ele é executado? Então, o programa viu que a condição do loop for é falsa
+                e executou o else, imprimindo na tela 'Lançar!'.
+            </p>
+
+            <h2>Diferença entre while e for</h2>
+            <p>Vamos lá, hora de responder algumas perguntas</p>
+            <p>Qual a diferença entre loop while e loop for?</p>
+            <p>
+                Um loop while pode ser usado quando não se sabe ao certo quantas repetições você quer que algo
+                repita. o while True é um exemplo muito bom disso, pois executa a repetição infinitamente, e só
+                para quando é feito o uso de um break. Vamos ver um loop while True:
+            </p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>while_true.py</span>
+                </div>
+                <pre class="example-pre"><code>while True:
+    nome = input("Digite o seu nome ou 'exit' para sair: ")
+    if nome == 'exit':
+        break</code></pre>
+            </div>
+
+            <p>
+                Vamos explicar: Criamos um loop while True, isso significa que o loop executará infinitamente.
+                Pedimos ao usuário o seu nome, e isso ficará executando. O loop while só terminará de executar
+                quando o usuário digitar 'exit', pois foi feito o uso do break, quebrando o laço while. Então
+                enquanto o usuário digitar qualquer outra coisa que não seja 'exit', o loop ficará executado seu
+                bloco de código para sempre, perguntado ao usuário seu nome infinitamente. A única forma de
+                parar essa repetição é utilizando um break.
+            </p>
+
+            <p>
+                Já um loop for pode ser usado quando já se sabe o número de repetições que você quer. Um
+                exemplo:
+            </p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>for_contagem.py</span>
+                </div>
+                <pre class="example-pre"><code>for i in range(6):
+    print('Já sei quantas vezes serei executado! 5 vezes!')</code></pre>
+            </div>
+
+            <h2>Iteração em listas e strings</h2>
+            <p>
+                Agora vamos ver alguns exemplos de iteração em listas. A iteração em listas segue o mesmo conceito da
+                iteração com strings, mas a grande diferença é
+                que a iteração em listas imprime cada elemento da lista, e não cada letra. Vamos ver alguns
+                exemplos.
+            </p>
+
+            <h3>Iterando com o loop for</h3>
+            <p>
+                Uma iteração significa acessar cada elemento ou caractere de uma sequência, como uma lista ou
+                uma string. Vamos ver alguns exemplos:
+            </p>
+
+            <p>
+                Vamos supor que temos uma string, e queremos imprimir cada letra da string individualmente. É
+                possível fazer isso com uma iteração:
+            </p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>iteracao_string.py</span>
+                </div>
+                <pre class="example-pre"><code>string = 'texto'
+for letra in string:
+    print(letra)</code></pre>
+            </div>
+
+            <p>
+                Aqui já é notável que as coisas mudaram, vamos entender. Declaramos a variável string e
+                atribuímos seu valor a 'texto'. Em seguida, criamos um loop for e uma variável letra, ela será
+                responsável por iterar sobre cada caractere da string, ou seja, imprimir cada letrinha.
+                Lembrando que o nome da variável após o loop for pode ser qualquer um que você desejar. O código
+                acima se lê assim:
+            </p>
+            <p><em>para cada letra na string, então imprima a letra.</em></p>
+
+            <p>Vamos ver mais exemplos:</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>iteracao_pais.py</span>
+                </div>
+                <pre class="example-pre"><code>pais = 'Brasil' # Lembrando que variáveis não devem ter acentuações!
+for letra in pais:
+    print(letra)</code></pre>
+            </div>
+
+            <p>
+                Vamos entender: Declaramos a variável pais, e em seguida o loop for, seguido da variável
+                letra, que itera sobre cada letra da variável pais (Brasil). Então isso imprimirá cada letra do
+                Brasil em uma linha diferente, ou seja:
+            </p>
+
+            <pre class="output-pre"><code>B
+r
+a
+s
+i
+l</code></pre>
+
+            <h3>Iteração em listas</h3>
+            <p>
+                Agora vamos falar de iterações com listas. As iterações com listas diferentemente das
+                iterações com strings, imprimem cada elemento da lista, e não cada letra da lista. É feito quase
+                a mesma coisa com a iteração de strings, vamos ver um exemplo:
+            </p>
+
+            <p>
+                Vamos supor que queremos imprimir individualmente cada elemento de uma lista de frutas:
+            </p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>iteracao_lista.py</span>
+                </div>
+                <pre class="example-pre"><code>frutas = ['Maçã', 'Banana', 'Laranja']
+for fruta in frutas:
+    print(fruta)</code></pre>
+            </div>
+
+            <p>
+                Vamos entender: Declaramos a lista frutas, declaramos o laço for seguido pelo nome da variável
+                e a palavra-chave in com a lista frutas, e no seu bloco de código imprime cada fruta, resultado
+                em:
+            </p>
+
+            <pre class="output-pre"><code>Maçã
+Banana
+Laranja</code></pre>
+
+            <p>
+                Uma coisa muito importante a dizer é que, ao executar o bloco de códigos dentro do loop for, a
+                repetição é feita novamente até não possuir mais elementos dentro da lista.
+            </p>
+
+            <p>
+                Repare que o nome da lista está escrito no plural ('frutas') e o nome da variável após o for
+                está escrito em singular ('fruta') indicando que isso acessará cada elemento da lista
+                individualmente.
+            </p>
+
+            <p>Vamos ver mais um exemplo:</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>iteracao_animais.py</span>
+                </div>
+                <pre class="example-pre"><code>animais = ['Coruja', 'Lobo', 'Cachorro', 'Cavalo']
+for animal in animais:
+    print(animal)</code></pre>
+            </div>
+
+            <p>
+                O loop for acima se lê assim: Para cada animal na lista de animais, então: imprima animal.
+                Vamos entender melhor, declaramos a lista animais seguido pelo loop for, que itera a cada
+                elemento, e imprime cada elemento individualmente, conseguiu compreender?
+            </p>
+
+            <h3>Exemplo avançado com continue</h3>
+            <p>
+                Vamos a alguns exemplos mais avançados:
+            </p>
+
+            <p>
+                Vamos supor que estavamos minerando numa caverna, mas não queremos que tenha Ferros, apenas
+                queremos outros minérios, e ignorar o minério Ferro. Podemos utilizar um loop for e dentro desse
+                loop utilizar uma estrutura de condição verificando se Ferro está na lista. Se estiver, então
+                queremos que o programa ignore esse minério. Vamos como isso funciona:
+            </p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>minerios_continue.py</span>
+                </div>
+                <pre class="example-pre"><code>minerios = ['Diamante', 'Ouro', 'Ferro', 'Cobre']
+for minerio in minerios:
+    if minerio == 'Ferro':
+        continue
+    print(minerio)</code></pre>
+            </div>
+
+            <p>
+                Vamos entender esse código. Criamos uma lista e dentro dela possui minérios. Em seguida
+                utilizamos o loop for, para iterar sobre cada elemento. Dentro deste loop for, utilizamos uma
+                estrutura de condição para verificar se o elemento que estamos iterando é Ferro. Se o elemento
+                for ferro, então simplesmente ignoramos esse elemento e a repetição retorna ao início,
+                verificando se o elemento é ferro novamente, se não for, apenas imprime o minério. A saída desse
+                código é a seguinte:
+            </p>
+
+            <pre class="output-pre"><code>Diamante
+Ouro
+Cobre</code></pre>
+
+            <h2>Tópicos avançados</h2>
+            <p>
+                Vamos supor que você está iterando uma lista, e quer verificar se algum elemento está na
+                lista. Você utiliza uma condição para verificar e quando verifica, o elemento dentro da lista
+                era maiúsculo, e você utilizou letras minúsculas. Veja o exemplo a seguir:
+            </p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>problema_case.py</span>
+                </div>
+                <pre class="example-pre"><code>produtos = ['Fone', 'Celular', 'Tablet', 'Computador']
+for produto in produtos:
+    if produto == 'celular':
+        print('Achei um celular!')</code></pre>
+            </div>
+
+            <p>
+                Aqui há um grande problema. Repare que na lista, celular está com sua primeira letra em
+                maiúsculas ('Celular') e você está verificando se 'celular' (em minúsculas) está na lista
+                produtos. Não vai ter nenhuma saída, pois 'Celular' é diferente de 'celular'. Por sorte podemos
+                utilizar uma função de strings para converter todos os produtos em minúsculas, o lower(). O
+                código ficaria assim:
+            </p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>solucao_case.py</span>
+                </div>
+                <pre class="example-pre"><code>produtos = ['Fone', 'Celular', 'Tablet', 'Computador']
+for produto in produtos:
+    produto = produto.lower()
+    if produto == 'celular':
+        print('Achei um celular!')</code></pre>
+            </div>
+
+            <p>
+                Agora sim. O que foi alterado nesse código é que antes de tudo, convertemos todos os produtos
+                da lista para minúsculas, e em seguida, verificamos se celular está na lista. Veja como a função
+                lower() é muito importante.
+            </p>
+
+            <div class="button-container">
+                <button id="left-button" class="nav-button" onclick="location.href='aula014.html'">Aula
+                    anterior</button>
+                <button id="center-button" class="nav-button" onclick="location.href='bot.html'">Área de Testes</button>
+                <button id="right-button" class="nav-button" onclick="location.href='aula016.html'">Próxima
+                    Aula</button>
+            </div>
+        </main>
+    </div>
+    <button id="toggle-theme">🌙</button>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>

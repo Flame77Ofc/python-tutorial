@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dicionários em Python</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/aulas.css">
+    <link rel="shortcut icon" href="assets/logopython.png" type="image/x-icon">
+</head>
+
+<body>
+    <header class="class-header">
+        <h1 style="margin: 0;"><a href="index.html" style="text-decoration: none; color: currentColor;">Curso de
+                Python</a></h1>
+        <span style="font-size: 1.2em; font-weight: bold;">Aula 13 - Dicionários em Python</span>
+    </header>
+    <div class="container">
+        <main>
+            <h1>Dicionários em Python</h1>
+            <p>Um dicionário armazena dados em pares chave-valor. Dicionários também são uma coleção não ordenada e são
+                mutáveis, isso significa que podemos utilizar funções e métodos para alterar pares de chave-valor.
+                Diferentemente das listas, dicionários usam as chaves para identificar os seus valores. Cada chave deve
+                ser única, isso é, possuir apenas um único nome.</p>
+
+            <h2>Sintaxe básica</h2>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>sintaxe.py</span>
+                </div>
+                <pre class="example-pre"><code># Sintaxe básica
+dicionario = {
+    'chave': 'valor'
+}
+
+# Exemplo de dicionário
+frutas = {
+    'Maçã': 0.99,
+    'Laranja': 1.39,
+    'Abacaxi': 1.99
+}
+print(frutas)
+
+# Em uma linha
+frutas = {'Maçã': 0.99, 'Laranja': 1.39, 'Abacaxi': 1.99}</code></pre>
+            </div>
+
+            <h2>Acessando e Modificando Dados</h2>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>acesso.py</span>
+                </div>
+                <pre class="example-pre"><code>dados = {
+    1: 'Henrique da Costa',
+    2: 'Felipe dos Santos',
+    3: 'Arthur Feitosa',
+    4: 'Marcos Teixeira',
+    5: 'Fábio Alberto'
+}
+
+# Acessando valores
+print(dados[2])  # Felipe dos Santos
+
+# Modificando valores
+dados[3] = 'Marco Antônio'  # Atualiza valor
+dados[6] = 'Luiza Moura'    # Adiciona novo par
+
+# Removendo pares
+del dados[2]
+del dados[4]</code></pre>
+            </div>
+
+            <h2>Métodos Úteis</h2>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>metodos.py</span>
+                </div>
+                <pre class="example-pre"><code>frutas = {
+    'Maçã': 3.99,
+    'Laranja': 4.99,
+    'Limão': 2.99,
+    'Abacaxi': 1.99,
+    'Manga': 1.59
+}
+
+# Removendo elementos
+del frutas['Abacaxi']
+frutas.popitem()  # Remove último
+frutas.pop('Maçã')  # Remove por chave
+
+# Acesso seguro
+print(frutas.get('Limão', 'Fruta não encontrada'))
+print(frutas.get('Pêra', 'Fruta não encontrada'))
+
+# Verificações
+print('Laranja' in frutas)  # True
+print('Tomate' not in frutas)  # True
+
+# Limpando tudo
+frutas.clear()</code></pre>
+            </div>
+
+            <h2>Chaves, Valores e Itens</h2>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>itens.py</span>
+                </div>
+                <pre class="example-pre"><code>compras = {
+    'Arroz': 3.45,
+    'Feijão': 2.90,
+    'Macarrão': 4.50,
+    'Sushi': 1.35
+}
+
+# Obtendo chaves, valores e itens
+print(compras.keys())    # dict_keys(['Arroz', 'Feijão',...])
+print(compras.values())  # dict_values([3.45, 2.9,...])
+print(compras.items())   # dict_items([('Arroz', 3.45),...])</code></pre>
+            </div>
+
+            <h2>Dicionários Aninhados</h2>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>aninhados.py</span>
+                </div>
+                <pre class="example-pre"><code>pessoas = {
+    'João Miguel': {
+        'idade': 14,
+        'cidade': 'Cidade dos Astronautas',
+        'rua': 'Rua dos Capixabas'
+    },
+    'Lucas Ferreira': {
+        'idade': 23,
+        'cidade': 'Cidade do Folclore',
+        'rua': 'Rua dos Caçadores'
+    }
+}
+
+# Acessando dados aninhados
+print(pessoas['João Miguel']['idade'])  # 14</code></pre>
+            </div>
+
+            <h2>Exemplo Prático</h2>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>exemplo.py</span>
+                </div>
+                <pre class="example-pre"><code># Análise de notas de alunos
+alunos = {
+    'João': 7.90,
+    'Mariane': 5.60,
+    'Cristopher': 8.55,
+    'Lucas': 4.50
+}
+
+# Cálculos
+total = sum(alunos.values())
+quantidade = len(alunos)
+media = total / quantidade
+
+print(f"Total: {total}")
+print(f"Quantidade: {quantidade}")
+print(f"Média: {media:.2f}")
+
+# Iterando com for
+for nome, nota in alunos.items():
+    print(f"{nome}: {nota}")</code></pre>
+            </div>
+
+            <div class="button-container">
+                <button id="left-button" class="nav-button" onclick="location.href='aula012.html'">Aula
+                    anterior</button>
+                <button id="center-button" class="nav-button" onclick="location.href='bot.html'">Área de Testes</button>
+                <button id="right-button" class="nav-button" onclick="location.href='aula014.html'">Próxima
+                    Aula</button>
+            </div>
+        </main>
+    </div>
+    <button id="toggle-theme">🌙</button>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>

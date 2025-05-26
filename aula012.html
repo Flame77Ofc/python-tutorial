@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sets em Python</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/aulas.css">
+    <link rel="shortcut icon" href="assets/logopython.png" type="image/x-icon">
+</head>
+
+<body>
+    <header class="class-header">
+        <h1 style="margin: 0;"><a href="index.html" style="text-decoration: none; color: currentColor;">Curso de
+                Python</a></h1>
+        <span style="font-size: 1.2em; font-weight: bold;">Aula 12 - Sets em Python</span>
+    </header>
+    <div class="container">
+        <main>
+            <h1>Sets em Python</h1>
+            <p>Sets são sequências desordenadas (Não possuem uma ordem específica, ou seja, a ordem de seus elementos é
+                aleatória) e são muito úteis em situações específicas. Os sets, diferentemente das listas, possuem
+                chaves, e cada elemento também é separado por vírgulas. Os sets não aceitam valores repetidos, isso é
+                muito bom para eliminar todos os valores de uma lista comum, por exemplo.</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>sets.py</span>
+                </div>
+                <pre class="example-pre"><code># Removendo duplicados de uma lista
+lista = ['a', 'a', 'b', 'a', 'c', 'a', 'b', 'b', 'b', 'c']
+lista = set(lista)  # Convertendo para set
+lista = list(lista)  # Convertendo de volta para lista
+print(lista)  # ['a', 'b', 'c']</code></pre>
+            </div>
+
+            <h2>Trabalhando com Sets</h2>
+            <p>Vamos supor que queremos fazer um bolo. Alguém muito inexperiente em culinária separou os ingredientes:
+            </p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>ingredientes.py</span>
+                </div>
+                <pre class="example-pre"><code>ingredientes = {'Farinha', 'Trigo', 'Madeira', 'Alface'}
+print(ingredientes)  # {'Farinha', 'Trigo', 'Madeira', 'Alface'}
+
+# Removendo elementos incorretos
+ingredientes.remove('Madeira')
+print(ingredientes)  # {'Farinha', 'Alface', 'Trigo'}
+
+ingredientes.remove('Alface')
+print(ingredientes)  # {'Farinha', 'Trigo'}
+
+# Adicionando novos ingredientes
+ingredientes.add('Fermento')
+print(ingredientes)  # {'Trigo', 'Farinha', 'Fermento'}
+
+ingredientes.add('Açucar')
+ingredientes.add('Ovos')
+ingredientes.add('Leite')
+ingredientes.add('Manteiga')
+print(ingredientes)  # {'Açucar', 'Farinha', 'Fermento', 'Ovos', 'Trigo', 'Leite', 'Manteiga'}</code></pre>
+            </div>
+
+            <h2>Limpando e Verificando Sets</h2>
+            <p>Imagine agora temos um set que possui algumas frutas dentro dele, mas com elementos incorretos:</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>frutas.py</span>
+                </div>
+                <pre class="example-pre"><code>frutas = {'Maçã', 'João', 'Banana', 'Pedro', 'Vinicius', 'Abacaxi', 'Limão', 'Felipe', 'Macarrão', 'Peixes'}
+
+# Limpando o set completamente
+frutas.clear()
+print(frutas)  # set()
+
+# Adicionando frutas corretas
+frutas.add('Maçã')
+frutas.add('Banana')
+frutas.add('Limão')
+frutas.add('Abacaxi')
+print(frutas)  # {'Banana', 'Maçã', 'Limão', 'Abacaxi'}
+
+# Verificando elementos
+print('Maçã' in frutas)  # True
+print('Banana' in frutas)  # True
+print('Vinicius' not in frutas)  # True
+print('Pedro' not in frutas)  # True
+
+# Contando elementos
+quantidade = len(frutas)
+print(quantidade)  # 4</code></pre>
+            </div>
+
+            <h2>Conclusão</h2>
+            <p>Os sets são muito poderosos e apresentam muitas funcionalidades úteis, especialmente para trabalhar com
+                coleções de elementos únicos e operações matemáticas entre conjuntos.</p>
+
+            <div class="button-container">
+                <button id="left-button" class="nav-button" onclick="location.href='aula011.html'">Aula
+                    anterior</button>
+                <button id="center-button" class="nav-button" onclick="location.href='bot.html'">Área de Testes</button>
+                <button id="right-button" class="nav-button" onclick="location.href='aula013.html'">Próxima
+                    Aula</button>
+            </div>
+        </main>
+    </div>
+    <button id="toggle-theme">🌙</button>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>

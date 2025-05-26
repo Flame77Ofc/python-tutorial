@@ -315,6 +315,80 @@ Isso é verdadeiro</pre>
                 </div>
             </div>
 
+
+<h2>Operador Ternário</h2>
+<p>Uma estrutura condicional como o <code>if</code>, <code>elif</code> e <code>else</code> utiliza várias linhas de código. Para simplificar, foi criado o operador ternário, que permite realizar a mesma verificação em apenas <strong>uma linha</strong>! Sua sintaxe é diferente de uma estrutura condicional tradicional com <code>if</code>. Vamos ver como funciona:</p>
+
+<h3>Sintaxe do Operador Ternário</h3>
+<div class="example-code-container">
+    <div class="example-code-header">
+        <div class="dots">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+        </div>
+        <span>ternario_sintaxe.py</span>
+    </div>
+    <pre class="example-pre"><code>valor_verdadeiro if condicao else valor_falso</code></pre>
+</div>
+
+<p>A sintaxe funciona assim: primeiro, especificamos o <code>valor_verdadeiro</code> que será retornado se a <code>condicao</code> for <code>True</code>. Após o <code>if</code>, colocamos a condição a ser avaliada. Por fim, após o <code>else</code>, indicamos o <code>valor_falso</code> que será retornado se a condição for <code>False</code>.</p>
+
+<h3>Exemplo 1: Operador Ternário Simples</h3>
+<div class="example-code-container">
+    <div class="example-code-header">
+        <div class="dots">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+        </div>
+        <span>ternario_exemplo1.py</span>
+    </div>
+    <pre class="example-pre"><code>print('Verdadeiro' if True else 'Falso')</code></pre>
+    <div class="example-output-container">
+        <div class="example-output-header">Saída:</div>
+        <div class="output">
+            <pre>Verdadeiro</pre>
+        </div>
+    </div>
+</div>
+
+<p>Neste exemplo, como a condição é <code>True</code>, o programa imprime <code>'Verdadeiro'</code>. Se a condição fosse <code>False</code>, ele imprimiria <code>'Falso'</code>.</p>
+
+<h3>Exemplo 2: Comparação com Estrutura Condicional</h3>
+<div class="example-code-container">
+    <div class="example-code-header">
+        <div class="dots">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+        </div>
+        <span>ternario_exemplo2.py</span>
+    </div>
+    <pre class="example-pre"><code># Estrutura condicional tradicional
+pet = True
+if pet:
+    print('Possui um pet')
+else:
+    print('Não possui um pet')
+
+# Operador ternário
+pet = True
+print('Possui um pet' if pet else 'Não possui um pet')</code></pre>
+    <div class="example-output-container">
+        <div class="example-output-header">Saída:</div>
+        <div class="output">
+            <pre>Possui um pet
+Possui um pet</pre>
+        </div>
+    </div>
+</div>
+
+<p>No exemplo acima, a variável <code>pet</code> é definida como <code>True</code>. Tanto a estrutura condicional tradicional quanto o operador ternário produzem a mesma saída: <code>'Possui um pet'</code>. Note que no operador ternário, como <code>pet</code> já é um valor booleano, podemos simplificar a condição omitindo <code>pet == True</code>.</p>
+
+<h3>Observação</h3>
+<p>O operador ternário é ideal para verificações simples com apenas duas condições, pois utiliza apenas <code>if</code> e <code>else</code>. Embora seja possível simular um <code>elif</code> com ternários aninhados, a sintaxe torna-se mais complexa e menos legível, sendo recomendado usar estruturas <code>if-elif-else</code> nesses casos.</p>
+
             <div class="button-container">
                 <button id="left-button" class="nav-button" onclick="location.href='aula008.html'">Aula
                     anterior</button>

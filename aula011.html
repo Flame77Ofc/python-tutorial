@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuplas em Python</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/aulas.css">
+    <link rel="shortcut icon" href="assets/logopython.png" type="image/x-icon">
+</head>
+
+<body>
+    <header class="class-header">
+        <h1 style="margin: 0;"><a href="index.html" style="text-decoration: none; color: currentColor;">Curso de
+                Python</a></h1>
+        <span style="font-size: 1.2em; font-weight: bold;">Aula 11 - Tuplas em Python</span>
+    </header>
+    <div class="container">
+        <main>
+            <h1>Tuplas em Python</h1>
+            <p>Tuplas são coleções de dados que, ao contrário das listas, não podem ser modificadas depois de criadas,
+                isso é, com funções e métodos. São úteis quando você quer garantir que os dados sejam sempre os mesmos,
+                para evitar erros ou que você altere dispercebido.</p>
+
+            <h2>Criando tuplas</h2>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>tuplas.py</span>
+                </div>
+                <pre class="example-pre"><code># Forma mais comum, usando parênteses
+tupla1 = ('elemento1', 'elemento2') 
+# Também funciona sem parênteses
+tupla2 = 'elemento1', 'elemento2' 
+
+print(tupla1)
+print(tupla2)</code></pre>
+            </div>
+
+            <h2>Índices em tuplas</h2>
+            <p>Cada elemento da tupla tem uma posição (índice), começando do zero.</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>indices.py</span>
+                </div>
+                <pre class="example-pre"><code>frutas = ('Laranja', 'Maçã', 'Abacate')
+# Índices:     0        1        2
+
+# Acessando elementos pelos índices
+print(frutas[0])  # Laranja
+print(frutas[2])  # Abacate
+
+# Índices negativos
+print(frutas[-1])  # Abacate (último elemento)
+print(frutas[-2])  # Maçã (penúltimo elemento)</code></pre>
+            </div>
+
+            <p>Os índices em tuplas são basicamente a mesma coisa que os índices de listas, não há nenhuma diferença
+                entre eles.</p>
+
+            <h2>Tamanho da tupla</h2>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>tamanho.py</span>
+                </div>
+                <pre class="example-pre"><code>coordenadas = ('N', 50, 100, -457, -121)
+print(len(coordenadas))  # Retorna 5, pois há 5 elementos</code></pre>
+            </div>
+
+            <h2>Imutabilidade das tuplas</h2>
+            <p>Após a criação, não é possível alterar os elementos.</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>imutabilidade.py</span>
+                </div>
+                <pre class="example-pre"><code>tupla = ('Maria', 'João', 'Pedro')
+# tupla[2] = 'Felipe'  # Isso causaria um erro</code></pre>
+            </div>
+
+            <h2>Tuplas são iteráveis</h2>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>iteracao.py</span>
+                </div>
+                <pre class="example-pre"><code>nome = ('Pedro')  # Isso é uma string, não uma tupla com um elemento
+for letra in nome:
+    print(letra)  # Imprime cada letra: P, e, d, r, o</code></pre>
+            </div>
+
+            <h2>Empacotamento de tupla</h2>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>empacotamento.py</span>
+                </div>
+                <pre class="example-pre"><code># Com parênteses
+tupla = (1, 2, 3)
+print(tupla)
+
+# Sem parênteses
+tupla = 4, 5, 6
+print(tupla)</code></pre>
+            </div>
+
+            <h2>Desempacotamento de tupla</h2>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>desempacotamento.py</span>
+                </div>
+                <pre class="example-pre"><code># Desempacotamento básico
+tupla = (10, 20, 30)
+a, b, c = tupla
+print(a)  # 10
+print(b)  # 20
+print(c)  # 30
+
+# Com operador *
+tupla = ('e1', 'e2', 'e3', 'e4', 'e5')
+a, *resto = tupla
+print(a)     # 'e1'
+print(resto) # ['e2', 'e3', 'e4', 'e5']</code></pre>
+            </div>
+
+            <h2>Verificando existência de valores</h2>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>pertence.py</span>
+                </div>
+                <pre class="example-pre"><code>tupla = (1, 2, 3, 4, 5)
+print(3 in tupla)         # True
+print('Felipe' not in tupla)  # True</code></pre>
+            </div>
+
+            <h2>Unindo tuplas</h2>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>uniao.py</span>
+                </div>
+                <pre class="example-pre"><code>tupla1 = (250, 120)
+tupla2 = (-35, 90)
+tupla3 = tupla1 + tupla2
+print(tupla3)  # (250, 120, -35, 90)</code></pre>
+            </div>
+
+            <h2>Fatiamento de tuplas</h2>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>fatiamento.py</span>
+                </div>
+                <pre class="example-pre"><code>cores = ('Azul', 'Branco', 'Verde', 'Preto', 'Laranja')
+print(cores[1])     # Branco
+print(cores[-2])    # Preto
+print(cores[1:4])   # ('Branco', 'Verde', 'Preto')</code></pre>
+            </div>
+
+            <h2>Conclusão</h2>
+            <p>Tuplas são úteis quando queremos armazenar dados que não devem mudar. Elas se parecem com listas, mas não
+                possuem métodos de modificação como append ou remove. Por serem imutáveis, são mais seguras e podem ser
+                usadas como chave de dicionários, por exemplo.</p>
+
+            <div class="button-container">
+                <button id="left-button" class="nav-button" onclick="location.href='aula010.html'">Aula
+                    anterior</button>
+                <button id="center-button" class="nav-button" onclick="location.href='bot.html'">Área de Testes</button>
+                <button id="right-button" class="nav-button" onclick="location.href='aula012.html'">Próxima
+                    Aula</button>
+            </div>
+        </main>
+    </div>
+    <button id="toggle-theme">🌙</button>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>

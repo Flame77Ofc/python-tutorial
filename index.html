@@ -16,7 +16,6 @@
             --fonte-principal: 'Bricolage Grotesque', sans-serif;
             --fonte-code: "Cascadia Code", monospace;
 
-            /* Tema Claro */
             --clr-body-light: #fdfdfd;
             --clr-header-light: #6C63FF;
             --clr-main-light: #ffffff;
@@ -27,7 +26,6 @@
             --clr-button-light: #087cbb;
             --clr-border-light: rgba(0, 0, 0, 0.15);
 
-            /* Tema Escuro */
             --clr-body-dark: #1e1e2f;
             --clr-header-dark: #2c2c3c;
             --clr-main-dark: #2a2a3c;
@@ -38,7 +36,6 @@
             --clr-button-dark: #0a96d1;
             --clr-border-dark: rgba(255, 255, 255, 0.1);
 
-            /* Tema ativo */
             --bg-body: var(--clr-body-light);
             --bg-header: var(--clr-header-light);
             --bg-main: var(--clr-main-light);
@@ -76,7 +73,7 @@
             display: flex;
             flex: 1;
             padding: 10px;
-            flex-wrap: wrap; /* Permite que os elementos se reorganizem em telas menores */
+            flex-wrap: wrap;
         }
 
         aside {
@@ -89,6 +86,9 @@
         }
 
         aside .table {
+                        line-height: 30px;
+            list-style: decimal-leading-zero;
+
             padding-left: 25px;
         }
 
@@ -98,12 +98,12 @@
             padding: 10px;
             line-height: 30px;
             flex: 1;
-            min-width: 300px; /* Evita que o main fique muito estreito */
+            min-width: 300px;
         }
 
         main .img {
             float: left;
-            max-width: 100%; /* Garante que a imagem não exceda o contêiner */
+            max-width: 100%;
             height: auto;
             margin-right: 10px;
         }
@@ -171,7 +171,6 @@
             transform: scale(1.25);
         }
 
-        /* Media Queries para responsividade */
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
@@ -187,7 +186,8 @@
                 margin: 0;
             }
 
-            main .img, main .img2 {
+            main .img,
+            main .img2 {
                 float: none;
                 display: block;
                 margin: 10px auto;
@@ -210,10 +210,12 @@
                 max-width: 200px;
             }
 
-            h1, h2 {
+            h1,
+            h2 {
                 font-size: 1.5em;
             }
         }
+
     </style>
 </head>
 
@@ -226,21 +228,41 @@
         <aside>
             <h1>Tabela de Conteúdo</h1>
             <ul class="table">
-                <li>Introdução ao Python</li>
-            </ul>
+                <li><a href="aula001.html">Introdução ao Python</a></li>
+                <li><a href="aula002.html">Termos Iniciais</a></li>
+                <li><a href="aula003.html">Conceitos Iniciais</a></li>
+                <li><a href="aula004.html">Variáveis e Tipos de dados</a></li>
+                <li><a href="aula005.html">Strings</a></li>
+                <li><a href="aula006.html">Operadores Aritméticos</a></li>
+                <li><a href="aula007.html">Entrada de Dados</a></li>
+                <li><a href="aula008.html">Operadores de comparação e lógicos</a></li>
+                <li><a href="aula009.html">Estruturas Condicionais</a></li>
+                <li><a href="aula010.html">Listas em Python</a></li>
+                <li><a href="aula011.html">Tuplas em Python</a></li>
+                <li><a href="aula012.html">Sets em Python</a></li>
+                <li><a href="aula013.html">Dicionários em Python</a></li>
+                <li><a href="aula014.html">Estruturas de Repetição: while</a></li>
+                <li><a href="aula015.html">Estruturas de Repetição: for</a></li>
+                <li><a href="aula016.html">Funções</a></li>
+                <li><a href="aula017.html">Manipulação de Arquivos</a></li>
+                <li><a href="aula018.html">Exceções e Tratamento de Erros</a></li>
+                <li><a href="aula019.html">Módulos</a></li>
         </aside>
         <main>
             <h1>Uma breve apresentação sobre Python</h1>
             <h2>O que é o Python?</h2>
             <img src="assets/python.png" alt="Imagem Python" title="Python" class="img">
-            <p class="p-text">Python é uma linguagem de programação amada por diversos profissionais de tecnologia pela sua
+            <p class="p-text">Python é uma linguagem de programação amada por diversos profissionais de tecnologia pela
+                sua
                 sintaxe, que é
                 relativamente mais simples do que a de outras linguagens. Foi inventada por Guido van Rossum em 1991,
-                enquanto trabalhava em Holanda. Guido achava as linguagens da época mais complexas, e aí que veio a ideia
+                enquanto trabalhava em Holanda. Guido achava as linguagens da época mais complexas, e aí que veio a
+                ideia
                 brilhante de criar sua própria linguagem que é uma das mais usadas nos dias de hoje.</p>
 
             <img src="assets/piton.png" alt="Cobra Píton" title="Píton" class="img2">
-            <p class="p-text">Python tem um significado, e muitos pensam que vem da cobra 'píton' (python em inglês), porém
+            <p class="p-text">Python tem um significado, e muitos pensam que vem da cobra 'píton' (python em inglês),
+                porém
                 Guido fez uma homenagem ao grupo britânico de comédia <strong>Monty Python</strong>, pois admirava.
                 Python apresenta as seguintes características:</p>
             <ul class="list">
@@ -260,7 +282,8 @@
                 <li>Jogos e Gráficos</li>
             </ul>
             <h2>Um exemplo de código em Python</h2>
-            <p class="p-text">Veja como o Python é simples, em apenas uma linha escrevemos o que linguagens de baixo nível
+            <p class="p-text">Veja como o Python é simples, em apenas uma linha escrevemos o que linguagens de baixo
+                nível
                 fazem em 4 a 6 linhas!</p>
             <p style="font-size: 1.2em; font-family: var(--fonte-code);">print('Olá, Mundo!')</p> <br> <br>
 
@@ -296,5 +319,4 @@
         toggleButton.addEventListener('click', toggleTheme);
     </script>
 </body>
-
 </html>

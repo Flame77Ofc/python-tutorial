@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estruturas de Repetição: while</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/aulas.css">
+    <link rel="shortcut icon" href="assets/logopython.png" type="image/x-icon">
+</head>
+
+<body>
+    <header class="class-header">
+        <h1 style="margin: 0;"><a href="index.html" style="text-decoration: none; color: currentColor;">Curso de
+                Python</a></h1>
+        <span style="font-size: 1.2em; font-weight: bold;">Aula 14 - Estruturas de Repetição: while</span>
+    </header>
+    <div class="container">
+        <main>
+            <h1>Estruturas de Repetição: while</h1>
+            <p>
+                Os loops nos permitem executar uma instrução ou grupo de instruções quantas vezes quisermos. Em geral,
+                as instruções são executadas sequencialmente. Vamos ver um exemplo muito ruim onde imprimimos diversas
+                vezes <code>'Hello, World!'</code>:
+            </p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>exemplo_ruim.py</span>
+                </div>
+                <pre class="example-pre"><code>print('Hello, World!')
+print('Hello, World!')
+print('Hello, World!')
+print('Hello, World!')
+print('Hello, World!')</code></pre>
+            </div>
+            <p>
+                Esses comandos de prints são completamente desnecessários, porque o loop <code>while</code> pode
+                simplificar tudo isso, reduzindo essas linhas de código. O que ele faz é repetir algum bloco de código
+                <strong>enquanto</strong> (<em>while</em>) sua condição for verdadeira. Lembram muito as estruturas
+                condicionais, não é? Mas a grande diferença é que as estruturas condicionais executam apenas uma vez o
+                bloco de código se sua condição for verdadeira, enquanto as estruturas de repetição executam repetidas
+                vezes um bloco de código. Vamos ver o exemplo mais simples possível:
+            </p>
+            <h2>Exemplo Básico de while</h2>
+            <p>Queremos imprimir na tela 5 vezes <code>'Hello, World!'</code>. O primeiro passo para a criação de um
+                loop while é seu contador. Sempre terá que ter uma variável contadora ao utilizar o loop while. Pode ser
+                de qualquer nome, desde que seja claro e significativo. Vamos utilizar neste exemplo uma variável
+                <code>contador</code>, e atribuir o valor 1:
+            </p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>hello_while.py</span>
+                </div>
+                <pre class="example-pre"><code>contador = 1
+while contador <= 5:
+    print('Hello, World!')
+    contador = contador + 1</code></pre>
+            </div>
+            <p>
+                O código acima executa 5 vezes o bloco de código <code>'Hello, World!'</code>. A cada repetição, a
+                variável <code>contador</code> aumenta em 1 até chegar a 6, quando o while para.
+            </p>
+            <h2>Contagem Crescente e Decrescente</h2>
+            <p>
+                Vamos criar um programa que repete 5 vezes o código 'Contagem: ...':
+            </p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>contagem_crescente.py</span>
+                </div>
+                <pre class="example-pre"><code>contador = 1
+while contador <= 5:
+    print(f'Contagem: {contador}')
+    contador = contador + 1</code></pre>
+            </div>
+            <p>E para contagem decrescente:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>contagem_decrescente.py</span>
+                </div>
+                <pre class="example-pre"><code>contador = 5
+while contador >= 1:
+    print(f'Contagem: {contador}')
+    contador = contador - 1</code></pre>
+            </div>
+            <h2>Quebrando e Continuando com <code>break</code> e <code>continue</code></h2>
+            <p>
+                Há situações em que você precisa parar de executar um bloco de repetição <code>while</code> mesmo que a
+                condição ainda não seja satisfeita. É possível fazer isso utilizando a palavra-chave <code>break</code>.
+                Exemplo: repetir os números de 1 a 10, mas parar quando o contador for 7:
+            </p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>break.py</span>
+                </div>
+                <pre class="example-pre"><code>contador = 1
+while contador <= 10:
+    print(contador)
+    if contador == 7:
+        break
+    contador = contador + 1</code></pre>
+            </div>
+            <p>
+                O <code>continue</code> serve para pular para a próxima repetição do loop. Exemplo: imprimir os números
+                de 1 a 5, pulando o número 4:
+            </p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>continue.py</span>
+                </div>
+                <pre class="example-pre"><code>contador = 1
+while contador <= 5:
+    if contador == 4:
+        contador = contador + 1
+        continue
+    print(contador)
+    contador = contador + 1</code></pre>
+            </div>
+            <p>
+                Agora, um programa que pergunta ao usuário seu nome. O loop quebra apenas quando o usuário digitar
+                'quit':
+            </p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>input_quit.py</span>
+                </div>
+                <pre class="example-pre"><code>while True:
+    nome = input("Digite o seu nome: ")
+    if nome == 'quit':
+        break</code></pre>
+            </div>
+            <h2>Tópicos Avançados</h2>
+            <h3>Substituição de 'contador' por 'i'</h3>
+            <p>
+                Muitos desenvolvedores usam a variável <code>i</code> ao invés de <code>contador</code>. Isso é uma
+                convenção da comunidade:
+            </p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>i_convensao.py</span>
+                </div>
+                <pre class="example-pre"><code>i = 5
+while i >= 1:
+    print(i)
+    i = i - 1</code></pre>
+            </div>
+            <h3>Operadores de Atribuição</h3>
+            <p>
+                Podemos usar operadores de atribuição para tornar o código mais compacto:
+            </p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>atribuicao.py</span>
+                </div>
+                <pre class="example-pre"><code>i = 1
+while i < 5:
+    print(i)
+    i += 1  # Equivalente a i = i + 1</code></pre>
+            </div>
+            <h3>Loops Infinitos</h3>
+            <p>
+                Loops infinitos nunca param de executar, normalmente por esquecer de incrementar ou decrementar a
+                variável de controle:
+            </p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>loop_infinito.py</span>
+                </div>
+                <pre class="example-pre"><code># CUIDADO: Este código entra em loop infinito!
+contador = 1
+while contador < 10:
+    print('Contando!')
+    # contador = contador + 1  # Faltou incrementar!</code></pre>
+            </div>
+            <p>
+                Para resolver, basta não esquecer de incrementar:
+            </p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>loop_corrigido.py</span>
+                </div>
+                <pre class="example-pre"><code>contador = 1
+while contador < 10:
+    print('Contando!')
+    contador = contador + 1</code></pre>
+            </div>
+            <h2>Estrutura while...else</h2>
+            <p>
+                Assim como as estruturas condicionais, o laço <code>while</code> também aceita <code>else</code>. O
+                bloco <code>else</code> é executado quando a condição do <code>while</code> se torna falsa.
+            </p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>while_else.py</span>
+                </div>
+                <pre class="example-pre"><code>i = 1
+while i <= 10:
+    print(i)
+    i += 1
+else:
+    print('As repetições acabaram')</code></pre>
+            </div>
+            <p>
+                Isso imprime os números de 1 a 10, e quando a condição do <code>while</code> for falsa, o
+                <code>else</code> será executado, imprimindo "As repetições acabaram".
+            </p>
+            <div class="button-container">
+                <button id="left-button" class="nav-button" onclick="location.href='aula013.html'">Aula
+                    anterior</button>
+                <button id="center-button" class="nav-button" onclick="location.href='bot.html'">Área de Testes</button>
+                <button id="right-button" class="nav-button" onclick="location.href='aula015.html'">Próxima
+                    Aula</button>
+            </div>
+        </main>
+    </div>
+    <button id="toggle-theme">🌙</button>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>

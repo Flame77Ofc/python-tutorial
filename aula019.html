@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/aulas.css">
+    <link rel="shortcut icon" href="assets/logopython.png" type="image/x-icon">
+</head>
+
+<body>
+    <header class="class-header">
+        <h1 style="margin: 0;"><a href="index.html" style="text-decoration: none; color: currentColor;">Curso de
+                Python</a></h1>
+        <span style="font-size: 1.2em; font-weight: bold;">Aula 19 - Módulos</span>
+    </header>
+    <div class="container">
+        <main>
+            <h1>Módulos</h1>
+            <p>Atenção! Para ter acesso aos módulos, você deve ter um editor de código instalado, como VSCode e o python
+                também! Há o tutorial de como fazer isso na primeira aula do curso!</p>
+            <p>Python por si só já possui diversas funcionalidades. Mas imagina só se tivessemos uma chave para
+                descbloquear novas funcionalidades, tornando ele ainda mais funcional e divertido? Então eu gostaria de
+                te apresentar os MÓDULOS! Os módulos são tipo um cofre, aonde você mesmo pode abrir esses cofres com
+                chaves, ou melhor, comandos!</p>
+            <p>Um comando essencial para utilizar módulos é o <code>pip install</code>. Você utiliza esse comando no seu
+                prompt de comandos ou no terminal do seu editor de códigos. Vamos utilizar o prompt de comandos.</p>
+            <p>Para instalar um módulo, abra o prompt de comandos (no Windows, pressione Win+R, digite <code>cmd</code>
+                e pressione Enter) ou o terminal do seu editor de códigos. Em seguida, digite o comando
+                <code>pip install nome_do_módulo</code>, substituindo <code>nome_do_módulo</code> pelo módulo desejado.
+                Por exemplo, para instalar o módulo <code>datetime</code>, use: <code>pip install datetime</code>.
+                Certifique-se de que o Python está instalado e adicionado ao PATH do sistema. Após a instalação, você
+                pode importar o módulo no seu código Python com <code>import nome_do_módulo</code>.
+            </p>
+            <p>Ok, depois de ter feito isso, vamos lá!</p>
+
+            <h2>O Módulo <code>random</code></h2>
+            <p>Imagine brincar de adivinhar o número, mas quem escolhe o número é o seu computador e quem faz os chutes
+                é você?? Hah, com o módulo <code>random</code> isso é muito possível e simples de fazer!
+                <code>random</code> é um módulo do python que permite que o próprio computador possa escolher números,
+                letras ou até elementos de uma lista! Vamos ver como funciona o <code>random</code>!
+            </p>
+
+            <h3>Exemplo 1: Escolhendo um Número Aleatório</h3>
+            <p>Imagine o seguinte: Você dizer ao computador para escolher um número entre 1 a 100, então vamos ver como
+                fazer isso agora!</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>random_numero.py</span>
+                </div>
+                <pre class="example-pre"><code>import random
+escolha = random.randint(1, 100)
+print(escolha)</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>92</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Exemplo 2: Escolhendo um Elemento de uma Lista</h3>
+            <p>Ok, agora vamos supor que você tenha uma lista, e queira que o computador escolha um elemento dessa
+                lista. Você pode fazer isso utilizando o <code>random.choice(lista)</code>. Vamos ver num exemplo:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>random_choice.py</span>
+                </div>
+                <pre class="example-pre"><code>import random
+alimentos = ['Arroz', 'Macarrão', 'Strogonoff']
+elemento = random.choice(alimentos)
+print(elemento)</code></pre>
+            </div>
+            <p>Pronto, simplesmente isso!</p>
+
+            <h3>Exemplo 3: Jogo de Adivinhação</h3>
+            <p>Agora que tal criar um mini joguinho em que você tenta acertar o número aleatório que o programa criar?
+                Vamos criar um programa onde seu objetivo é acertar o número que o computador acertar:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>jogo_adivinhacao.py</span>
+                </div>
+                <pre class="example-pre"><code>import random
+numero = random.randint(1, 100)
+while True:
+    palpite = int(input("Qual é o seu palpite? "))
+    if palpite > 100 or palpite < 0:
+        print('Por favor, digite um número entre 1 a 100!')
+    elif palpite > numero:
+        print('Chute alto!')
+    elif palpite < numero:
+        print('Chute baixo!')
+    elif palpite == numero:
+        print('Você acertou!')
+        break</code></pre>
+            </div>
+            <p>Vamos entender: Primeiro importamos o módulo <code>random</code>, depois criamos a variável
+                <code>numero</code>, que recebe um número aleatório entre 1 a 100. Logo em seguida criamos um loop
+                <code>while True</code>, e perguntamos o palpite para o usuário. O programa avalia se o palpite é maior
+                que 100 ou menor que 0 (exceções) e depois verifica se é maior ou menor que o número. A última condição
+                verifica se o palpite é igual ao número aleatório gerado, se for, imprime na tela
+                <code>Você acertou</code> e quebra o loop para não ser executado eternamente.
+            </p>
+
+            <h2>O Módulo <code>datetime</code></h2>
+            <p>Já pensou em aplicar datas e horas no seu programa? É totalmente possível fazer isso utilizando o
+                <code>datetime</code>, uma biblioteca do python que te permite trabalhar com horas e datas, vamos nessa?
+            </p>
+            <p>Antes de tudo, você deve ir no seu terminal, ou no seu prompt de comandos, digitar <code>python</code>,
+                teclar <code>ENTER</code> e em seguida digitar <code>pip install datetime</code>.</p>
+            <p>A primeira coisa que se deve fazer é importar o <code>datetime</code>, deste jeito:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>import_datetime.py</span>
+                </div>
+                <pre class="example-pre"><code>import datetime</code></pre>
+            </div>
+            <p>Pronto, após isso podemos brincar com as datas e as horas!</p>
+
+            <h3>Exemplo 4: Acessando Ano, Mês e Dia</h3>
+            <p>Primeiramente vamos ver como acessar o ano, o mês e o dia:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>datetime_data.py</span>
+                </div>
+                <pre class="example-pre"><code>import datetime
+ano = datetime.datetime.now().year
+mes = datetime.datetime.now().month
+dia = datetime.datetime.now().day</code></pre>
+            </div>
+            <p>Criamos uma variável <code>ano</code> e utilizando as funcionalidades do <code>datetime</code>,
+                atribuímos o seu valor para o ano atual. Fizemos a mesma coisa para o mês e o dia. Isso segue um padrão:
+                <code>datetime.datetime.now()</code> e logo após o <code>now</code> utilizamos a função que queremos em
+                inglês, por exemplo, dia -> <code>day</code>; mês -> <code>month</code>; ano -> <code>year</code>.
+            </p>
+
+            <h3>Exemplo 5: Acessando Hora, Minuto, Segundo e Microssegundo</h3>
+            <p>Vamos acessar também a hora, o minuto, o segundo e até o microssegundo!</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>datetime_hora.py</span>
+                </div>
+                <pre class="example-pre"><code>import datetime
+hora = datetime.datetime.now().hour
+minuto = datetime.datetime.now().minute
+segundo = datetime.datetime.now().second
+microsegundo = datetime.datetime.now().microsecond</code></pre>
+            </div>
+            <p>Novamente segue o mesmo padrão anteriormente já dito. Se você já sabe ano, mês, dia, hora, minuto,
+                segundo e microssegundo em inglês, então pode facilmente entender o conceito de datas e horas utilizando
+                o <code>datetime</code>.</p>
+
+            <h3>Exemplo 6: Criando uma Data Personalizada</h3>
+            <p>Que tal criarmos nossa própria data? Utilizando o <code>datetime.datetime(ano, mês, dia)</code> podemos
+                criar nossas próprias datas. Vamos ver um exemplo:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>datetime_data_personalizada.py</span>
+                </div>
+                <pre class="example-pre"><code>import datetime
+data = datetime.datetime(2025, 5, 4)
+print(data)</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>2025-05-04 00:00:00</pre>
+                    </div>
+                </div>
+            </div>
+            <p>Não especificamos as horas, minutos, segundos e microssegundos, vamos fazer isso:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>datetime_data_completa.py</span>
+                </div>
+                <pre class="example-pre"><code>import datetime
+data = datetime.datetime(2025, 5, 4, 15, 30, 00)
+print(data)</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>2025-05-04 15:30:00</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Exemplo 7: Criando Apenas Horas</h3>
+            <p>Agora vamos supor que queremos apenas as horas, minutos e segundos. Podemos criar isso utilizando o
+                <code>datetime.time(horas, minutos, segundos, microssegundos)</code>:
+            </p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>datetime_hora_personalizada.py</span>
+                </div>
+                <pre class="example-pre"><code>import datetime
+time = datetime.time(12, 30, 00)
+print(time)</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>12:30:00</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Exemplo 8: Matemática com Datas</h3>
+            <p>Também é possível utilizar matemática com datas! Vamos ver como isso funciona:</p>
+            <p>Vamos supor que vamos ao cinema, e o cinema fecha daqui 15 minutos, considerando que agora são 13:30.</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>datetime_cinema.py</span>
+                </div>
+                <pre class="example-pre"><code>import datetime
+agora = datetime.datetime(2025, 5, 17, 13, 30, 00)
+cinema = datetime.datetime(2025, 5, 17, 13, 45, 00)
+print(cinema - agora)</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>0:15:00</pre>
+                    </div>
+                </div>
+            </div>
+            <p>Podemos fazer cálculos envolvendo anos, meses, dias, enfim, qualquer função.</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>datetime_calculos.py</span>
+                </div>
+                <pre class="example-pre"><code>import datetime
+amanha = datetime.datetime.now().day + 1
+print(amanha)
+ano_posterior = datetime.datetime.now().year + 1
+print(ano_posterior)</code></pre>
+            </div>
+
+            <h2>Criando os Seus Próprios Módulos</h2>
+            <p>Imagina só agora você comandando seus próprios módulos? Vamos ver isso agora!</p>
+            <p>[Blá blá blá prints e dezenas de prints]</p>
+            <p>Primeiramente, vamos criar uma pasta nomeada de <code>modulos</code>. Depois, dentro desta pasta, criamos
+                dois arquivos. O primeiro arquivo será o <code>main.py</code> e depois criaremos mais um, o
+                <code>modulo.py</code>. Dentro do <code>modulo.py</code>, vamos criar uma função:
+            </p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>modulo.py</span>
+                </div>
+                <pre class="example-pre"><code>def prazer():
+    return f'Olá, prazer em te conhecer!'
+print(prazer())</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Olá, prazer em te conhecer!</pre>
+                    </div>
+                </div>
+            </div>
+            <p>Ok, agora vamos ir no <code>main.py</code> e utilizar o seguinte comando:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>main.py</span>
+                </div>
+                <pre class="example-pre"><code>import modulo
+print(modulo.prazer())</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Olá, prazer em te conhecer!</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <button id="left-button" class="nav-button" onclick="location.href='aula018.html'">Aula
+                    anterior</button>
+                <button id="center-button" class="nav-button" onclick="location.href='bot.html'">Área de Testes</button>
+                <button id="right-button" class="nav-button" onclick="location.href='aula020.html'">Próxima
+                    Aula</button>
+            </div>
+        </main>
+    </div>
+    <button id="toggle-theme">🌙</button>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>

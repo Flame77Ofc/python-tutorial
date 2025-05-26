@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estruturas de Repetição: for</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/aulas.css">
+    <link rel="shortcut icon" href="assets/logopython.png" type="image/x-icon">
+</head>
+
+<body>
+    <header class="class-header">
+        <h1 style="margin: 0;"><a href="index.html" style="text-decoration: none; color: currentColor;">Curso de
+                Python</a></h1>
+        <span style="font-size: 1.2em; font-weight: bold;">Aula 16 - Funções</span>
+    </header>
+    <div class="container">
+        <main>
+            <h1>Funções</h1>
+            <p>Imagine que você tenha diversos blocos de códigos repetidos ao longo do programa. Isso é muito ruim pois
+                utiliza diversas linhas de código atoa, mas por outro lado é uma bela oportunidade para as funções
+                entrarem no caminho. Funções basicamente são blocos de códigos que são gerenciáveis e tem uma alta
+                facilidade de reúso, evitando a repetição de códigos. Vamos ver como isso funciona:</p>
+
+            <h2>Sintaxe Básica</h2>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>sintaxe_funcao.py</span>
+                </div>
+                <pre class="example-pre"><code>def nome_da_funcao(argumentos/parâmetros opcionais):
+    # bloco de códigos</code></pre>
+            </div>
+            <p>Lembrete: Argumentos e parâmetros são usados para se referirem a mesma coisa.</p>
+
+            <h2>Entendendo as Funções</h2>
+            <p>As funções possuem 3 partes principais:</p>
+            <ul>
+                <li><strong>Nome da função</strong>: É o que identificará a função.</li>
+                <li><strong>Argumentos</strong>: São as variáveis da função que serão retornadas e são opcionais.</li>
+                <li><strong>Chamada da função</strong>: É a saída da função. Quando é chamada uma função, executará o
+                    que estiver dentro da função, ou seja, o bloco de código dentro dela.</li>
+            </ul>
+            <p>Primeiro utilizamos a palavra-chave <code>def</code>, seguido do nome que você quiser atribuir a função e
+                por fim utiliza-se parênteses e os dois pontos (:). Em seguida, dentro do bloco de código indentado que
+                pertence a função, é colocado o que você quiser para quando executar a função, exibir o que está lá
+                dentro. Por fim, fora do bloco de comando da função, é chamada a função, com o nome da função e os
+                parênteses.</p>
+
+            <h3>Exemplo 1: Função sem Argumentos</h3>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>prazer.py</span>
+                </div>
+                <pre class="example-pre"><code>def prazer():
+    print('Olá, Mundo!')
+prazer()</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Olá, Mundo!</pre>
+                    </div>
+                </div>
+            </div>
+            <p>Podemos executar essa função quantas vezes quisermos, basta chamá-las quantas vezes precisar. Cada
+                chamada de função executará o bloco de comando dentro da função.</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>prazer_multiplo.py</span>
+                </div>
+                <pre class="example-pre"><code>def prazer():
+    print('Olá, Mundo!')
+prazer()
+prazer()
+prazer()</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Olá, Mundo!
+Olá, Mundo!
+Olá, Mundo!</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Exemplo 2: Outras Funções sem Argumentos</h3>
+            <p>Existem dois tipos de funções: as funções sem argumentos/parâmetros (as que não possuem nada dentro dos
+                parênteses) e as funções com argumentos/parâmetros (que possuem uma variável dentro dos seus
+                parênteses).</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>oi.py</span>
+                </div>
+                <pre class="example-pre"><code>def oi():
+    print("Oi! prazer em te conhecer!")
+oi()</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Oi! prazer em te conhecer!</pre>
+                    </div>
+                </div>
+            </div>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>clima.py</span>
+                </div>
+                <pre class="example-pre"><code>def clima():
+    print("O clima está chuvoso")
+clima()</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>O clima está chuvoso</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Exemplo 3: Função com Múltiplos Comandos</h3>
+            <p>As funções podem imprimir quantos blocos de código forem necessários, não tem limites. Apenas coloque o
+                que deseja que seja impresso dentro do bloco de código da função.</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>restaurante.py</span>
+                </div>
+                <pre class="example-pre"><code>def restaurante():
+    print("O garçom está a caminho")
+    print("O garçom chegou")
+    print("Comemos a pizza")
+restaurante()</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>O garçom está a caminho
+O garçom chegou
+Comemos a pizza</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Exemplo 4: Função com Argumentos</h3>
+            <p>Agora vamos ver uma função com argumentos/parâmetros. A única diferença é que ela possui algo dentro dos
+                seus parênteses.</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>prazer_com_nome.py</span>
+                </div>
+                <pre class="example-pre"><code>def prazer(nome):
+    print(f'Oi, {nome}!')
+prazer('Gustavo')
+prazer('Guilherme')
+prazer('Nicolas')</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Oi, Gustavo!
+Oi, Guilherme!
+Oi, Nicolas!</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Exemplo 5: Função com Argumento de Lugar</h3>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>exibe_lugar.py</span>
+                </div>
+                <pre class="example-pre"><code>def exibe_lugar(lugar):
+    print(f'Você está em {lugar}')
+exibe_lugar('Casa do Tio Bento')</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Você está em Casa do Tio Bento</pre>
+                    </div>
+                </div>
+            </div>
+            <p>Primeiramente criamos o nome da função, seu nome é <code>exibe_lugar</code> e tem como parâmetro a
+                variável <code>lugar</code>. Em seguida o bloco de código imprime
+                <code>Você está em {e o nome do lugar}</code>. Chamamos a função e colocamos o parâmetro para
+                <code>Casa do Tio Bento</code>.
+            </p>
+
+            <h3>Exemplo 6: Função com Lista</h3>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>imprime_dobro.py</span>
+                </div>
+                <pre class="example-pre"><code>def imprime_dobro(lista):
+    for elemento in lista:
+        print(elemento * 2)
+lista = [6, 7, 12, 4, 8]
+imprime_dobro(lista)</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>12
+14
+24
+8
+16</pre>
+                    </div>
+                </div>
+            </div>
+            <p>Esse código já é um pouco mais complexo, mas vamos entender: Criamos uma função e seu nome é
+                <code>imprime_dobro</code>, ela possui um argumento (<code>lista</code>) e dentro de seu bloco de
+                código, é utilizado uma iteração para cada elemento da lista. Esses elementos individuais são
+                multiplicados por 2, e logo após isso criamos uma lista e atribuímos alguns valores a ela. Logo,
+                chamamos a função com o nome da lista e o programa automaticamente duplicará cada elemento.
+            </p>
+
+            <h2>Tópicos Avançados</h2>
+            <h3>Valores Padrão</h3>
+            <p>Imagine que você crie uma função que possui argumentos. Se você de alguma maneira esquecer de responder
+                ao argumento na chamada de função, isso resultará em um erro. Veja um exemplo:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>informacoes_erro.py</span>
+                </div>
+                <pre class="example-pre"><code>def informacoes(nome, idade):
+    print(f"Seu nome é {nome} e você tem {idade} anos")
+# informacoes() # Isso resultaria em um erro pois não foi preenchido aos argumentos da função.
+informacoes('Lucas', 25)</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Seu nome é Lucas e você tem 25 anos</pre>
+                    </div>
+                </div>
+            </div>
+            <p>Sabendo disso, é possível criar argumentos pre-preenchidos para evitar erros. Vamos entender isso:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>informacoes_padrao.py</span>
+                </div>
+                <pre class="example-pre"><code>def informacoes(nome='usuario', idade=0):
+    print(f"Seu nome é {nome} e você tem {idade} anos")
+informacoes()
+informacoes('Jorge', 19)</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Seu nome é usuario e você tem 0 anos
+Seu nome é Jorge e você tem 19 anos</pre>
+                    </div>
+                </div>
+            </div>
+            <p>Repare nos argumentos da função, dentro dos parênteses. Percebeu que já possui argumentos pre-definidos?
+                <code>nome</code> está pre-definido como <code>'usuario'</code> e <code>idade</code> está pre-definida
+                como <code>0</code>. Então se você de repente esquecer de preencher aos argumentos na chamada da função,
+                por padrão aqueles argumentos pre-definidos serão exibidos.
+            </p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>info_continente.py</span>
+                </div>
+                <pre class="example-pre"><code>def info(continente='América do Norte', pais='Estados Unidos'):
+    print(f'Você está na {continente} em {pais}')
+info()
+info('América do Sul', 'Brasil')</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Você está na América do Norte em Estados Unidos
+Você está na América do Sul em Brasil</pre>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Return</h3>
+            <p>Como vimos, os blocos de código podem ter qualquer coisa dentro do seu bloco de código, porém utilizamos
+                apenas os comandos <code>print()</code>. Mas existe um comando específico apenas para funções, o
+                <code>return</code>. Pelo seu próprio nome, ele retorna algo. Quando usamos a função <code>print</code>,
+                estamos apenas imprimindo na tela nossa mensagem. Porém a função <code>return</code> retorna um
+                argumento ou qualquer outra coisa que desejar.
+            </p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>mensagem.py</span>
+                </div>
+                <pre class="example-pre"><code>def mensagem(nome):
+    texto = f'Seu nome é {nome}'
+    return texto
+print(mensagem('João'))</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Seu nome é João</pre>
+                    </div>
+                </div>
+            </div>
+            <p>Para chamar uma função com o <code>return</code>, devemos utilizar o <code>print</code> agora. Vamos
+                entender: Criamos a função <code>mensagem</code> com o argumento de <code>nome</code>, dentro do seu
+                bloco de código criamos uma variável <code>texto</code> e atribuímos o seu valor para receber o nome que
+                será digitado na chamada de função, e logo na próxima linha utilizamos o <code>return</code> para
+                retornar aquele texto. Na chamada de função, primeiro utilizamos <code>print()</code> e dentro dos
+                parênteses chamamos a função, definindo o nome para <code>'João'</code>.</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>retorna_texto.py</span>
+                </div>
+                <pre class="example-pre"><code>def retorna_texto():
+    return 'Um exemplo de texto'
+print(retorna_texto())</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Um exemplo de texto</pre>
+                    </div>
+                </div>
+            </div>
+            <p>E é apenas isso. Apesar de ser simples, é recomendável que toda função retorne algo. Elas podem retornar
+                textos também, não apenas argumentos.</p>
+
+            <h3>*args e **kwargs</h3>
+            <p>Bom, evoluindo mais em questões sobre as funções, vamos ver sobre <code>*args</code> e
+                <code>**kwargs</code>. Elas servem especialmente quando você não sabe exatamente quantos argumentos a
+                função terá. Como vimos, as funções tem seus próprios argumentos, ou seja, se definimos 2 argumentos a
+                uma função, então ela terá 2 argumentos, nem mais nem menos. Mas isso muda ao falar sobre
+                <code>*args</code> e <code>**kwargs</code>, pois isso te permite declarar na chamada da função quantos
+                argumentos você quiser.
+            </p>
+            <h4>*args</h4>
+            <p>Permite que uma função receba múltiplos argumentos, muito útil quando não se sabe a quantidade de
+                argumentos que será necessário. Vamos voltar um pouco nas funções normais que recebem um argumento:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>imprime_nome.py</span>
+                </div>
+                <pre class="example-pre"><code>def imprime_nome(nome):
+    print(f'Seu nome é {nome}')
+imprime_nome('Lucas')</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Seu nome é Lucas</pre>
+                    </div>
+                </div>
+            </div>
+            <p>Como vimos acima, a função recebeu um argumento, e quando chamamos a função, especificamos o valor do
+                argumento, que era <code>Lucas</code>. Mas imagine só se houvesse uma função que recebe uma fila. Como
+                você sabe, uma fila não tem um número exato de pessoas, pode ser uma fila de 3 pessoas até uma fila de
+                50 mil, simplesmente não existe um número exato. É nesse momento em que entram as <code>*args</code>,
+                quando você não sabe quantos argumentos será necessário.</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>fila.py</span>
+                </div>
+                <pre class="example-pre"><code>def fila(*nomes):
+    print(f'Está agora na fila: {nomes}')
+fila('Maria', 'Pedro', 'Lucas', 'Ricardo', 'João', 'Paulo', 'Emanuel')</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Está agora na fila: ('Maria', 'Pedro', 'Lucas', 'Ricardo', 'João', 'Paulo', 'Emanuel')</pre>
+                    </div>
+                </div>
+            </div>
+            <p>Lembre-se de que os <code>*args</code> sempre retornam uma tupla. Vamos entender o código. Criamos uma
+                função nomeada de <code>fila</code>. Essa função tem o argumento de <code>nomes</code>, e note que há um
+                asterisco neste argumento, indicando que é uma <code>*args</code>. No bloco de código da função é
+                exibida a mensagem <code>Está agora na fila: {nomes}</code> e note que dentro das chaves não é colocado
+                <code>*nomes</code> com asterisco, apenas <code>nomes</code>. Na chamada da função, usamos o nome da
+                função e dentro dos parênteses declaramos 7 nomes de pessoas que estão na fila.
+            </p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>linguas.py</span>
+                </div>
+                <pre class="example-pre"><code>def linguas(*idiomas):
+    print(f'Você sabe falar {idiomas}')
+linguas('Inglês', 'Espanhol', 'Coreano')</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>Você sabe falar ('Inglês', 'Espanhol', 'Coreano')</pre>
+                    </div>
+                </div>
+            </div>
+            <p>A regra segue a mesma aqui, declaramos a função <code>linguas</code> que recebe como argumento
+                <code>*args</code> de <code>idiomas</code>, imprimindo <code>Você sabe falar {e as linguas}</code>,
+                seguida da chamada da função, que declaramos 3 argumentos: <code>Inglês</code>, <code>Espanhol</code> e
+                <code>Coreano</code>.
+            </p>
+
+            <h4>**kwargs</h4>
+            <p>As <code>**kwargs</code> são muito parecidas com as <code>*args</code>, porém a única diferença é que as
+                <code>**kwargs</code> possuem dois asteriscos e seus argumentos na chamada de função são diferentes.
+            </p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>loja.py</span>
+                </div>
+                <pre class="example-pre"><code>def loja(**produtos):
+    print(f'A loja possui {produtos}')
+loja(iphone=3400, tablet=2100, tv=4500)</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>A loja possui {'iphone': 3400, 'tablet': 2100, 'tv': 4500}</pre>
+                    </div>
+                </div>
+            </div>
+            <p>Você conseguiu notar alguma coisa diferente, comparando com as <code>*args</code>? Vamos lá, a primeira
+                coisa foram os dois asteriscos no argumento <code>produtos</code>, indicando que isso é uma
+                <code>**kwargs</code>. Na chamada de função, as coisas são um pouco diferentes. Você deve especificar a
+                chave e o valor daquele argumento que está criando. Nesse caso, a nossa chave é o nome do produto, e o
+                valor dessa chave é o valor do produto. <code>iphone=3400</code> indica que a chave é
+                <code>'iphone'</code> e <code>3400</code> é o valor. Isso te lembra algo?... Chave... Valor...? As
+                <code>*args</code> retornam uma tupla, e as <code>**kwargs</code> retornam um dicionário!
+            </p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>informacoes_kwargs.py</span>
+                </div>
+                <pre class="example-pre"><code>def informacoes(**dados):
+    print(dados)
+informacoes(Lucas=12, Pedro=56, Maria=35, João=16)</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>{'Lucas': 12, 'Pedro': 56, 'Maria': 35, 'João': 16}</pre>
+                    </div>
+                </div>
+            </div>
+            <p>Agora criamos um dicionário, onde o primeiro argumento é o nome da pessoa seguido da idade dela.</p>
+
+            <h3>Escopo</h3>
+            <p>Quando você declara uma variável em qualquer lugar que não seja dentro do bloco de código de uma função,
+                então essa variável é global. Isso significa que essa variável pode ser utilizada aonde quer que seja,
+                dentro de qualquer estrutura, como estruturas condicionais, loops, e até mesmo nas próprias funções!
+                Porém, ao declarar uma variável DENTRO do bloco de código de uma função, então essa variável não passa
+                mais ser uma variável global, mas sim uma variável local. Variáveis locais são todas as variáveis que
+                são declaradas DENTRO de funções.</p>
+            <p>Ok, mas por que isso importa? Há uma grande diferença entre variáveis de escopo global e local, e isso
+                pode causar uma grande confusão no programa. Primeiramente, vamos ver um exemplo de uma variável global
+                e uma variável local:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>escopo.py</span>
+                </div>
+                <pre class="example-pre"><code>variavel = 'global'
+
+def funcao():
+    variavel = 'local'</code></pre>
+            </div>
+            <p>Ok, mas qual o problema disso? Vamos ver um exemplo muito confuso para você entender qual o perigo das
+                variáveis locais:</p>
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>escopo_confuso.py</span>
+                </div>
+                <pre class="example-pre"><code>variavel = 'global'
+
+def funcao():
+    variavel = 'local'
+    return variavel
+print(funcao())
+print(variavel)</code></pre>
+                <div class="example-output-container">
+                    <div class="example-output-header">Saída:</div>
+                    <div class="output">
+                        <pre>local
+global</pre>
+                    </div>
+                </div>
+            </div>
+            <p>Vamos entender esse código. Primeiro declaramos uma variável com o nome de <code>variavel</code> e
+                atribuímos seu valor a <code>'global'</code>, logo após isso criamos uma função, dentro dela CRIAMOS
+                outra variável, com o mesmo nome, porém agora atribuímos o seu valor para <code>'local'</code>, e então
+                utilizamos o <code>return</code> para retornar a variável dentro da função. Então utilizamos o
+                <code>print()</code> e dentro de seus parênteses chamamos a função, que por sua vez retornou o valor da
+                variável dentro da função, que era <code>'local'</code>, o que imprimiu <code>local</code>. E depois
+                disso utilizamos o <code>print</code>, e imprimimos o valor da variável global, que estava fora da
+                função, e retornou <code>'global'</code>. Isso é muito perigoso, pois pode causar muitos problemas no
+                seu programa.
+            </p>
+
+            <div class="button-container">
+                <button id="left-button" class="nav-button" onclick="location.href='aula015.html'">Aula
+                    anterior</button>
+                <button id="center-button" class="nav-button" onclick="location.href='bot.html'">Área de Testes</button>
+                <button id="right-button" class="nav-button" onclick="location.href='aula017.html'">Próxima
+                    Aula</button>
+            </div>
+        </main>
+    </div>
+    <button id="toggle-theme">🌙</button>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listas em Python</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/aulas.css">
+    <link rel="shortcut icon" href="assets/logopython.png" type="image/x-icon">
+</head>
+
+<body>
+    <header class="class-header">
+        <h1 style="margin: 0;"><a href="index.html" style="text-decoration: none; color: currentColor;">Curso de
+                Python</a></h1>
+        <span style="font-size: 1.2em; font-weight: bold;">Aula 10 - Listas em Python</span>
+    </header>
+    <div class="container">
+        <main>
+            <h1>Listas em Python</h1>
+            <p>Listas são um tipo de dado (como os inteiros, booleanos, strings), mais especificamente, são sequências
+                ordenadas e mutáveis (É possível alterar seus elementos) e possuem índices. Seus elementos são cercados
+                por colchetes [] e cada elemento é separado por vírgulas. O índice é o identificador de um elemento, e
+                começa do 0 até a quantidade de elementos - 1. Por exemplo, se uma lista tem 50 elementos, o primeiro
+                índice será 0 e o último será a quantidade -1, que é 49.</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>sintaxe.py</span>
+                </div>
+                <pre class="example-pre"><code># sintaxe básica
+lista = ['e1', 'e2', 'e3']
+
+# Exemplo muito ruim de usuários espalhados pelo programa
+usuario1 = 'João Ferreira'
+usuario2 = 'Felipe Almeida'
+usuario3 = 'Julio Alberto'
+usuario4 = 'Lucas Golmes'
+
+# Exemplo muito bom e recomendável de uma lista de usuários
+usuarios = ['João Ferreira', 'Felipe Almeida', 'Julio Alberto', 'Lucas Golmes']</code></pre>
+            </div>
+
+            <h2>Começando a entender as listas</h2>
+            <p>Vamos começar a declarar uma lista com 3 elementos:</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>lista.py</span>
+                </div>
+                <pre class="example-pre"><code>lista = ['elemento1', 'elemento2', 'elemento3']
+# índices:    0                     1                           2
+
+# Acessando elementos pelo índice
+print(lista[0])  # elemento1
+print(lista[1])  # elemento2
+print(lista[2])  # elemento3
+
+# Acessando todos os elementos
+print(lista)
+
+# Listas com diferentes tipos
+lista = ['Pedro', 15, True, 'Maria', False]
+# índices:  0         1       2           3       4
+print(lista[3])  # Maria</code></pre>
+            </div>
+
+            <h2>Algumas funções de listas</h2>
+            <p>Listas possuem funções, e isso é muito bom, pois com funções as listas ganham muitas funcionalidades.</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>funcoes.py</span>
+                </div>
+                <pre class="example-pre"><code># Maior e menor valor
+vendas = [120, 456, 123, 986, 965, 329, 943, 542, 239, 236, 823, 967]
+print(max(vendas))  # Maior valor
+print(min(vendas))  # Menor valor
+
+# Soma dos elementos
+notas = [8, 9, 1, 4, 5, 6, 7, 4, 4, 5, 7, 10, 2, 4, 8]
+print(sum(notas))  # Soma todos os valores
+
+# Tamanho da lista
+nomes = ["Ana", "Bruno", "Carlos", "Daniela", "Eduardo", "Fernanda"]
+print(len(nomes))  # Quantidade de elementos</code></pre>
+            </div>
+
+            <h2>Índices negativos</h2>
+            <p>Índices negativos são iguais aos índices positivos normais mas agora ocorre uma inversão. O último índice
+                é o -1 e o primeiro depende de quantos elementos uma lista tem.</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>negativos.py</span>
+                </div>
+                <pre class="example-pre"><code>cores = ['vermelho', 'laranja', 'amarelo', 'verde', 'azul', 'violeta']
+# negativos: -6                 -5             -4               -3         -2           -1
+
+print(cores[-1])  # violeta (último elemento)
+print(cores[-3])  # verde</code></pre>
+            </div>
+
+            <h2>Fatiação de listas</h2>
+            <p>FATIAÇÃO DE LISTAS: Permite acessar múltiplos elementos de uma só vez!</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>fatiacao.py</span>
+                </div>
+                <pre class="example-pre"><code>materiais = ['Ferro', 'Madeira', 'Metal', 'Concreto', 'Pedra']
+# índices:          0               1               2                3                4
+
+# Acessando múltiplos elementos
+print(materiais[1:4])  # ['Madeira', 'Metal', 'Concreto']
+
+# Com índices negativos
+animais = ['Gato', 'Coruja', 'Aranha', 'Escorpião']
+print(animais[-3:-1])  # ['Coruja', 'Aranha']</code></pre>
+            </div>
+
+            <h2>Alterando os elementos da lista</h2>
+            <p>Você pode alterar os elementos de uma lista tanto explicitamente quanto implicitamente.</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>alteracao.py</span>
+                </div>
+                <pre class="example-pre"><code># Removendo elementos
+automoveis = ['Carro', 'Caminhão', 'Moto', 'Bicicleta']
+automoveis.remove('Bicicleta')  # Remove pelo valor
+
+frutas = ['Maçã', 'Banana', 'Laranja', 'Kiwi']
+frutas.pop(2)  # Remove pelo índice
+frutas.pop()   # Remove o último elemento
+
+# Adicionando elementos
+estados_sul = ['Paraná', 'Rio Grande do Sul']
+estados_sul.append('Santa Catarina')  # Adiciona no final
+estados_sul.insert(1, 'São Paulo')    # Insere em posição específica
+
+# Alterando elementos
+compras = ['Tomate', 'Sabonete', 'Detergente']
+compras[1] = 'Shampoo'  # Substitui diretamente</code></pre>
+            </div>
+
+            <h2>Juntando listas</h2>
+            <p>Já pensou juntar listas para criar uma nova lista?</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>juncao.py</span>
+                </div>
+                <pre class="example-pre"><code># Método extend
+planetas = ['Terra', 'Marte', 'Vênus']
+estrelas = ['Sol', 'Sagittarius A']
+planetas.extend(estrelas)
+
+# Método com operador +
+sucos = ['Laranja', 'Limão', 'Abacaxi']
+refrigerantes = ['Coca-Cola', 'Pepsi']
+bebidas = sucos + refrigerantes</code></pre>
+            </div>
+
+            <h2>Organizando listas</h2>
+            <p>Imagine que você tenha uma lista toda embaralhada, e precisava colocar em ordem.</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>ordenacao.py</span>
+                </div>
+                <pre class="example-pre"><code># Ordem alfabética
+letras = ['c', 'd', 'y', 'w', 'b', 'a', 'z', 'j']
+letras.sort()  # Ordem crescente
+letras.reverse()  # Ordem decrescente
+
+# Ordem numérica
+numeros = [4, 8, 12, 5, 9, -4, 0, 5, 6]
+numeros.sort()  # Crescente
+numeros.sort(reverse=True)  # Decrescente</code></pre>
+            </div>
+
+            <h2>Contando elementos</h2>
+            <p>Quando você quer contar algum elemento, ou seja, verificar quantas vezes ele aparece numa lista.</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>contagem.py</span>
+                </div>
+                <pre class="example-pre"><code>produtos = ['Arroz', 'Feijão', 'Arroz', 'Macarrão', 'Arroz']
+print(produtos.count('Arroz'))  # 3 vezes</code></pre>
+            </div>
+
+            <h2>Operadores de pertencimento</h2>
+            <p>Os operadores de pertencimento verificam se um valor está contido ou não está contido em uma lista.</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>pertence.py</span>
+                </div>
+                <pre class="example-pre"><code>passaros = ['Tucano', 'Bem-te-vi', 'Quero-Quero']
+print('Tucano' in passaros)     # True
+print('Pombo' not in passaros)  # True</code></pre>
+            </div>
+
+            <h2>Desempacotamento de listas</h2>
+            <p>O desempacotamento de listas é utilizado quando você quer atribuir diversas variáveis para cada elemento
+                da lista.</p>
+
+            <div class="example-code-container">
+                <div class="example-code-header">
+                    <div class="dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span>desempacotamento.py</span>
+                </div>
+                <pre class="example-pre"><code># Desempacotamento básico
+nomes = ['João', 'Felipe', 'Fábio']
+user1, user2, user3 = nomes
+
+# Com asterisco para elementos restantes
+frutas = ['Melancia', 'Abacaxi', 'Maçã', 'Laranja']
+primeira, *resto = frutas
+
+# Asterisco no início
+animais = ['Tubarão', 'Crocodilo', 'Gato', 'Morcego']
+*inicio, ultimo = animais</code></pre>
+            </div>
+
+            <div class="button-container">
+                <button id="left-button" class="nav-button" onclick="location.href='aula009.html'">Aula
+                    anterior</button>
+                <button id="center-button" class="nav-button" onclick="location.href='bot.html'">Área de Testes</button>
+                <button id="right-button" class="nav-button" onclick="location.href='aula011.html'">Próxima
+                    Aula</button>
+            </div>
+        </main>
+    </div>
+    <button id="toggle-theme">🌙</button>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>\
